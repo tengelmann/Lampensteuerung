@@ -1,0 +1,1 @@
+del *.o *.o.d *.lss *.map *.elf makefile /s

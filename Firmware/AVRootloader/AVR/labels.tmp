@@ -1,0 +1,94 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.42</VERSION>
+ <DEVICE>ATtiny84</DEVICE>
+ <WORKING_DIR>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\ExtraProgramme\Programmierung\AVRTools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\ExtraProgramme\Programmierung\AVRTools\AvrAssembler2\Appnotes\tn84def.inc</FILE>
+  <FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.inc</FILE>
+  <FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\Special.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.map</FILE>
+  <FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.lst</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <init><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>216</LINE></init>
+  <abd><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>291</LINE></abd>
+  <BootMsg><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>787</LINE></BootMsg>
+  <BootSign><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>786</LINE></BootSign>
+  <ab1><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>309</LINE></ab1>
+  <ab2><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>312</LINE></ab2>
+  <id2><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>343</LINE></id2>
+  <ab3><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>317</LINE></ab3>
+  <exit><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>407</LINE></exit>
+  <id1><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>339</LINE></id1>
+  <id3><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>344</LINE></id3>
+  <getx><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>746</LINE></getx>
+  <getw><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>738</LINE></getw>
+  <info><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>359</LINE></info>
+  <BootInfo><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>788</LINE></BootInfo>
+  <in1><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>360</LINE></in1>
+  <putc><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>721</LINE></putc>
+  <main><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>381</LINE></main>
+  <mai1><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>382</LINE></mai1>
+  <mai2><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>397</LINE></mai2>
+  <mai3><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>398</LINE></mai3>
+  <setbuf><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>411</LINE></setbuf>
+  <mai4><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>456</LINE></mai4>
+  <set3><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>430</LINE></set3>
+  <set4><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>439</LINE></set4>
+  <getc><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>740</LINE></getc>
+  <mai5><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>559</LINE></mai5>
+  <prog><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>460</LINE></prog>
+  <pro1><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>471</LINE></pro1>
+  <pro2><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>472</LINE></pro2>
+  <pro8><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>539</LINE></pro8>
+  <pro5><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>520</LINE></pro5>
+  <pro4><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>494</LINE></pro4>
+  <pro6><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>535</LINE></pro6>
+  <pro7><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>538</LINE></pro7>
+  <pro9><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>550</LINE></pro9>
+  <proA><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>555</LINE></proA>
+  <proB><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>557</LINE></proB>
+  <mai6><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>585</LINE></mai6>
+  <veri><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>564</LINE></veri>
+  <ver1><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>565</LINE></ver1>
+  <ver2><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>566</LINE></ver2>
+  <mai7><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>682</LINE></mai7>
+  <ee1><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>601</LINE></ee1>
+  <ee2><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>603</LINE></ee2>
+  <ee3><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>611</LINE></ee3>
+  <putp><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>709</LINE></putp>
+  <ee5><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>625</LINE></ee5>
+  <ee4><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>615</LINE></ee4>
+  <maiZ><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>701</LINE></maiZ>
+  <ee6><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>629</LINE></ee6>
+  <putw><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>706</LINE></putw>
+  <mai8><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>697</LINE></mai8>
+  <maiY><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>700</LINE></maiY>
+  <put1><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>711</LINE></put1>
+  <put2><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>716</LINE></put2>
+  <waitf><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>770</LINE></waitf>
+  <put3><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>727</LINE></put3>
+  <put4><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>732</LINE></put4>
+  <put5><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>735</LINE></put5>
+  <getm><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>739</LINE></getm>
+  <get5><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>742</LINE></get5>
+  <get1><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>744</LINE></get1>
+  <waith><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>771</LINE></waith>
+  <get2><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>751</LINE></get2>
+  <get3><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>761</LINE></get3>
+  <get4><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>763</LINE></get4>
+  <wait1><FILE>D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Software\AVRootloader\AVR\AVRootloader.asm</FILE><LINE>778</LINE></wait1>
+ </LABELS>
+</ASSEMBLER_INFO>

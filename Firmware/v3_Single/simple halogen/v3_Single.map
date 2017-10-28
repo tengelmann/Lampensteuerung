@@ -1,0 +1,707 @@
+Archive member included because of file (symbol)
+
+c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_mulhi3.o)
+                              rgbled.o (__mulhi3)
+c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_udivmodhi4.o)
+                              pwm.o (__udivmodhi4)
+c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+                              c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn84.o (exit)
+c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+                              adc.o (__do_copy_data)
+c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                              controller.o (__do_clear_bss)
+c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_block_attiny84.o)
+                              accu.o (__eerd_block_tn84)
+c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny84.o)
+                              eeprom.o (__eerd_byte_tn84)
+c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_word_attiny84.o)
+                              calib.o (__eerd_word_tn84)
+c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_block_attiny84.o)
+                              accu.o (__eewr_block_tn84)
+c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny84.o)
+                              eeprom.o (__eewr_byte_tn84)
+c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_word_attiny84.o)
+                              calib.o (__eewr_word_tn84)
+
+Allocating common symbols
+Common symbol       size              file
+
+accuVoltageLevels   0x10              controller.o
+pwmOutput           0x4               controller.o
+time                0x8               controller.o
+currentADCValue     0x2               controller.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn84.o
+LOAD controller.o
+LOAD timer.o
+LOAD uart.o
+LOAD adc.o
+LOAD rgbled.o
+LOAD button_sv3.o
+LOAD controller_debug.o
+LOAD eeprom.o
+LOAD accu.o
+LOAD states_sv3.o
+LOAD tbl_transitions.o
+LOAD pwm_table.o
+LOAD pwm.o
+LOAD calib.o
+LOAD c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
+LOAD c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a
+LOAD c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0xe96
+ *(.vectors)
+ .vectors       0x00000000       0x22 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn84.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000022                . = ALIGN (0x2)
+                0x00000022                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000022        0x0 linker stubs
+ *(.trampolines*)
+                0x00000022                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000022                __ctors_start = .
+ *(.ctors)
+                0x00000022                __ctors_end = .
+                0x00000022                __dtors_start = .
+ *(.dtors)
+                0x00000022                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000022        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn84.o
+                0x00000022                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000022        0xc c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn84.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x0000002e       0x16 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+                0x0000002e                __do_copy_data
+ .init4         0x00000044       0x10 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                0x00000044                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000054        0x4 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn84.o
+ *(.init9)
+ *(.text)
+ .text          0x00000058        0x2 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn84.o
+                0x00000058                __vector_1
+                0x00000058                __vector_12
+                0x00000058                __bad_interrupt
+                0x00000058                __vector_6
+                0x00000058                __vector_3
+                0x00000058                __vector_13
+                0x00000058                __vector_7
+                0x00000058                __vector_5
+                0x00000058                __vector_4
+                0x00000058                __vector_9
+                0x00000058                __vector_15
+                0x00000058                __vector_8
+                0x00000058                __vector_14
+                0x00000058                __vector_10
+                0x00000058                __vector_16
+ .text          0x0000005a       0x9c controller.o
+                0x0000005a                doSleep
+                0x000000b2                main
+                0x00000082                __vector_2
+                0x000000a0                initialize
+ .text          0x000000f6       0xf0 timer.o
+                0x0000012e                __vector_11
+                0x000000f6                timerInitialize
+ .text          0x000001e6        0x0 uart.o
+ .text          0x000001e6       0xa8 adc.o
+                0x000001e6                adcInitialize
+                0x0000020c                adcTakeSingleMeasurement
+                0x00000214                adcReadValue
+ .text          0x0000028e      0x1b2 rgbled.o
+                0x0000043a                led2_white
+                0x000003fe                led2_blue
+                0x000003ce                led2_red
+                0x000003da                led2_lightred
+                0x000003c8                led1_red
+                0x00000410                led1_yellow
+                0x000003ec                led1_lightgreen
+                0x0000041c                led1_lightyellow
+                0x000003d4                led1_lightred
+                0x000003f8                led1_blue
+                0x000003c0                leds_off
+                0x00000404                led1_lightblue
+                0x000003e0                led1_green
+                0x00000416                led2_yellow
+                0x000003f2                led2_lightgreen
+                0x00000428                led1_rose
+                0x000003e6                led2_green
+                0x0000042e                led2_rose
+                0x00000422                led2_lightyellow
+                0x0000028e                rgbInitialize
+                0x000002b2                rgbRefreshOutputs
+                0x00000434                led1_white
+                0x0000040a                led2_lightblue
+ .text          0x00000440       0xac button_sv3.o
+                0x00000454                btnRefreshState
+                0x00000440                btnInitialize
+ .text          0x000004ec        0x0 controller_debug.o
+ .text          0x000004ec       0x30 eeprom.o
+                0x00000506                eepromSetActiveFlag
+                0x000004f4                eepromIsProgrammed
+                0x00000510                eepromStoreData
+                0x00000516                eepromLoadData
+                0x000004ec                eepromGetActiveFlag
+ .text          0x0000051c       0xe0 accu.o
+                0x00000522                accuGetVoltageLevelIndex
+                0x0000057e                accuSetDefaultVoltageLevels
+                0x0000051c                accuInitialize
+                0x000005dc                accuStoreVoltageLevelsToEEPROM
+                0x00000546                accuRefreshDisplay
+                0x000005ec                accuLoadVoltageLevelsFromEEPROM
+ .text          0x000005fc      0x43c states_sv3.o
+                0x000005fc                stateInitialize
+                0x00000602                stateNextState
+ .text          0x00000a38       0x5c tbl_transitions.o
+                0x00000a38                transTableGetNextDimLevel
+ .text          0x00000a94      0x132 pwm_table.o
+                0x00000b26                pwmTableSaveCurrentValuesForPWM2
+                0x00000ba6                pwmTableStoreToEEPROM
+                0x00000bb6                pwmTableLoadFromEEPROM
+                0x00000ad8                pwmTableSaveCurrentValuesForPWM1
+                0x00000a94                pwmLoadDefaults
+                0x00000b50                pwmTableSetOutPut
+ .text          0x00000bc6      0x14e pwm.o
+                0x00000c0c                pwmDisable
+                0x00000c1a                pwmRefreshSingleOutput
+                0x00000bde                pwmEnable
+                0x00000c2e                pwmGetRegulateOutputValue
+                0x00000bc6                pwmInitialize
+                0x00000c6c                pwmRefreshOutputs
+ .text          0x00000d14       0xc4 calib.o
+                0x00000dca                calibInitialize
+                0x00000d14                calibAddAdcValue
+                0x00000d84                calibFinalize
+                0x00000d52                calibStart
+                0x00000d7a                calibResetFlag
+ .text          0x00000dd8        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_mulhi3.o)
+ .text          0x00000dd8        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_udivmodhi4.o)
+ .text          0x00000dd8        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .text          0x00000dd8        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .text          0x00000dd8        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+ .text          0x00000dd8        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_block_attiny84.o)
+ .text          0x00000dd8        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny84.o)
+ .text          0x00000dd8        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_word_attiny84.o)
+ .text          0x00000dd8        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_block_attiny84.o)
+ .text          0x00000dd8        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny84.o)
+ .text          0x00000dd8        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_word_attiny84.o)
+                0x00000dd8                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x00000dd8       0x24 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_mulhi3.o)
+                0x00000dd8                __mulhi3
+ .text.libgcc   0x00000dfc       0x28 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_udivmodhi4.o)
+                0x00000dfc                __udivmodhi4
+ .text.libgcc   0x00000e24        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .text.libgcc   0x00000e24        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000e24        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x00000e24       0x20 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_block_attiny84.o)
+                0x00000e24                __eerd_block_tn84
+                0x00000e28                __eerd_blraw_tn84
+ .text.avr-libc
+                0x00000e44       0x10 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny84.o)
+                0x00000e44                __eerd_byte_tn84
+ .text.avr-libc
+                0x00000e54        0xa c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_word_attiny84.o)
+                0x00000e54                __eerd_word_tn84
+ .text.avr-libc
+                0x00000e5e       0x12 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_block_attiny84.o)
+                0x00000e5e                __eewr_block_tn84
+ .text.avr-libc
+                0x00000e70       0x1c c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny84.o)
+                0x00000e70                __eewr_byte_tn84
+                0x00000e72                __eewr_r18_tn84
+ .text.avr-libc
+                0x00000e8c        0x6 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_word_attiny84.o)
+                0x00000e8c                __eewr_word_tn84
+                0x00000e92                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00000e92        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+                0x00000e92                exit
+                0x00000e92                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00000e92        0x4 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ *(.fini0)
+                0x00000e96                _etext = .
+
+.data           0x00800060       0x74 load address 0x00000e96
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn84.o
+ .data          0x00800060        0x0 controller.o
+ .data          0x00800060        0x0 timer.o
+ .data          0x00800060        0x0 uart.o
+ .data          0x00800060       0x10 adc.o
+                0x00800060                lastValues
+ .data          0x00800070       0x24 rgbled.o
+                0x00800070                colors
+ .data          0x00800094        0x1 button_sv3.o
+                0x00800094                btnState
+ .data          0x00800095        0x0 controller_debug.o
+ .data          0x00800095        0x0 eeprom.o
+ .data          0x00800095        0x0 accu.o
+ .data          0x00800095       0x20 states_sv3.o
+                0x00800095                stateWaitReturn
+                0x008000a5                ledProgColors2
+                0x008000b0                ledPWMModeColors
+                0x0080009a                ledProgColors1
+                0x00800096                ledDimColors
+ .data          0x008000b5       0x10 tbl_transitions.o
+ .data          0x008000c5        0xe pwm_table.o
+                0x008000c5                pwmTable
+ .data          0x008000d3        0x0 pwm.o
+ .data          0x008000d3        0x0 calib.o
+ .data          0x008000d3        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_mulhi3.o)
+ .data          0x008000d3        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_udivmodhi4.o)
+ .data          0x008000d3        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .data          0x008000d3        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .data          0x008000d3        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+ .data          0x008000d3        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_block_attiny84.o)
+ .data          0x008000d3        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny84.o)
+ .data          0x008000d3        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_word_attiny84.o)
+ .data          0x008000d3        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_block_attiny84.o)
+ .data          0x008000d3        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny84.o)
+ .data          0x008000d3        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_word_attiny84.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x008000d4                . = ALIGN (0x2)
+ *fill*         0x008000d3        0x1 00
+                0x008000d4                _edata = .
+                0x008000d4                PROVIDE (__data_end, .)
+
+.bss            0x008000d4       0x28
+                0x008000d4                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x008000d4        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn84.o
+ .bss           0x008000d4        0x0 controller.o
+ .bss           0x008000d4        0x1 timer.o
+                0x008000d4                timerFlags
+ .bss           0x008000d5        0x0 uart.o
+ .bss           0x008000d5        0x1 adc.o
+                0x008000d5                currentIndex
+ .bss           0x008000d6        0x0 rgbled.o
+ .bss           0x008000d6        0x2 button_sv3.o
+                0x008000d6                btnCode
+ .bss           0x008000d8        0x0 controller_debug.o
+ .bss           0x008000d8        0x0 eeprom.o
+ .bss           0x008000d8        0x1 accu.o
+                0x008000d8                accuDisplayEnabled
+ .bss           0x008000d9        0x4 states_sv3.o
+                0x008000dc                progOutputDimLevel
+                0x008000db                progOutputIndex
+                0x008000d9                dimLevel
+                0x008000da                progSelect
+ .bss           0x008000dd        0x0 tbl_transitions.o
+ .bss           0x008000dd        0x0 pwm_table.o
+ .bss           0x008000dd        0x1 pwm.o
+                0x008000dd                pwm2Enabled
+ .bss           0x008000de        0x0 calib.o
+ .bss           0x008000de        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_mulhi3.o)
+ .bss           0x008000de        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_udivmodhi4.o)
+ .bss           0x008000de        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .bss           0x008000de        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .bss           0x008000de        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+ .bss           0x008000de        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_block_attiny84.o)
+ .bss           0x008000de        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny84.o)
+ .bss           0x008000de        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eerd_word_attiny84.o)
+ .bss           0x008000de        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_block_attiny84.o)
+ .bss           0x008000de        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny84.o)
+ .bss           0x008000de        0x0 c:/extraprogramme/programmierung/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a(eewr_word_attiny84.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x008000de       0x1e controller.o
+                0x008000de                accuVoltageLevels
+                0x008000ee                pwmOutput
+                0x008000f2                time
+                0x008000fa                currentADCValue
+ COMMON         0x008000fc        0x0 eeprom.o
+                0x008000fc                PROVIDE (__bss_end, .)
+                0x00000e96                __data_load_start = LOADADDR (.data)
+                0x00000f0a                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008000fc        0x0
+                0x008000fc                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008000fc                PROVIDE (__noinit_end, .)
+                0x008000fc                _end = .
+                0x008000fc                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000       0xfe
+ *(.eeprom*)
+ .eeprom        0x00810000        0x3 eeprom.o
+                0x00810002                eeDoNotUse
+                0x00810001                eeActiveFlag
+                0x00810000                eeFooByte
+ .eeprom        0x00810003       0x10 accu.o
+                0x00810003                eeAccuVoltageLevels
+ .eeprom        0x00810013        0xe pwm_table.o
+                0x00810013                eePwmTable
+ .eeprom        0x00810021       0xdd calib.o
+                0x008100fd                eeCalibFlag
+                0x00810021                eeCalibAdcValues
+                0x008100fe                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x180
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 controller.o
+ .debug_aranges
+                0x00000020       0x20 timer.o
+ .debug_aranges
+                0x00000040       0x20 adc.o
+ .debug_aranges
+                0x00000060       0x20 rgbled.o
+ .debug_aranges
+                0x00000080       0x20 button_sv3.o
+ .debug_aranges
+                0x000000a0       0x20 eeprom.o
+ .debug_aranges
+                0x000000c0       0x20 accu.o
+ .debug_aranges
+                0x000000e0       0x20 states_sv3.o
+ .debug_aranges
+                0x00000100       0x20 tbl_transitions.o
+ .debug_aranges
+                0x00000120       0x20 pwm_table.o
+ .debug_aranges
+                0x00000140       0x20 pwm.o
+ .debug_aranges
+                0x00000160       0x20 calib.o
+
+.debug_pubnames
+                0x00000000      0xbd9
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000      0x137 controller.o
+ .debug_pubnames
+                0x00000137       0x4e timer.o
+ .debug_pubnames
+                0x00000185       0xa4 adc.o
+ .debug_pubnames
+                0x00000229      0x204 rgbled.o
+ .debug_pubnames
+                0x0000042d       0x69 button_sv3.o
+ .debug_pubnames
+                0x00000496       0xfc eeprom.o
+ .debug_pubnames
+                0x00000592      0x169 accu.o
+ .debug_pubnames
+                0x000006fb      0x1be states_sv3.o
+ .debug_pubnames
+                0x000008b9       0x5b tbl_transitions.o
+ .debug_pubnames
+                0x00000914      0x109 pwm_table.o
+ .debug_pubnames
+                0x00000a1d       0xe7 pwm.o
+ .debug_pubnames
+                0x00000b04       0xd5 calib.o
+
+.debug_info     0x00000000     0x1d9f
+ *(.debug_info)
+ .debug_info    0x00000000      0x339 controller.o
+ .debug_info    0x00000339      0x163 timer.o
+ .debug_info    0x0000049c       0x5e uart.o
+ .debug_info    0x000004fa      0x1bb adc.o
+ .debug_info    0x000006b5      0x3fa rgbled.o
+ .debug_info    0x00000aaf      0x1a3 button_sv3.o
+ .debug_info    0x00000c52       0x5e controller_debug.o
+ .debug_info    0x00000cb0      0x1a9 eeprom.o
+ .debug_info    0x00000e59      0x202 accu.o
+ .debug_info    0x0000105b      0x3f8 states_sv3.o
+ .debug_info    0x00001453      0x182 tbl_transitions.o
+ .debug_info    0x000015d5      0x1fc pwm_table.o
+ .debug_info    0x000017d1      0x3f4 pwm.o
+ .debug_info    0x00001bc5      0x1da calib.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0xbd4
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x12b controller.o
+ .debug_abbrev  0x0000012b       0xb5 timer.o
+ .debug_abbrev  0x000001e0       0x2a uart.o
+ .debug_abbrev  0x0000020a       0xfb adc.o
+ .debug_abbrev  0x00000305       0xff rgbled.o
+ .debug_abbrev  0x00000404       0xc4 button_sv3.o
+ .debug_abbrev  0x000004c8       0x2a controller_debug.o
+ .debug_abbrev  0x000004f2       0xd1 eeprom.o
+ .debug_abbrev  0x000005c3      0x115 accu.o
+ .debug_abbrev  0x000006d8       0xe1 states_sv3.o
+ .debug_abbrev  0x000007b9       0xcc tbl_transitions.o
+ .debug_abbrev  0x00000885       0xce pwm_table.o
+ .debug_abbrev  0x00000953      0x1a2 pwm.o
+ .debug_abbrev  0x00000af5       0xdf calib.o
+
+.debug_line     0x00000000     0x1b3e
+ *(.debug_line)
+ .debug_line    0x00000000      0x289 controller.o
+ .debug_line    0x00000289      0x1ae timer.o
+ .debug_line    0x00000437       0x3e uart.o
+ .debug_line    0x00000475      0x184 adc.o
+ .debug_line    0x000005f9      0x363 rgbled.o
+ .debug_line    0x0000095c      0x18b button_sv3.o
+ .debug_line    0x00000ae7       0x3e controller_debug.o
+ .debug_line    0x00000b25      0x154 eeprom.o
+ .debug_line    0x00000c79      0x1bc accu.o
+ .debug_line    0x00000e35      0x572 states_sv3.o
+ .debug_line    0x000013a7      0x125 tbl_transitions.o
+ .debug_line    0x000014cc      0x1b5 pwm_table.o
+ .debug_line    0x00001681      0x2fd pwm.o
+ .debug_line    0x0000197e      0x1c0 calib.o
+
+.debug_frame    0x00000000      0x4d0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x50 controller.o
+ .debug_frame   0x00000050       0x30 timer.o
+ .debug_frame   0x00000080       0x40 adc.o
+ .debug_frame   0x000000c0      0x180 rgbled.o
+ .debug_frame   0x00000240       0x30 button_sv3.o
+ .debug_frame   0x00000270       0x60 eeprom.o
+ .debug_frame   0x000002d0       0x70 accu.o
+ .debug_frame   0x00000340       0x30 states_sv3.o
+ .debug_frame   0x00000370       0x20 tbl_transitions.o
+ .debug_frame   0x00000390       0x70 pwm_table.o
+ .debug_frame   0x00000400       0x70 pwm.o
+ .debug_frame   0x00000470       0x60 calib.o
+
+.debug_str      0x00000000      0x9b2
+ *(.debug_str)
+ .debug_str     0x00000000      0x23b controller.o
+                                0x26f (size before relaxing)
+ .debug_str     0x0000023b       0x33 timer.o
+                                0x152 (size before relaxing)
+ .debug_str     0x0000026e        0xa uart.o
+                                 0xd1 (size before relaxing)
+ .debug_str     0x00000278       0x5b adc.o
+                                0x196 (size before relaxing)
+ .debug_str     0x000002d3      0x189 rgbled.o
+                                0x2e4 (size before relaxing)
+ .debug_str     0x0000045c       0x71 button_sv3.o
+                                0x190 (size before relaxing)
+ .debug_str     0x000004cd       0x16 controller_debug.o
+                                 0xdd (size before relaxing)
+ .debug_str     0x000004e3       0x91 eeprom.o
+                                0x1a4 (size before relaxing)
+ .debug_str     0x00000574       0xc7 accu.o
+                                0x210 (size before relaxing)
+ .debug_str     0x0000063b       0xf7 states_sv3.o
+                                0x31d (size before relaxing)
+ .debug_str     0x00000732       0x67 tbl_transitions.o
+                                0x19b (size before relaxing)
+ .debug_str     0x00000799       0xba pwm_table.o
+                                0x207 (size before relaxing)
+ .debug_str     0x00000853       0xe3 pwm.o
+                                0x27d (size before relaxing)
+ .debug_str     0x00000936       0x7c calib.o
+                                0x189 (size before relaxing)
+
+.debug_loc      0x00000000      0xac1
+ *(.debug_loc)
+ .debug_loc     0x00000000       0x30 controller.o
+ .debug_loc     0x00000030       0x26 timer.o
+ .debug_loc     0x00000056       0x13 adc.o
+ .debug_loc     0x00000069       0xd3 rgbled.o
+ .debug_loc     0x0000013c       0x59 button_sv3.o
+ .debug_loc     0x00000195       0x1e eeprom.o
+ .debug_loc     0x000001b3      0x53e states_sv3.o
+ .debug_loc     0x000006f1       0x89 tbl_transitions.o
+ .debug_loc     0x0000077a       0x44 pwm_table.o
+ .debug_loc     0x000007be      0x2c5 pwm.o
+ .debug_loc     0x00000a83       0x3e calib.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(v3_Single.elf elf32-avr)
+LOAD linker stubs

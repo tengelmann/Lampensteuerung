@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2010.06.25 17:10:40.724.pas,D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Terminalprog\Unit1.pas=D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Terminalprog\fmMainForm.pas</Transaction>
+    <Transaction>2010.06.25 17:10:40.724.dfm,D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Terminalprog\Unit1.dfm=D:\Projekte\Fahrradlampe\Digitale Lampensteuerung\Terminalprog\fmMainForm.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,3421 @@
+
+v3_Single.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000e96  00000000  00000000  000000b4  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000074  00800060  00000e96  00000f4a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000028  008000d4  008000d4  00000fbe  2**0
+                  ALLOC
+  3 .eeprom       000000fe  00810000  00810000  00000fbe  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .debug_aranges 00000180  00000000  00000000  000010bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_pubnames 00000bd9  00000000  00000000  0000123c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001d9f  00000000  00000000  00001e15  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000bd4  00000000  00000000  00003bb4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001b3e  00000000  00000000  00004788  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000004d0  00000000  00000000  000062c8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000009b2  00000000  00000000  00006798  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000ac1  00000000  00000000  0000714a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	10 c0       	rjmp	.+32     	; 0x22 <__ctors_end>
+   2:	2a c0       	rjmp	.+84     	; 0x58 <__bad_interrupt>
+   4:	3e c0       	rjmp	.+124    	; 0x82 <__vector_2>
+   6:	28 c0       	rjmp	.+80     	; 0x58 <__bad_interrupt>
+   8:	27 c0       	rjmp	.+78     	; 0x58 <__bad_interrupt>
+   a:	26 c0       	rjmp	.+76     	; 0x58 <__bad_interrupt>
+   c:	25 c0       	rjmp	.+74     	; 0x58 <__bad_interrupt>
+   e:	24 c0       	rjmp	.+72     	; 0x58 <__bad_interrupt>
+  10:	23 c0       	rjmp	.+70     	; 0x58 <__bad_interrupt>
+  12:	22 c0       	rjmp	.+68     	; 0x58 <__bad_interrupt>
+  14:	21 c0       	rjmp	.+66     	; 0x58 <__bad_interrupt>
+  16:	8b c0       	rjmp	.+278    	; 0x12e <__vector_11>
+  18:	1f c0       	rjmp	.+62     	; 0x58 <__bad_interrupt>
+  1a:	1e c0       	rjmp	.+60     	; 0x58 <__bad_interrupt>
+  1c:	1d c0       	rjmp	.+58     	; 0x58 <__bad_interrupt>
+  1e:	1c c0       	rjmp	.+56     	; 0x58 <__bad_interrupt>
+  20:	1b c0       	rjmp	.+54     	; 0x58 <__bad_interrupt>
+
+00000022 <__ctors_end>:
+  22:	11 24       	eor	r1, r1
+  24:	1f be       	out	0x3f, r1	; 63
+  26:	cf e5       	ldi	r28, 0x5F	; 95
+  28:	d2 e0       	ldi	r29, 0x02	; 2
+  2a:	de bf       	out	0x3e, r29	; 62
+  2c:	cd bf       	out	0x3d, r28	; 61
+
+0000002e <__do_copy_data>:
+  2e:	10 e0       	ldi	r17, 0x00	; 0
+  30:	a0 e6       	ldi	r26, 0x60	; 96
+  32:	b0 e0       	ldi	r27, 0x00	; 0
+  34:	e6 e9       	ldi	r30, 0x96	; 150
+  36:	fe e0       	ldi	r31, 0x0E	; 14
+  38:	02 c0       	rjmp	.+4      	; 0x3e <.do_copy_data_start>
+
+0000003a <.do_copy_data_loop>:
+  3a:	05 90       	lpm	r0, Z+
+  3c:	0d 92       	st	X+, r0
+
+0000003e <.do_copy_data_start>:
+  3e:	a4 3d       	cpi	r26, 0xD4	; 212
+  40:	b1 07       	cpc	r27, r17
+  42:	d9 f7       	brne	.-10     	; 0x3a <.do_copy_data_loop>
+
+00000044 <__do_clear_bss>:
+  44:	10 e0       	ldi	r17, 0x00	; 0
+  46:	a4 ed       	ldi	r26, 0xD4	; 212
+  48:	b0 e0       	ldi	r27, 0x00	; 0
+  4a:	01 c0       	rjmp	.+2      	; 0x4e <.do_clear_bss_start>
+
+0000004c <.do_clear_bss_loop>:
+  4c:	1d 92       	st	X+, r1
+
+0000004e <.do_clear_bss_start>:
+  4e:	ac 3f       	cpi	r26, 0xFC	; 252
+  50:	b1 07       	cpc	r27, r17
+  52:	e1 f7       	brne	.-8      	; 0x4c <.do_clear_bss_loop>
+  54:	2e d0       	rcall	.+92     	; 0xb2 <main>
+  56:	1d c7       	rjmp	.+3642   	; 0xe92 <_exit>
+
+00000058 <__bad_interrupt>:
+  58:	d3 cf       	rjmp	.-90     	; 0x0 <__vectors>
+
+0000005a <doSleep>:
+ * Gesamtstromaufnahme sollte somit < 6 mA sein (realer Messwert ~5mA)
+ ***************************************************************************/
+void doSleep(void)
+{
+	//PinChangeInterrupt für Button aktivieren
+	PCMSK0 = (1 << BUTTON1_INT);
+  5a:	80 e1       	ldi	r24, 0x10	; 16
+  5c:	82 bb       	out	0x12, r24	; 18
+	GIMSK |= (1 << PCIE0);
+  5e:	8b b7       	in	r24, 0x3b	; 59
+  60:	80 61       	ori	r24, 0x10	; 16
+  62:	8b bf       	out	0x3b, r24	; 59
+
+	//Schlafmodus setzen, aktivieren
+	set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+  64:	85 b7       	in	r24, 0x35	; 53
+  66:	87 7e       	andi	r24, 0xE7	; 231
+  68:	80 61       	ori	r24, 0x10	; 16
+  6a:	85 bf       	out	0x35, r24	; 53
+	sleep_enable();
+  6c:	85 b7       	in	r24, 0x35	; 53
+  6e:	80 62       	ori	r24, 0x20	; 32
+  70:	85 bf       	out	0x35, r24	; 53
+	//Einschlafen
+	sleep_mode();
+  72:	85 b7       	in	r24, 0x35	; 53
+  74:	80 62       	ori	r24, 0x20	; 32
+  76:	85 bf       	out	0x35, r24	; 53
+  78:	88 95       	sleep
+  7a:	85 b7       	in	r24, 0x35	; 53
+  7c:	8f 7d       	andi	r24, 0xDF	; 223
+  7e:	85 bf       	out	0x35, r24	; 53
+}
+  80:	08 95       	ret
+
+00000082 <__vector_2>:
+
+/***************************************************************************
+ *	PinChangeINT
+ ***************************************************************************/
+SIGNAL (SIG_PIN_CHANGE0)
+{
+  82:	1f 92       	push	r1
+  84:	0f 92       	push	r0
+  86:	0f b6       	in	r0, 0x3f	; 63
+  88:	0f 92       	push	r0
+  8a:	11 24       	eor	r1, r1
+  8c:	8f 93       	push	r24
+	sleep_disable();
+  8e:	85 b7       	in	r24, 0x35	; 53
+  90:	8f 7d       	andi	r24, 0xDF	; 223
+  92:	85 bf       	out	0x35, r24	; 53
+}
+  94:	8f 91       	pop	r24
+  96:	0f 90       	pop	r0
+  98:	0f be       	out	0x3f, r0	; 63
+  9a:	0f 90       	pop	r0
+  9c:	1f 90       	pop	r1
+  9e:	18 95       	reti
+
+000000a0 <initialize>:
+ *	Controller initiieren
+ ***************************************************************************/
+void initialize(void)
+{
+	//Alle Programmteile initialisieren
+	pwmInitialize();	//PWM-Ausgabe der Leistungstreiber
+  a0:	92 d5       	rcall	.+2852   	; 0xbc6 <pwmInitialize>
+	timerInitialize();	//Timer Programmsteuerung
+  a2:	29 d0       	rcall	.+82     	; 0xf6 <timerInitialize>
+	btnInitialize();	//Taster
+  a4:	cd d1       	rcall	.+922    	; 0x440 <btnInitialize>
+ 	stateInitialize();	//Zustandsmaschine für Programmablaufsteuerung	
+  a6:	aa d2       	rcall	.+1364   	; 0x5fc <stateInitialize>
+	rgbInitialize();	//PWM-Ausgabe der RGB-Leds
+  a8:	f2 d0       	rcall	.+484    	; 0x28e <rgbInitialize>
+	adcInitialize();	//ADC-Wandler für Spannungsmessung
+  aa:	9d d0       	rcall	.+314    	; 0x1e6 <adcInitialize>
+	accuInitialize();	//Kapazitätsermittlung initieren
+  ac:	37 d2       	rcall	.+1134   	; 0x51c <accuInitialize>
+	#ifdef DEBUG
+		uart_init();
+	#endif
+
+	//Interrupts aktivieren
+	sei();
+  ae:	78 94       	sei
+}
+  b0:	08 95       	ret
+
+000000b2 <main>:
+ * Schleife, die bei gesetzten Aktions-Flags die entsprechenden Routinen
+ * ausführt
+ *
+ ***************************************************************************/
+int main(void)
+{
+  b2:	84 ef       	ldi	r24, 0xF4	; 244
+  b4:	91 e0       	ldi	r25, 0x01	; 1
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  b6:	28 ec       	ldi	r18, 0xC8	; 200
+  b8:	30 e0       	ldi	r19, 0x00	; 0
+  ba:	f9 01       	movw	r30, r18
+  bc:	31 97       	sbiw	r30, 0x01	; 1
+  be:	f1 f7       	brne	.-4      	; 0xbc <main+0xa>
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+  c0:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+  c2:	d9 f7       	brne	.-10     	; 0xba <main+0x8>
+		_delay_ms(50);
+	#endif	
+
+
+	//Alle Komponenten initialisieren
+	initialize();
+  c4:	ed df       	rcall	.-38     	; 0xa0 <initialize>
+	//Hauptregelschleife zur zeitlichen Steuerung	
+	while (1) //For ever
+	{
+		//RGB-Led-Soft-PWM-Regelung mit jedem Durchlauf aufrufen
+		//damit die LEDs mit möglichst hohem Takt refreshed werden -> kein Flackern
+		rgbRefreshOutputs();
+  c6:	f5 d0       	rcall	.+490    	; 0x2b2 <rgbRefreshOutputs>
+		led2Mode = LED_ON;  led2_white();*/
+
+
+
+		//Auswertung der TimerFlags
+		if (bit_is_set(timerFlags, TF_SECOND)) 
+  c8:	80 91 d4 00 	lds	r24, 0x00D4
+  cc:	82 ff       	sbrs	r24, 2
+  ce:	06 c0       	rjmp	.+12     	; 0xdc <main+0x2a>
+		{
+			//Neuer Messwert...
+			adcReadValue();
+  d0:	a1 d0       	rcall	.+322    	; 0x214 <adcReadValue>
+
+			//Akkuanzeige aktualisieren
+			accuRefreshDisplay();
+  d2:	39 d2       	rcall	.+1138   	; 0x546 <accuRefreshDisplay>
+
+			timerFlags &= ~(1<<TF_SECOND);
+  d4:	80 91 d4 00 	lds	r24, 0x00D4
+  d8:	8b 7f       	andi	r24, 0xFB	; 251
+  da:	0a c0       	rjmp	.+20     	; 0xf0 <main+0x3e>
+			continue;
+		}
+
+		if (bit_is_set(timerFlags, TF_10SSECOND)) 
+  dc:	80 91 d4 00 	lds	r24, 0x00D4
+  e0:	83 ff       	sbrs	r24, 3
+  e2:	f1 cf       	rjmp	.-30     	; 0xc6 <main+0x14>
+		{
+			//Tasterzustand auswerten
+			btnRefreshState();
+  e4:	b7 d1       	rcall	.+878    	; 0x454 <btnRefreshState>
+
+			//Folgezustand für Controller-Statemachine ermitteln
+			stateNextState();
+  e6:	8d d2       	rcall	.+1306   	; 0x602 <stateNextState>
+
+			pwmRefreshOutputs();
+  e8:	c1 d5       	rcall	.+2946   	; 0xc6c <pwmRefreshOutputs>
+
+			timerFlags &= ~(1<<TF_10SSECOND);
+  ea:	80 91 d4 00 	lds	r24, 0x00D4
+  ee:	87 7f       	andi	r24, 0xF7	; 247
+  f0:	80 93 d4 00 	sts	0x00D4, r24
+  f4:	e8 cf       	rjmp	.-48     	; 0xc6 <main+0x14>
+
+000000f6 <timerInitialize>:
+			Prescaler 1 (Takt = FPCU/0xFF = 31,25khz)			CS02:00=001
+
+			Interupt bei Overflow
+	*/
+
+	TCCR0A = (0<<WGM01)|(0<<WGM00);
+  f6:	10 be       	out	0x30, r1	; 48
+	TCCR0B = (1<<WGM02) | (0<<CS02)|(0<<CS01)|(1<<CS00);
+  f8:	89 e0       	ldi	r24, 0x09	; 9
+  fa:	83 bf       	out	0x33, r24	; 51
+	
+	OCR0A = 0xFF;
+  fc:	8f ef       	ldi	r24, 0xFF	; 255
+  fe:	86 bf       	out	0x36, r24	; 54
+
+	TIMSK0 |= (1<<TOIE0); //Interrupt bei Overflow (0xff)
+ 100:	89 b7       	in	r24, 0x39	; 57
+ 102:	81 60       	ori	r24, 0x01	; 1
+ 104:	89 bf       	out	0x39, r24	; 57
+
+	//Laufzeitzähler für Zeitmessung
+	time.sec 		= 0x00;
+ 106:	10 92 f5 00 	sts	0x00F5, r1
+	time.min 		= 0x00;
+ 10a:	10 92 f6 00 	sts	0x00F6, r1
+	time.waitSecs	= 0x00;
+ 10e:	10 92 f7 00 	sts	0x00F7, r1
+	time.waitMins	= 0x00;
+ 112:	10 92 f8 00 	sts	0x00F8, r1
+	time.softPwmCnt = 0x00;
+ 116:	10 92 f9 00 	sts	0x00F9, r1
+	time.t_count 	= TIMER_CLK_COUNT;
+ 11a:	81 e4       	ldi	r24, 0x41	; 65
+ 11c:	9c e0       	ldi	r25, 0x0C	; 12
+ 11e:	90 93 f3 00 	sts	0x00F3, r25
+ 122:	80 93 f2 00 	sts	0x00F2, r24
+	
+	//Timerflags setzen, damit am Anfang alle Methoden einmal ausgeführt werden
+//	timerFlags = (1<<TF_MINUTE)|(1 <<TF_SECOND)|(1<<TF_10SSECOND);  - not in use
+	timerFlags = (1 <<TF_SECOND)|(1<<TF_10SSECOND);
+ 126:	8c e0       	ldi	r24, 0x0C	; 12
+ 128:	80 93 d4 00 	sts	0x00D4, r24
+}
+ 12c:	08 95       	ret
+
+0000012e <__vector_11>:
+/*
+	Timer 0 - Overflow-Interrupt
+	Zähler für Zeitmessungen
+*/
+ISR(TIM0_OVF_vect) 
+{
+ 12e:	1f 92       	push	r1
+ 130:	0f 92       	push	r0
+ 132:	0f b6       	in	r0, 0x3f	; 63
+ 134:	0f 92       	push	r0
+ 136:	11 24       	eor	r1, r1
+ 138:	2f 93       	push	r18
+ 13a:	3f 93       	push	r19
+ 13c:	8f 93       	push	r24
+ 13e:	9f 93       	push	r25
+	//sehr oft geschriebene Werte kommen in Register kopieren
+	uint8_t sec10 		= time.sec10;
+ 140:	20 91 f4 00 	lds	r18, 0x00F4
+	uint8_t fTimerFlags = timerFlags;
+ 144:	30 91 d4 00 	lds	r19, 0x00D4
+
+	if (0x00 == --time.t_count)
+ 148:	80 91 f2 00 	lds	r24, 0x00F2
+ 14c:	90 91 f3 00 	lds	r25, 0x00F3
+ 150:	01 97       	sbiw	r24, 0x01	; 1
+ 152:	90 93 f3 00 	sts	0x00F3, r25
+ 156:	80 93 f2 00 	sts	0x00F2, r24
+ 15a:	80 91 f2 00 	lds	r24, 0x00F2
+ 15e:	90 91 f3 00 	lds	r25, 0x00F3
+ 162:	89 2b       	or	r24, r25
+ 164:	71 f5       	brne	.+92     	; 0x1c2 <__vector_11+0x94>
+	{     
+		fTimerFlags |= (1<<TF_10SSECOND);
+ 166:	38 60       	ori	r19, 0x08	; 8
+		
+		//Zehntel-Sekunden hochzählen
+		if (TIMER_CLK_SEC_PART == ++sec10)
+ 168:	2f 5f       	subi	r18, 0xFF	; 255
+ 16a:	2a 30       	cpi	r18, 0x0A	; 10
+ 16c:	21 f5       	brne	.+72     	; 0x1b6 <__vector_11+0x88>
+		{
+			fTimerFlags |= (1<<TF_SECOND);
+ 16e:	34 60       	ori	r19, 0x04	; 4
+			
+			//Wenn waitSecs gesetzt, wird dieser runtergezählt
+			if (time.waitSecs)
+ 170:	80 91 f7 00 	lds	r24, 0x00F7
+ 174:	88 23       	and	r24, r24
+ 176:	29 f0       	breq	.+10     	; 0x182 <__vector_11+0x54>
+			{
+				time.waitSecs--;
+ 178:	80 91 f7 00 	lds	r24, 0x00F7
+ 17c:	81 50       	subi	r24, 0x01	; 1
+ 17e:	80 93 f7 00 	sts	0x00F7, r24
+			}		
+			
+			//Sekunden hochzählen
+			if ( 60 == ++time.sec )
+ 182:	80 91 f5 00 	lds	r24, 0x00F5
+ 186:	8f 5f       	subi	r24, 0xFF	; 255
+ 188:	80 93 f5 00 	sts	0x00F5, r24
+ 18c:	80 91 f5 00 	lds	r24, 0x00F5
+ 190:	8c 33       	cpi	r24, 0x3C	; 60
+ 192:	81 f4       	brne	.+32     	; 0x1b4 <__vector_11+0x86>
+			{
+				
+				//Wenn waitMins gesetzt, wird dieser runtergezählt
+				if (time.waitMins)
+ 194:	80 91 f8 00 	lds	r24, 0x00F8
+ 198:	88 23       	and	r24, r24
+ 19a:	29 f0       	breq	.+10     	; 0x1a6 <__vector_11+0x78>
+				{
+					time.waitMins--;
+ 19c:	80 91 f8 00 	lds	r24, 0x00F8
+ 1a0:	81 50       	subi	r24, 0x01	; 1
+ 1a2:	80 93 f8 00 	sts	0x00F8, r24
+				}		
+
+				//Minuten hochzählen
+				++time.min;
+ 1a6:	80 91 f6 00 	lds	r24, 0x00F6
+ 1aa:	8f 5f       	subi	r24, 0xFF	; 255
+ 1ac:	80 93 f6 00 	sts	0x00F6, r24
+		    	time.sec = 0x00;       
+ 1b0:	10 92 f5 00 	sts	0x00F5, r1
+ 1b4:	20 e0       	ldi	r18, 0x00	; 0
+			}   
+			sec10 = 0x00;
+		}
+		// Counter rücksetzen   
+		time.t_count = TIMER_CLK_COUNT;          
+ 1b6:	81 e4       	ldi	r24, 0x41	; 65
+ 1b8:	9c e0       	ldi	r25, 0x0C	; 12
+ 1ba:	90 93 f3 00 	sts	0x00F3, r25
+ 1be:	80 93 f2 00 	sts	0x00F2, r24
+	}
+	time.softPwmCnt++;
+ 1c2:	80 91 f9 00 	lds	r24, 0x00F9
+ 1c6:	8f 5f       	subi	r24, 0xFF	; 255
+ 1c8:	80 93 f9 00 	sts	0x00F9, r24
+	time.sec10 		= sec10;
+ 1cc:	20 93 f4 00 	sts	0x00F4, r18
+	timerFlags 		= fTimerFlags;
+ 1d0:	30 93 d4 00 	sts	0x00D4, r19
+} 
+ 1d4:	9f 91       	pop	r25
+ 1d6:	8f 91       	pop	r24
+ 1d8:	3f 91       	pop	r19
+ 1da:	2f 91       	pop	r18
+ 1dc:	0f 90       	pop	r0
+ 1de:	0f be       	out	0x3f, r0	; 63
+ 1e0:	0f 90       	pop	r0
+ 1e2:	1f 90       	pop	r1
+ 1e4:	18 95       	reti
+
+000001e6 <adcInitialize>:
+	   8Mhz/50kHz = 160
+	   Prescaler 128 =>  62,5khz
+	   Prescaler  64 => 125,0khz
+	*/
+
+	ADCSRA = (1<<ADEN)|(1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);
+ 1e6:	87 e8       	ldi	r24, 0x87	; 135
+ 1e8:	86 b9       	out	0x06, r24	; 6
+	#ifdef ADC_LOW_RES
+		ADCSRB = (1 << ADLAR); //Left-Aligned bei Low-Res
+	#else
+		ADCSRB = (0 << ADLAR);
+ 1ea:	13 b8       	out	0x03, r1	; 3
+	//ADMUX = (0<<REFS1)|(0<<REFS0)|(1<<MUX5)|(0<<MUX4)|(0<<MUX3)|(1<<MUX2)|(1<<MUX1)|(0<<MUX0); 
+	//ADCSRA |= (1 << ADSC); loop_until_bit_is_set(ADCSRA, ADSC); 
+	//ADCSRA |= (1 << ADSC); loop_until_bit_is_set(ADCSRA, ADSC); 
+	//uint8_t offset = ADCH; 
+
+	ADMUX  = MUXVOLT;
+ 1ec:	17 b8       	out	0x07, r1	; 7
+
+	//Pin als Input ohne Pull-Up
+	DDRA  &= ~(1 << ADC_PIN);
+ 1ee:	d0 98       	cbi	0x1a, 0	; 26
+	PORTA &= ~(1 << ADC_PIN);
+ 1f0:	d8 98       	cbi	0x1b, 0	; 27
+
+	//Digital Input Buffer für verwendeten Kanal deaktivieren
+	DIDR0  = (1 << ADC_DIGIT_IN_BUF);
+ 1f2:	81 e0       	ldi	r24, 0x01	; 1
+ 1f4:	81 b9       	out	0x01, r24	; 1
+ 1f6:	e0 e6       	ldi	r30, 0x60	; 96
+ 1f8:	f0 e0       	ldi	r31, 0x00	; 0
+	for (i = 0; i < 8; i++)
+	{
+		#ifdef ADC_LOW_RES
+			lastValues[i] = 0xFF; //2^8 -1 = 255 = 0xFF
+		#else
+			lastValues[i] = 0x03FF; //2^10 -1 = 1023 = 0x03FF
+ 1fa:	8f ef       	ldi	r24, 0xFF	; 255
+ 1fc:	93 e0       	ldi	r25, 0x03	; 3
+ 1fe:	81 93       	st	Z+, r24
+ 200:	91 93       	st	Z+, r25
+	DIDR0  = (1 << ADC_DIGIT_IN_BUF);
+
+
+	//Puffer mit Maximalwerten initialisieren, da sonst der
+	//Ausgang bei konstanter Spannung mit einer zu hohen Spannung startet
+	for (i = 0; i < 8; i++)
+ 202:	20 e0       	ldi	r18, 0x00	; 0
+ 204:	e0 37       	cpi	r30, 0x70	; 112
+ 206:	f2 07       	cpc	r31, r18
+ 208:	d1 f7       	brne	.-12     	; 0x1fe <adcInitialize+0x18>
+			lastValues[i] = 0xFF; //2^8 -1 = 255 = 0xFF
+		#else
+			lastValues[i] = 0x03FF; //2^10 -1 = 1023 = 0x03FF
+		#endif
+	}
+}
+ 20a:	08 95       	ret
+
+0000020c <adcTakeSingleMeasurement>:
+
+void adcTakeSingleMeasurement (void)
+{
+	ADCSRA |= (1 << ADSC);                  // start new A/D conversion
+ 20c:	36 9a       	sbi	0x06, 6	; 6
+	loop_until_bit_is_clear(ADCSRA, ADSC); 	// wait until ADC is ready
+ 20e:	36 99       	sbic	0x06, 6	; 6
+ 210:	fe cf       	rjmp	.-4      	; 0x20e <adcTakeSingleMeasurement+0x2>
+
+	//Ergebnis der Messung steht in ADC bzw. ADCH
+}
+ 212:	08 95       	ret
+
+00000214 <adcReadValue>:
+ * Ergebnis als Mittelwert der letzten 8 Messvorgänge ( = 8 Sekunden)
+ * 
+ ***************************************************************************/
+void adcReadValue()
+{
+	cli();
+ 214:	f8 94       	cli
+ 216:	20 e0       	ldi	r18, 0x00	; 0
+ 218:	30 e0       	ldi	r19, 0x00	; 0
+ 21a:	40 e0       	ldi	r20, 0x00	; 0
+	}
+}
+
+void adcTakeSingleMeasurement (void)
+{
+	ADCSRA |= (1 << ADSC);                  // start new A/D conversion
+ 21c:	36 9a       	sbi	0x06, 6	; 6
+	loop_until_bit_is_clear(ADCSRA, ADSC); 	// wait until ADC is ready
+ 21e:	36 99       	sbic	0x06, 6	; 6
+ 220:	fe cf       	rjmp	.-4      	; 0x21e <adcReadValue+0xa>
+		adcTakeSingleMeasurement();
+
+		#ifdef ADC_LOW_RES
+			sum += ADCH;
+		#else
+			sum += ADC;
+ 222:	84 b1       	in	r24, 0x04	; 4
+ 224:	95 b1       	in	r25, 0x05	; 5
+ 226:	28 0f       	add	r18, r24
+ 228:	39 1f       	adc	r19, r25
+	uint8_t i;
+	uint_adc value;
+	uint16_t sum = 0;
+
+	//Mittelwert aus 8 Messungen
+	for (i = 0; i < 8; i++)
+ 22a:	4f 5f       	subi	r20, 0xFF	; 255
+ 22c:	48 30       	cpi	r20, 0x08	; 8
+ 22e:	b1 f7       	brne	.-20     	; 0x21c <adcReadValue+0x8>
+		#endif
+	}
+	value = sum >> 3; //DIV 8
+
+	//Die letzen 8 Messungen werden gesichert
+	if (currentIndex++ == 8) currentIndex = 0;
+ 230:	80 91 d5 00 	lds	r24, 0x00D5
+ 234:	8f 5f       	subi	r24, 0xFF	; 255
+ 236:	80 93 d5 00 	sts	0x00D5, r24
+ 23a:	81 50       	subi	r24, 0x01	; 1
+ 23c:	88 30       	cpi	r24, 0x08	; 8
+ 23e:	11 f4       	brne	.+4      	; 0x244 <adcReadValue+0x30>
+ 240:	10 92 d5 00 	sts	0x00D5, r1
+	lastValues[currentIndex] = value; 
+ 244:	e0 91 d5 00 	lds	r30, 0x00D5
+ 248:	f0 e0       	ldi	r31, 0x00	; 0
+ 24a:	ee 0f       	add	r30, r30
+ 24c:	ff 1f       	adc	r31, r31
+ 24e:	e0 5a       	subi	r30, 0xA0	; 160
+ 250:	ff 4f       	sbci	r31, 0xFF	; 255
+ 252:	93 e0       	ldi	r25, 0x03	; 3
+ 254:	36 95       	lsr	r19
+ 256:	27 95       	ror	r18
+ 258:	9a 95       	dec	r25
+ 25a:	e1 f7       	brne	.-8      	; 0x254 <adcReadValue+0x40>
+ 25c:	31 83       	std	Z+1, r19	; 0x01
+ 25e:	20 83       	st	Z, r18
+ 260:	e0 e6       	ldi	r30, 0x60	; 96
+ 262:	f0 e0       	ldi	r31, 0x00	; 0
+ 264:	20 e0       	ldi	r18, 0x00	; 0
+ 266:	30 e0       	ldi	r19, 0x00	; 0
+	
+	//Mittelwert der letzten 8 Messungen
+	sum = 0;
+	for (i = 0; i < 8; i++) {
+		sum += lastValues[i];
+ 268:	81 91       	ld	r24, Z+
+ 26a:	91 91       	ld	r25, Z+
+ 26c:	28 0f       	add	r18, r24
+ 26e:	39 1f       	adc	r19, r25
+	if (currentIndex++ == 8) currentIndex = 0;
+	lastValues[currentIndex] = value; 
+	
+	//Mittelwert der letzten 8 Messungen
+	sum = 0;
+	for (i = 0; i < 8; i++) {
+ 270:	80 e0       	ldi	r24, 0x00	; 0
+ 272:	e0 37       	cpi	r30, 0x70	; 112
+ 274:	f8 07       	cpc	r31, r24
+ 276:	c1 f7       	brne	.-16     	; 0x268 <__stack+0x9>
+		sum += lastValues[i];
+	}
+	currentADCValue = sum >> 3;
+ 278:	83 e0       	ldi	r24, 0x03	; 3
+ 27a:	36 95       	lsr	r19
+ 27c:	27 95       	ror	r18
+ 27e:	8a 95       	dec	r24
+ 280:	e1 f7       	brne	.-8      	; 0x27a <__stack+0x1b>
+ 282:	30 93 fb 00 	sts	0x00FB, r19
+ 286:	20 93 fa 00 	sts	0x00FA, r18
+
+	sei();
+ 28a:	78 94       	sei
+}
+ 28c:	08 95       	ret
+
+0000028e <rgbInitialize>:
+						};
+
+void rgbInitialize(void)
+{
+	//Pins als Output setzen
+	RGB_LED1_DDR |= (1<<RGB_LED1_PIN_R)|(1<<RGB_LED1_PIN_G)|(1<<RGB_LED1_PIN_B);
+ 28e:	8a b3       	in	r24, 0x1a	; 26
+ 290:	8e 60       	ori	r24, 0x0E	; 14
+ 292:	8a bb       	out	0x1a, r24	; 26
+	RGB_LED2_DDR |= (1<<RGB_LED2_PIN_R)|(1<<RGB_LED2_PIN_G)|(1<<RGB_LED2_PIN_B);
+ 294:	87 b3       	in	r24, 0x17	; 23
+ 296:	87 60       	ori	r24, 0x07	; 7
+ 298:	87 bb       	out	0x17, r24	; 23
+	
+	//Alle Pins auf High - Gemeinsame Masse
+	RGB_LED1_PORT |= (1<<RGB_LED1_PIN_R)|(1<<RGB_LED1_PIN_G)|(1<<RGB_LED1_PIN_B);
+ 29a:	8b b3       	in	r24, 0x1b	; 27
+ 29c:	8e 60       	ori	r24, 0x0E	; 14
+ 29e:	8b bb       	out	0x1b, r24	; 27
+	RGB_LED2_PORT |= (1<<RGB_LED2_PIN_R)|(1<<RGB_LED2_PIN_G)|(1<<RGB_LED2_PIN_B);
+ 2a0:	88 b3       	in	r24, 0x18	; 24
+ 2a2:	87 60       	ori	r24, 0x07	; 7
+ 2a4:	88 bb       	out	0x18, r24	; 24
+
+	led1Mode = 0;
+ 2a6:	44 24       	eor	r4, r4
+	led2Mode = 0;
+ 2a8:	66 24       	eor	r6, r6
+	led1ColorIndex = 0;
+ 2aa:	55 24       	eor	r5, r5
+	led2ColorIndex = 0;
+ 2ac:	77 24       	eor	r7, r7
+
+	ledsDimDown = 0;
+ 2ae:	88 24       	eor	r8, r8
+}
+ 2b0:	08 95       	ret
+
+000002b2 <rgbRefreshOutputs>:
+
+void rgbRefreshOutputs(void)
+{
+ 2b2:	df 92       	push	r13
+ 2b4:	ef 92       	push	r14
+ 2b6:	ff 92       	push	r15
+ 2b8:	0f 93       	push	r16
+ 2ba:	1f 93       	push	r17
+	//Globale Variablen in lokalen Variablen Speichern um Speicherzugriffe zu sparen
+	
+	uint8_t led1r = colors[led1ColorIndex][0];
+ 2bc:	85 2d       	mov	r24, r5
+ 2be:	90 e0       	ldi	r25, 0x00	; 0
+ 2c0:	63 e0       	ldi	r22, 0x03	; 3
+ 2c2:	70 e0       	ldi	r23, 0x00	; 0
+ 2c4:	89 d5       	rcall	.+2834   	; 0xdd8 <__mulhi3>
+ 2c6:	fc 01       	movw	r30, r24
+ 2c8:	e0 59       	subi	r30, 0x90	; 144
+ 2ca:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2cc:	00 81       	ld	r16, Z
+	uint8_t led1g = colors[led1ColorIndex][1];
+ 2ce:	e1 80       	ldd	r14, Z+1	; 0x01
+	uint8_t led1b = colors[led1ColorIndex][2];
+ 2d0:	d2 80       	ldd	r13, Z+2	; 0x02
+
+	uint8_t led2r = colors[led2ColorIndex][0];
+ 2d2:	87 2d       	mov	r24, r7
+ 2d4:	90 e0       	ldi	r25, 0x00	; 0
+ 2d6:	63 e0       	ldi	r22, 0x03	; 3
+ 2d8:	70 e0       	ldi	r23, 0x00	; 0
+ 2da:	7e d5       	rcall	.+2812   	; 0xdd8 <__mulhi3>
+ 2dc:	fc 01       	movw	r30, r24
+ 2de:	e0 59       	subi	r30, 0x90	; 144
+ 2e0:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2e2:	f0 80       	ld	r15, Z
+	uint8_t led2g = colors[led2ColorIndex][1];
+ 2e4:	87 2d       	mov	r24, r7
+ 2e6:	90 e0       	ldi	r25, 0x00	; 0
+ 2e8:	63 e0       	ldi	r22, 0x03	; 3
+ 2ea:	70 e0       	ldi	r23, 0x00	; 0
+ 2ec:	75 d5       	rcall	.+2794   	; 0xdd8 <__mulhi3>
+ 2ee:	fc 01       	movw	r30, r24
+ 2f0:	e0 59       	subi	r30, 0x90	; 144
+ 2f2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2f4:	11 81       	ldd	r17, Z+1	; 0x01
+	uint8_t led2b = colors[led2ColorIndex][2];
+ 2f6:	87 2d       	mov	r24, r7
+ 2f8:	90 e0       	ldi	r25, 0x00	; 0
+ 2fa:	63 e0       	ldi	r22, 0x03	; 3
+ 2fc:	70 e0       	ldi	r23, 0x00	; 0
+ 2fe:	6c d5       	rcall	.+2776   	; 0xdd8 <__mulhi3>
+ 300:	fc 01       	movw	r30, r24
+ 302:	e0 59       	subi	r30, 0x90	; 144
+ 304:	ff 4f       	sbci	r31, 0xFF	; 255
+ 306:	b2 81       	ldd	r27, Z+2	; 0x02
+
+	uint8_t leddim = (ledsDimDown);
+ 308:	f8 2d       	mov	r31, r8
+	if (!led2ColorIndex) leddim = 0; //nicht dimmen, wenn Led2 rot blinkt
+ 30a:	77 20       	and	r7, r7
+ 30c:	09 f4       	brne	.+2      	; 0x310 <rgbRefreshOutputs+0x5e>
+ 30e:	f0 e0       	ldi	r31, 0x00	; 0
+
+	uint8_t softPwmCnt = time.softPwmCnt >> 1;
+ 310:	e0 91 f9 00 	lds	r30, 0x00F9
+ 314:	e6 95       	lsr	r30
+	
+	uint8_t ledport1 = RGB_LED1_PORT;
+ 316:	ab b3       	in	r26, 0x1b	; 27
+	uint8_t ledport2 = RGB_LED2_PORT;
+ 318:	38 b3       	in	r19, 0x18	; 24
+
+	//Blinkfrequenz 1/2 Sekunde (5*1/10s)
+	uint8_t blinkOn = time.sec10 > 1; //< TIMER_CLK_HALF_SEC_PART;
+ 31a:	80 91 f4 00 	lds	r24, 0x00F4
+ 31e:	20 e0       	ldi	r18, 0x00	; 0
+ 320:	82 30       	cpi	r24, 0x02	; 2
+ 322:	08 f0       	brcs	.+2      	; 0x326 <rgbRefreshOutputs+0x74>
+ 324:	21 e0       	ldi	r18, 0x01	; 1
+	uint8_t led1On = (led1Mode == LED_ON) || ((led1Mode == LED_BLINK) && (blinkOn));
+ 326:	84 2d       	mov	r24, r4
+ 328:	81 30       	cpi	r24, 0x01	; 1
+ 32a:	19 f4       	brne	.+6      	; 0x332 <rgbRefreshOutputs+0x80>
+ 32c:	61 e0       	ldi	r22, 0x01	; 1
+ 32e:	70 e0       	ldi	r23, 0x00	; 0
+ 330:	0c c0       	rjmp	.+24     	; 0x34a <rgbRefreshOutputs+0x98>
+ 332:	82 30       	cpi	r24, 0x02	; 2
+ 334:	19 f0       	breq	.+6      	; 0x33c <rgbRefreshOutputs+0x8a>
+ 336:	60 e0       	ldi	r22, 0x00	; 0
+ 338:	70 e0       	ldi	r23, 0x00	; 0
+ 33a:	07 c0       	rjmp	.+14     	; 0x34a <rgbRefreshOutputs+0x98>
+ 33c:	80 e0       	ldi	r24, 0x00	; 0
+ 33e:	90 e0       	ldi	r25, 0x00	; 0
+ 340:	22 23       	and	r18, r18
+ 342:	11 f0       	breq	.+4      	; 0x348 <rgbRefreshOutputs+0x96>
+ 344:	81 e0       	ldi	r24, 0x01	; 1
+ 346:	90 e0       	ldi	r25, 0x00	; 0
+ 348:	bc 01       	movw	r22, r24
+	uint8_t led2On = (led2Mode == LED_ON) || ((led2Mode == LED_BLINK) && (blinkOn));
+ 34a:	86 2d       	mov	r24, r6
+ 34c:	81 30       	cpi	r24, 0x01	; 1
+ 34e:	19 f4       	brne	.+6      	; 0x356 <rgbRefreshOutputs+0xa4>
+ 350:	41 e0       	ldi	r20, 0x01	; 1
+ 352:	50 e0       	ldi	r21, 0x00	; 0
+ 354:	0c c0       	rjmp	.+24     	; 0x36e <rgbRefreshOutputs+0xbc>
+ 356:	82 30       	cpi	r24, 0x02	; 2
+ 358:	19 f0       	breq	.+6      	; 0x360 <rgbRefreshOutputs+0xae>
+ 35a:	40 e0       	ldi	r20, 0x00	; 0
+ 35c:	50 e0       	ldi	r21, 0x00	; 0
+ 35e:	07 c0       	rjmp	.+14     	; 0x36e <rgbRefreshOutputs+0xbc>
+ 360:	80 e0       	ldi	r24, 0x00	; 0
+ 362:	90 e0       	ldi	r25, 0x00	; 0
+ 364:	22 23       	and	r18, r18
+ 366:	11 f0       	breq	.+4      	; 0x36c <rgbRefreshOutputs+0xba>
+ 368:	81 e0       	ldi	r24, 0x01	; 1
+ 36a:	90 e0       	ldi	r25, 0x00	; 0
+ 36c:	ac 01       	movw	r20, r24
+
+
+	//Alle Pins aus - auf high setzen, da Pins Low-Aktiv
+	ledport1 |= (1<<RGB_LED1_PIN_R)|(1<<RGB_LED1_PIN_G)|(1<<RGB_LED1_PIN_B);
+ 36e:	2a 2f       	mov	r18, r26
+ 370:	2e 60       	ori	r18, 0x0E	; 14
+	ledport2 |= (1<<RGB_LED2_PIN_R)|(1<<RGB_LED2_PIN_G)|(1<<RGB_LED2_PIN_B);
+ 372:	37 60       	ori	r19, 0x07	; 7
+			RGB_LED1_PORT = ledport1;
+			RGB_LED2_PORT = ledport2;
+			return;
+		}
+	#else //Helligkeit bei der 5V liegt höher, kann also stärker reduziert werden
+		if ((leddim) && (softPwmCnt % 8)) {
+ 374:	ff 23       	and	r31, r31
+ 376:	31 f0       	breq	.+12     	; 0x384 <rgbRefreshOutputs+0xd2>
+ 378:	8e 2f       	mov	r24, r30
+ 37a:	90 e0       	ldi	r25, 0x00	; 0
+ 37c:	87 70       	andi	r24, 0x07	; 7
+ 37e:	90 70       	andi	r25, 0x00	; 0
+ 380:	89 2b       	or	r24, r25
+ 382:	b1 f4       	brne	.+44     	; 0x3b0 <rgbRefreshOutputs+0xfe>
+			RGB_LED2_PORT = ledport2;
+			return;
+		}
+	#endif
+
+	if (led1On)
+ 384:	66 23       	and	r22, r22
+ 386:	49 f0       	breq	.+18     	; 0x39a <rgbRefreshOutputs+0xe8>
+	{
+		if (softPwmCnt < led1r)  ledport1 &= ~(1<<RGB_LED1_PIN_R); 
+ 388:	e0 17       	cp	r30, r16
+ 38a:	08 f4       	brcc	.+2      	; 0x38e <rgbRefreshOutputs+0xdc>
+ 38c:	2b 7f       	andi	r18, 0xFB	; 251
+		if (softPwmCnt < led1g)  ledport1 &= ~(1<<RGB_LED1_PIN_G); 
+ 38e:	ee 15       	cp	r30, r14
+ 390:	08 f4       	brcc	.+2      	; 0x394 <rgbRefreshOutputs+0xe2>
+ 392:	27 7f       	andi	r18, 0xF7	; 247
+		if (softPwmCnt < led1b)  ledport1 &= ~(1<<RGB_LED1_PIN_B); 
+ 394:	ed 15       	cp	r30, r13
+ 396:	08 f4       	brcc	.+2      	; 0x39a <rgbRefreshOutputs+0xe8>
+ 398:	2d 7f       	andi	r18, 0xFD	; 253
+	}
+
+	if (led2On) 
+ 39a:	44 23       	and	r20, r20
+ 39c:	49 f0       	breq	.+18     	; 0x3b0 <rgbRefreshOutputs+0xfe>
+	{
+		if (softPwmCnt < led2r)	ledport2 &= ~(1<<RGB_LED2_PIN_R); 
+ 39e:	ef 15       	cp	r30, r15
+ 3a0:	08 f4       	brcc	.+2      	; 0x3a4 <rgbRefreshOutputs+0xf2>
+ 3a2:	3e 7f       	andi	r19, 0xFE	; 254
+		if (softPwmCnt < led2g)	ledport2 &= ~(1<<RGB_LED2_PIN_G); 
+ 3a4:	e1 17       	cp	r30, r17
+ 3a6:	08 f4       	brcc	.+2      	; 0x3aa <rgbRefreshOutputs+0xf8>
+ 3a8:	3d 7f       	andi	r19, 0xFD	; 253
+		if (softPwmCnt < led2b)	ledport2 &= ~(1<<RGB_LED2_PIN_B); 
+ 3aa:	eb 17       	cp	r30, r27
+ 3ac:	08 f4       	brcc	.+2      	; 0x3b0 <rgbRefreshOutputs+0xfe>
+ 3ae:	3b 7f       	andi	r19, 0xFB	; 251
+	}
+
+	RGB_LED1_PORT = ledport1;
+ 3b0:	2b bb       	out	0x1b, r18	; 27
+	RGB_LED2_PORT = ledport2;
+ 3b2:	38 bb       	out	0x18, r19	; 24
+}
+ 3b4:	1f 91       	pop	r17
+ 3b6:	0f 91       	pop	r16
+ 3b8:	ff 90       	pop	r15
+ 3ba:	ef 90       	pop	r14
+ 3bc:	df 90       	pop	r13
+ 3be:	08 95       	ret
+
+000003c0 <leds_off>:
+
+void leds_off()
+{
+	led1Mode = LED_OFF;
+ 3c0:	44 24       	eor	r4, r4
+	led2Mode = LED_OFF;
+ 3c2:	66 24       	eor	r6, r6
+	rgbRefreshOutputs();
+ 3c4:	76 df       	rcall	.-276    	; 0x2b2 <rgbRefreshOutputs>
+
+}
+ 3c6:	08 95       	ret
+
+000003c8 <led1_red>:
+
+void led1_red() 		{ led1ColorIndex = CLR_RED; 	} 	
+ 3c8:	55 24       	eor	r5, r5
+ 3ca:	53 94       	inc	r5
+ 3cc:	08 95       	ret
+
+000003ce <led2_red>:
+void led2_red() 		{ led2ColorIndex = CLR_RED; 	} 	
+ 3ce:	77 24       	eor	r7, r7
+ 3d0:	73 94       	inc	r7
+ 3d2:	08 95       	ret
+
+000003d4 <led1_lightred>:
+void led1_lightred() 	{ led1ColorIndex = CLR_LRED; 	}
+ 3d4:	8a e0       	ldi	r24, 0x0A	; 10
+ 3d6:	58 2e       	mov	r5, r24
+ 3d8:	08 95       	ret
+
+000003da <led2_lightred>:
+void led2_lightred() 	{ led2ColorIndex = CLR_LRED; 	}
+ 3da:	9a e0       	ldi	r25, 0x0A	; 10
+ 3dc:	79 2e       	mov	r7, r25
+ 3de:	08 95       	ret
+
+000003e0 <led1_green>:
+
+void led1_green() 		{ led1ColorIndex = CLR_GREEN; 	} 	
+ 3e0:	24 e0       	ldi	r18, 0x04	; 4
+ 3e2:	52 2e       	mov	r5, r18
+ 3e4:	08 95       	ret
+
+000003e6 <led2_green>:
+void led2_green() 		{ led2ColorIndex = CLR_GREEN; 	} 	
+ 3e6:	34 e0       	ldi	r19, 0x04	; 4
+ 3e8:	73 2e       	mov	r7, r19
+ 3ea:	08 95       	ret
+
+000003ec <led1_lightgreen>:
+void led1_lightgreen() 	{ led1ColorIndex = CLR_LGREEN; }
+ 3ec:	45 e0       	ldi	r20, 0x05	; 5
+ 3ee:	54 2e       	mov	r5, r20
+ 3f0:	08 95       	ret
+
+000003f2 <led2_lightgreen>:
+void led2_lightgreen() 	{ led2ColorIndex = CLR_LGREEN; }
+ 3f2:	55 e0       	ldi	r21, 0x05	; 5
+ 3f4:	75 2e       	mov	r7, r21
+ 3f6:	08 95       	ret
+
+000003f8 <led1_blue>:
+
+void led1_blue() 		{ led1ColorIndex = CLR_BLUE; 	} 	
+ 3f8:	68 e0       	ldi	r22, 0x08	; 8
+ 3fa:	56 2e       	mov	r5, r22
+ 3fc:	08 95       	ret
+
+000003fe <led2_blue>:
+void led2_blue() 		{ led2ColorIndex = CLR_BLUE; 	} 	
+ 3fe:	78 e0       	ldi	r23, 0x08	; 8
+ 400:	77 2e       	mov	r7, r23
+ 402:	08 95       	ret
+
+00000404 <led1_lightblue>:
+void led1_lightblue() 	{ led1ColorIndex = CLR_LBLUE; 	}
+ 404:	e6 e0       	ldi	r30, 0x06	; 6
+ 406:	5e 2e       	mov	r5, r30
+ 408:	08 95       	ret
+
+0000040a <led2_lightblue>:
+void led2_lightblue() 	{ led2ColorIndex = CLR_LBLUE; 	}
+ 40a:	f6 e0       	ldi	r31, 0x06	; 6
+ 40c:	7f 2e       	mov	r7, r31
+ 40e:	08 95       	ret
+
+00000410 <led1_yellow>:
+
+void led1_yellow() 		{ led1ColorIndex = CLR_YELLOW; } 	
+ 410:	a2 e0       	ldi	r26, 0x02	; 2
+ 412:	5a 2e       	mov	r5, r26
+ 414:	08 95       	ret
+
+00000416 <led2_yellow>:
+void led2_yellow() 		{ led2ColorIndex = CLR_YELLOW; } 	
+ 416:	b2 e0       	ldi	r27, 0x02	; 2
+ 418:	7b 2e       	mov	r7, r27
+ 41a:	08 95       	ret
+
+0000041c <led1_lightyellow>:
+void led1_lightyellow() { led1ColorIndex = CLR_LYELLOW; }
+ 41c:	83 e0       	ldi	r24, 0x03	; 3
+ 41e:	58 2e       	mov	r5, r24
+ 420:	08 95       	ret
+
+00000422 <led2_lightyellow>:
+void led2_lightyellow() { led2ColorIndex = CLR_LYELLOW; }
+ 422:	93 e0       	ldi	r25, 0x03	; 3
+ 424:	79 2e       	mov	r7, r25
+ 426:	08 95       	ret
+
+00000428 <led1_rose>:
+
+void led1_rose() 		{ led1ColorIndex = CLR_ROSE; 	} 	
+ 428:	29 e0       	ldi	r18, 0x09	; 9
+ 42a:	52 2e       	mov	r5, r18
+ 42c:	08 95       	ret
+
+0000042e <led2_rose>:
+void led2_rose() 		{ led2ColorIndex = CLR_ROSE; 	} 	
+ 42e:	39 e0       	ldi	r19, 0x09	; 9
+ 430:	73 2e       	mov	r7, r19
+ 432:	08 95       	ret
+
+00000434 <led1_white>:
+void led1_white() 		{ led1ColorIndex = CLR_WHITE; 	}
+ 434:	47 e0       	ldi	r20, 0x07	; 7
+ 436:	54 2e       	mov	r5, r20
+ 438:	08 95       	ret
+
+0000043a <led2_white>:
+void led2_white() 		{ led2ColorIndex = CLR_WHITE; 	}
+ 43a:	57 e0       	ldi	r21, 0x07	; 7
+ 43c:	75 2e       	mov	r7, r21
+ 43e:	08 95       	ret
+
+00000440 <btnInitialize>:
+ * 
+ ***************************************************************************/
+void btnInitialize(void)
+{
+	//Pin als Input setzen
+	BUTTON1_DDR &= ~(1<<BUTTON1_PIN);
+ 440:	d4 98       	cbi	0x1a, 4	; 26
+	//Pullup aktivieren
+	BUTTON1_PORT |= (1<<BUTTON1_PIN);
+ 442:	dc 9a       	sbi	0x1b, 4	; 27
+	#ifdef V2_DUO 
+		BUTTON2_DDR &= ~(1<<BUTTON2_PIN);
+		BUTTON2_PORT |= (1<<BUTTON2_PIN);
+	#endif
+
+	btnState = BTN_IDLE;
+ 444:	8a e0       	ldi	r24, 0x0A	; 10
+ 446:	80 93 94 00 	sts	0x0094, r24
+	btnCode = 0x00;
+ 44a:	10 92 d6 00 	sts	0x00D6, r1
+	btnWaitCounter = 0;
+ 44e:	10 92 d7 00 	sts	0x00D7, r1
+}
+ 452:	08 95       	ret
+
+00000454 <btnRefreshState>:
+ *
+ * Beide Taster sind unabhängig voneinander...
+ * 
+ ***************************************************************************/
+void btnRefreshState(void)
+{
+ 454:	df 93       	push	r29
+ 456:	cf 93       	push	r28
+ 458:	0f 92       	push	r0
+ 45a:	cd b7       	in	r28, 0x3d	; 61
+ 45c:	de b7       	in	r29, 0x3e	; 62
+	uint8_t nextState 		= btnState;
+ 45e:	20 91 94 00 	lds	r18, 0x0094
+	uint8_t fBtnCode 		= btnCode;
+ 462:	80 91 d6 00 	lds	r24, 0x00D6
+ 466:	89 83       	std	Y+1, r24	; 0x01
+	uint8_t fBtnWaitCounter = btnWaitCounter;
+ 468:	90 91 d7 00 	lds	r25, 0x00D7
+
+	if (bit_is_clear(BUTTON1_PINR, BUTTON1_PIN)) {	fBtnCode |= (1<<BTN1PRESSING); } else { fBtnCode &= ~(1<<BTN1PRESSING);}
+ 46c:	cc 99       	sbic	0x19, 4	; 25
+ 46e:	02 c0       	rjmp	.+4      	; 0x474 <btnRefreshState+0x20>
+ 470:	84 60       	ori	r24, 0x04	; 4
+ 472:	01 c0       	rjmp	.+2      	; 0x476 <btnRefreshState+0x22>
+ 474:	8b 7f       	andi	r24, 0xFB	; 251
+ 476:	89 83       	std	Y+1, r24	; 0x01
+
+	#ifdef V2_DUO
+		if (bit_is_clear(BUTTON2_PINR, BUTTON2_PIN)) {	fBtnCode |= (1<<BTN2PRESSING); } else { fBtnCode &= ~(1<<BTN2PRESSING);}
+	#endif
+
+	switch (btnState) {
+ 478:	2b 30       	cpi	r18, 0x0B	; 11
+ 47a:	79 f0       	breq	.+30     	; 0x49a <btnRefreshState+0x46>
+ 47c:	2c 30       	cpi	r18, 0x0C	; 12
+ 47e:	18 f4       	brcc	.+6      	; 0x486 <btnRefreshState+0x32>
+ 480:	2a 30       	cpi	r18, 0x0A	; 10
+ 482:	49 f5       	brne	.+82     	; 0x4d6 <btnRefreshState+0x82>
+ 484:	05 c0       	rjmp	.+10     	; 0x490 <btnRefreshState+0x3c>
+ 486:	2c 30       	cpi	r18, 0x0C	; 12
+ 488:	69 f0       	breq	.+26     	; 0x4a4 <btnRefreshState+0x50>
+ 48a:	2d 30       	cpi	r18, 0x0D	; 13
+ 48c:	21 f5       	brne	.+72     	; 0x4d6 <btnRefreshState+0x82>
+ 48e:	16 c0       	rjmp	.+44     	; 0x4bc <btnRefreshState+0x68>
+		case BTN_IDLE : {
+			if (bit_is_set(fBtnCode, BTN1PRESSING)) 
+ 490:	89 81       	ldd	r24, Y+1	; 0x01
+ 492:	82 ff       	sbrs	r24, 2
+ 494:	20 c0       	rjmp	.+64     	; 0x4d6 <btnRefreshState+0x82>
+ 496:	2b e0       	ldi	r18, 0x0B	; 11
+ 498:	0d c0       	rjmp	.+26     	; 0x4b4 <btnRefreshState+0x60>
+			break;
+		} //BTN_IDLE
+
+		case BTN_T1 : {
+			//Taster ist noch gedrückt ?
+			if (bit_is_set(fBtnCode, BTN1PRESSING)) 
+ 49a:	89 81       	ldd	r24, Y+1	; 0x01
+ 49c:	82 fd       	sbrc	r24, 2
+ 49e:	11 c0       	rjmp	.+34     	; 0x4c2 <btnRefreshState+0x6e>
+					nextState = BTN_T1_LONG;
+				}
+
+			} else	{
+				//Taster losgelassen
+				fBtnCode = (1<<BTN1SHORTPRESS)|(1<<BTN1RELEASED);
+ 4a0:	89 e0       	ldi	r24, 0x09	; 9
+ 4a2:	14 c0       	rjmp	.+40     	; 0x4cc <btnRefreshState+0x78>
+			break;
+		} //BTN_T1
+
+		case BTN_T1_LONG : {
+			//Taster ist noch gedrückt ?
+			if (bit_is_set(fBtnCode, BTN1PRESSING)) 
+ 4a4:	89 81       	ldd	r24, Y+1	; 0x01
+ 4a6:	82 ff       	sbrs	r24, 2
+ 4a8:	07 c0       	rjmp	.+14     	; 0x4b8 <btnRefreshState+0x64>
+			{
+				//Nachdem eine weitere kurze Zeit gewartet wird,
+				//wird der Buttoncode auf "gedrückt" gesetzt und im Anschluss gewartet,
+				//bis der Taster losgelassen wird.
+				if (0 == --fBtnWaitCounter)
+ 4aa:	91 50       	subi	r25, 0x01	; 1
+ 4ac:	a1 f4       	brne	.+40     	; 0x4d6 <btnRefreshState+0x82>
+				{
+					//TasterCode "losgelassen" und "lange gedrückt"
+					//Somit werden die Ereignisse die vom Taster abhängen schon bearbeitet,
+					//ohne darauf warten zu müssen, dass der Taster losgelassen wird.
+					fBtnCode = (1<<BTN1LONGPRESSED)|(1<<BTN1RELEASED)|(1<<BTN1PRESSING);
+ 4ae:	8e e0       	ldi	r24, 0x0E	; 14
+ 4b0:	89 83       	std	Y+1, r24	; 0x01
+ 4b2:	2d e0       	ldi	r18, 0x0D	; 13
+ 4b4:	98 e0       	ldi	r25, 0x08	; 8
+ 4b6:	0f c0       	rjmp	.+30     	; 0x4d6 <btnRefreshState+0x82>
+					fBtnWaitCounter = BTN_TIME_WAIT_TO_REPEAT_LONG;
+					nextState = BTN_T1_WAIT_RELEASE;
+				}
+			} else	{
+				//Taster losgelassen
+				fBtnCode = (1<<BTN1LONGPRESSED)|(1<<BTN1RELEASED);
+ 4b8:	8a e0       	ldi	r24, 0x0A	; 10
+ 4ba:	08 c0       	rjmp	.+16     	; 0x4cc <btnRefreshState+0x78>
+			break;
+		} //BTN_T1_LONG
+
+		case BTN_T1_WAIT_RELEASE : {
+			
+			if (bit_is_set(fBtnCode, BTN1PRESSING)) {
+ 4bc:	89 81       	ldd	r24, Y+1	; 0x01
+ 4be:	82 ff       	sbrs	r24, 2
+ 4c0:	03 c0       	rjmp	.+6      	; 0x4c8 <btnRefreshState+0x74>
+				if (0 == --fBtnWaitCounter) {
+ 4c2:	91 50       	subi	r25, 0x01	; 1
+ 4c4:	31 f0       	breq	.+12     	; 0x4d2 <btnRefreshState+0x7e>
+ 4c6:	07 c0       	rjmp	.+14     	; 0x4d6 <btnRefreshState+0x82>
+					fBtnWaitCounter = BTN_TIME_LONG_WAIT	; 
+					nextState = BTN_T1_LONG;
+				}
+			} else {
+				//Button ist losgelassen -> gehe zurück nach Idle
+				fBtnCode &= ~(1<<BTN1PRESSING);
+ 4c8:	89 81       	ldd	r24, Y+1	; 0x01
+ 4ca:	8b 7f       	andi	r24, 0xFB	; 251
+ 4cc:	89 83       	std	Y+1, r24	; 0x01
+ 4ce:	2a e0       	ldi	r18, 0x0A	; 10
+ 4d0:	02 c0       	rjmp	.+4      	; 0x4d6 <btnRefreshState+0x82>
+ 4d2:	2c e0       	ldi	r18, 0x0C	; 12
+ 4d4:	92 e0       	ldi	r25, 0x02	; 2
+				break;
+			} //BTN_T2_WAIT_RELEASE
+		#endif
+	} //of case
+
+	btnCode 		= fBtnCode;
+ 4d6:	89 81       	ldd	r24, Y+1	; 0x01
+ 4d8:	80 93 d6 00 	sts	0x00D6, r24
+	btnWaitCounter 	= fBtnWaitCounter;
+ 4dc:	90 93 d7 00 	sts	0x00D7, r25
+
+	btnState 		= nextState;
+ 4e0:	20 93 94 00 	sts	0x0094, r18
+}
+ 4e4:	0f 90       	pop	r0
+ 4e6:	cf 91       	pop	r28
+ 4e8:	df 91       	pop	r29
+ 4ea:	08 95       	ret
+
+000004ec <eepromGetActiveFlag>:
+}
+
+
+uint8_t eepromGetActiveFlag()
+{
+	return eeprom_read_byte(&eeActiveFlag);
+ 4ec:	81 e0       	ldi	r24, 0x01	; 1
+ 4ee:	90 e0       	ldi	r25, 0x00	; 0
+ 4f0:	a9 d4       	rcall	.+2386   	; 0xe44 <__eerd_byte_tn84>
+}
+ 4f2:	08 95       	ret
+
+000004f4 <eepromIsProgrammed>:
+
+uint8_t eepromIsProgrammed(void)
+{
+	//Bei leerem EEPROM wird immer 0xFF gelesen
+	//Wenn 0xDD drin steht muss es also einmal programmiert worden sein
+	return (eeprom_read_byte(&eeFooByte) == EEFOO_DEF);
+ 4f4:	80 e0       	ldi	r24, 0x00	; 0
+ 4f6:	90 e0       	ldi	r25, 0x00	; 0
+ 4f8:	a5 d4       	rcall	.+2378   	; 0xe44 <__eerd_byte_tn84>
+ 4fa:	90 e0       	ldi	r25, 0x00	; 0
+ 4fc:	8d 3d       	cpi	r24, 0xDD	; 221
+ 4fe:	09 f4       	brne	.+2      	; 0x502 <eepromIsProgrammed+0xe>
+ 500:	91 e0       	ldi	r25, 0x01	; 1
+}
+ 502:	89 2f       	mov	r24, r25
+ 504:	08 95       	ret
+
+00000506 <eepromSetActiveFlag>:
+	accuStoreVoltageLevelsToEEPROM();
+}
+#endif
+
+void eepromSetActiveFlag(const uint8_t value) 
+{
+ 506:	68 2f       	mov	r22, r24
+	eeprom_write_byte(&eeActiveFlag, value);
+ 508:	81 e0       	ldi	r24, 0x01	; 1
+ 50a:	90 e0       	ldi	r25, 0x00	; 0
+ 50c:	b1 d4       	rcall	.+2402   	; 0xe70 <__eewr_byte_tn84>
+}
+ 50e:	08 95       	ret
+
+00000510 <eepromStoreData>:
+}
+
+void eepromStoreData(void)
+{
+	//Werte für die PWM-Ausgabe
+	pwmTableStoreToEEPROM();
+ 510:	4a d3       	rcall	.+1684   	; 0xba6 <pwmTableStoreToEEPROM>
+	
+    //Spannungswerte für Füllstandsanzeige
+	accuStoreVoltageLevelsToEEPROM();
+ 512:	64 d0       	rcall	.+200    	; 0x5dc <accuStoreVoltageLevelsToEEPROM>
+}
+ 514:	08 95       	ret
+
+00000516 <eepromLoadData>:
+
+#ifdef PROGRAMMING_ENABLED
+void eepromLoadData(void)
+{
+	//Werte für die PWM-Ausgabe pro Controllerzustand aus EEPROM lesen
+	pwmTableLoadFromEEPROM();
+ 516:	4f d3       	rcall	.+1694   	; 0xbb6 <pwmTableLoadFromEEPROM>
+	
+	//Werte für die Bestimmung der Restlaufzeit lesen
+	accuLoadVoltageLevelsFromEEPROM();
+ 518:	69 d0       	rcall	.+210    	; 0x5ec <accuLoadVoltageLevelsFromEEPROM>
+}
+ 51a:	08 95       	ret
+
+0000051c <accuInitialize>:
+uint_adc   accuVoltageLevels[VOLT_LEVELS];
+uint_adc eeAccuVoltageLevels[VOLT_LEVELS] EEMEM = {	DEF_VOLT_0030, 	DEF_VOLT_0100,	DEF_VOLT_0130, 	DEF_VOLT_0200,	DEF_VOLT_0230, 	DEF_VOLT_0300,	DEF_VOLT_0330,	DEF_VOLT_0400};
+
+void accuInitialize(void)
+{
+	accuDisplayEnabled = 0;
+ 51c:	10 92 d8 00 	sts	0x00D8, r1
+}
+ 520:	08 95       	ret
+
+00000522 <accuGetVoltageLevelIndex>:
+	eeprom_write_block(accuVoltageLevels, eeAccuVoltageLevels, sizeof(eeAccuVoltageLevels));
+}
+
+uint8_t accuGetVoltageLevelIndex()
+{
+	uint_adc adcValue = currentADCValue;
+ 522:	40 91 fa 00 	lds	r20, 0x00FA
+ 526:	50 91 fb 00 	lds	r21, 0x00FB
+ 52a:	ee ed       	ldi	r30, 0xDE	; 222
+ 52c:	f0 e0       	ldi	r31, 0x00	; 0
+ 52e:	20 e0       	ldi	r18, 0x00	; 0
+	//returns 0(leer) bis 7 
+	uint8_t i;
+	for (i = 0; i < VOLT_LEVELS; i++)
+	{
+		//av[0] ist der kleinste Spannungswert
+		if (adcValue < accuVoltageLevels[i]) return i;
+ 530:	80 81       	ld	r24, Z
+ 532:	91 81       	ldd	r25, Z+1	; 0x01
+ 534:	48 17       	cp	r20, r24
+ 536:	59 07       	cpc	r21, r25
+ 538:	20 f0       	brcs	.+8      	; 0x542 <accuGetVoltageLevelIndex+0x20>
+	uart_send_linefeed();*/
+
+
+	//returns 0(leer) bis 7 
+	uint8_t i;
+	for (i = 0; i < VOLT_LEVELS; i++)
+ 53a:	2f 5f       	subi	r18, 0xFF	; 255
+ 53c:	32 96       	adiw	r30, 0x02	; 2
+ 53e:	28 30       	cpi	r18, 0x08	; 8
+ 540:	b9 f7       	brne	.-18     	; 0x530 <accuGetVoltageLevelIndex+0xe>
+		//av[0] ist der kleinste Spannungswert
+		if (adcValue < accuVoltageLevels[i]) return i;
+	}
+
+	return VOLT_LEVELS;
+}
+ 542:	82 2f       	mov	r24, r18
+ 544:	08 95       	ret
+
+00000546 <accuRefreshDisplay>:
+		- LED-Anzeigen setzen
+*/
+void accuRefreshDisplay(void)
+{
+	//Wenn nicht aktiv, dann raus hier...
+	if (!accuDisplayEnabled) return;
+ 546:	80 91 d8 00 	lds	r24, 0x00D8
+ 54a:	88 23       	and	r24, r24
+ 54c:	b9 f0       	breq	.+46     	; 0x57c <accuRefreshDisplay+0x36>
+	eeprom_write_block(accuVoltageLevels, eeAccuVoltageLevels, sizeof(eeAccuVoltageLevels));
+}
+
+uint8_t accuGetVoltageLevelIndex()
+{
+	uint_adc adcValue = currentADCValue;
+ 54e:	40 91 fa 00 	lds	r20, 0x00FA
+ 552:	50 91 fb 00 	lds	r21, 0x00FB
+ 556:	ee ed       	ldi	r30, 0xDE	; 222
+ 558:	f0 e0       	ldi	r31, 0x00	; 0
+ 55a:	20 e0       	ldi	r18, 0x00	; 0
+	//returns 0(leer) bis 7 
+	uint8_t i;
+	for (i = 0; i < VOLT_LEVELS; i++)
+	{
+		//av[0] ist der kleinste Spannungswert
+		if (adcValue < accuVoltageLevels[i]) return i;
+ 55c:	80 81       	ld	r24, Z
+ 55e:	91 81       	ldd	r25, Z+1	; 0x01
+ 560:	48 17       	cp	r20, r24
+ 562:	59 07       	cpc	r21, r25
+ 564:	20 f0       	brcs	.+8      	; 0x56e <accuRefreshDisplay+0x28>
+	uart_send_linefeed();*/
+
+
+	//returns 0(leer) bis 7 
+	uint8_t i;
+	for (i = 0; i < VOLT_LEVELS; i++)
+ 566:	2f 5f       	subi	r18, 0xFF	; 255
+ 568:	32 96       	adiw	r30, 0x02	; 2
+ 56a:	28 30       	cpi	r18, 0x08	; 8
+ 56c:	b9 f7       	brne	.-18     	; 0x55c <accuRefreshDisplay+0x16>
+
+
+	//Index für Anzeige über Vergleich aus der VoltageTable holen
+	uint8_t voltIndex = accuGetVoltageLevelIndex();
+
+	led2Mode = LED_ON;
+ 56e:	66 24       	eor	r6, r6
+ 570:	63 94       	inc	r6
+	
+	//Ledfarben sind passend vorsortiert
+	//Bei unter 30min wird geblinkt und die Leds nicht mehr gedimmt
+	if ((led2ColorIndex = voltIndex) == 0)
+ 572:	72 2e       	mov	r7, r18
+ 574:	22 23       	and	r18, r18
+ 576:	11 f4       	brne	.+4      	; 0x57c <accuRefreshDisplay+0x36>
+	{ 
+		led2Mode = LED_BLINK;
+ 578:	82 e0       	ldi	r24, 0x02	; 2
+ 57a:	68 2e       	mov	r6, r24
+ 57c:	08 95       	ret
+
+0000057e <accuSetDefaultVoltageLevels>:
+	uart_send_linefeed();*/
+}
+
+//Spannungswerte für Akkuanzeige auf die Standardwerte zurücksetzen
+void accuSetDefaultVoltageLevels(void) {
+	accuVoltageLevels[0] = DEF_VOLT_0030;
+ 57e:	8f e9       	ldi	r24, 0x9F	; 159
+ 580:	92 e0       	ldi	r25, 0x02	; 2
+ 582:	90 93 df 00 	sts	0x00DF, r25
+ 586:	80 93 de 00 	sts	0x00DE, r24
+	accuVoltageLevels[1] = DEF_VOLT_0100;
+ 58a:	8a ea       	ldi	r24, 0xAA	; 170
+ 58c:	92 e0       	ldi	r25, 0x02	; 2
+ 58e:	90 93 e1 00 	sts	0x00E1, r25
+ 592:	80 93 e0 00 	sts	0x00E0, r24
+	accuVoltageLevels[2] = DEF_VOLT_0130;
+ 596:	83 eb       	ldi	r24, 0xB3	; 179
+ 598:	92 e0       	ldi	r25, 0x02	; 2
+ 59a:	90 93 e3 00 	sts	0x00E3, r25
+ 59e:	80 93 e2 00 	sts	0x00E2, r24
+	accuVoltageLevels[3] = DEF_VOLT_0200;
+ 5a2:	82 ec       	ldi	r24, 0xC2	; 194
+ 5a4:	92 e0       	ldi	r25, 0x02	; 2
+ 5a6:	90 93 e5 00 	sts	0x00E5, r25
+ 5aa:	80 93 e4 00 	sts	0x00E4, r24
+	accuVoltageLevels[4] = DEF_VOLT_0230;
+ 5ae:	87 ed       	ldi	r24, 0xD7	; 215
+ 5b0:	92 e0       	ldi	r25, 0x02	; 2
+ 5b2:	90 93 e7 00 	sts	0x00E7, r25
+ 5b6:	80 93 e6 00 	sts	0x00E6, r24
+	accuVoltageLevels[5] = DEF_VOLT_0300;
+ 5ba:	88 ef       	ldi	r24, 0xF8	; 248
+ 5bc:	92 e0       	ldi	r25, 0x02	; 2
+ 5be:	90 93 e9 00 	sts	0x00E9, r25
+ 5c2:	80 93 e8 00 	sts	0x00E8, r24
+	accuVoltageLevels[6] = DEF_VOLT_0330;
+ 5c6:	8f ef       	ldi	r24, 0xFF	; 255
+ 5c8:	9f ef       	ldi	r25, 0xFF	; 255
+ 5ca:	90 93 eb 00 	sts	0x00EB, r25
+ 5ce:	80 93 ea 00 	sts	0x00EA, r24
+	accuVoltageLevels[7] = DEF_VOLT_0400;
+ 5d2:	90 93 ed 00 	sts	0x00ED, r25
+ 5d6:	80 93 ec 00 	sts	0x00EC, r24
+}
+ 5da:	08 95       	ret
+
+000005dc <accuStoreVoltageLevelsToEEPROM>:
+	eeprom_read_block(accuVoltageLevels, eeAccuVoltageLevels, sizeof(eeAccuVoltageLevels));
+}
+
+void accuStoreVoltageLevelsToEEPROM()
+{
+	eeprom_write_block(accuVoltageLevels, eeAccuVoltageLevels, sizeof(eeAccuVoltageLevels));
+ 5dc:	8e ed       	ldi	r24, 0xDE	; 222
+ 5de:	90 e0       	ldi	r25, 0x00	; 0
+ 5e0:	63 e0       	ldi	r22, 0x03	; 3
+ 5e2:	70 e0       	ldi	r23, 0x00	; 0
+ 5e4:	40 e1       	ldi	r20, 0x10	; 16
+ 5e6:	50 e0       	ldi	r21, 0x00	; 0
+ 5e8:	3a d4       	rcall	.+2164   	; 0xe5e <__eewr_block_tn84>
+}
+ 5ea:	08 95       	ret
+
+000005ec <accuLoadVoltageLevelsFromEEPROM>:
+	accuDisplayEnabled = 0;
+}
+
+void accuLoadVoltageLevelsFromEEPROM()
+{
+	eeprom_read_block(accuVoltageLevels, eeAccuVoltageLevels, sizeof(eeAccuVoltageLevels));
+ 5ec:	8e ed       	ldi	r24, 0xDE	; 222
+ 5ee:	90 e0       	ldi	r25, 0x00	; 0
+ 5f0:	63 e0       	ldi	r22, 0x03	; 3
+ 5f2:	70 e0       	ldi	r23, 0x00	; 0
+ 5f4:	40 e1       	ldi	r20, 0x10	; 16
+ 5f6:	50 e0       	ldi	r21, 0x00	; 0
+ 5f8:	15 d4       	rcall	.+2090   	; 0xe24 <__eerd_block_tn84>
+}
+ 5fa:	08 95       	ret
+
+000005fc <stateInitialize>:
+ *
+ ***************************************************************************/
+void stateInitialize(void)
+{
+	//Startzustand
+	state = STARTUP;
+ 5fc:	8a e0       	ldi	r24, 0x0A	; 10
+ 5fe:	28 2e       	mov	r2, r24
+}
+ 600:	08 95       	ret
+
+00000602 <stateNextState>:
+
+//Folgezustand der Controller-Statemachine
+void stateNextState(void)
+{
+ 602:	9f 92       	push	r9
+ 604:	af 92       	push	r10
+ 606:	bf 92       	push	r11
+ 608:	cf 92       	push	r12
+ 60a:	df 92       	push	r13
+ 60c:	ef 92       	push	r14
+ 60e:	ff 92       	push	r15
+ 610:	0f 93       	push	r16
+ 612:	1f 93       	push	r17
+ 614:	df 93       	push	r29
+ 616:	cf 93       	push	r28
+ 618:	0f 92       	push	r0
+ 61a:	cd b7       	in	r28, 0x3d	; 61
+ 61c:	de b7       	in	r29, 0x3e	; 62
+	//Für schnelleren Zugriff, Werte in lokalen Variablen sichern...
+	uint8_t fState 		= state;
+ 61e:	f2 2c       	mov	r15, r2
+	uint8_t fDimLevel 	= dimLevel;
+ 620:	e0 90 d9 00 	lds	r14, 0x00D9
+	uint8_t fBtnCode 	= btnCode;
+ 624:	10 91 d6 00 	lds	r17, 0x00D6
+ 628:	19 83       	std	Y+1, r17	; 0x01
+	uint8_t waitSecs 	= time.waitSecs;
+ 62a:	c0 90 f7 00 	lds	r12, 0x00F7
+	uint8_t waitMins 	= time.waitMins;
+ 62e:	90 90 f8 00 	lds	r9, 0x00F8
+	uint8_t nextState 	= fState;
+
+
+	//Variablen für die Programmierung
+	#ifdef PROGRAMMING_ENABLED
+		uint8_t fProgSelect = progSelect;
+ 632:	d0 90 da 00 	lds	r13, 0x00DA
+		uint8_t fProgOutputIndex = progOutputIndex;
+ 636:	a0 90 db 00 	lds	r10, 0x00DB
+		uint8_t fProgOutputDimLevel = progOutputDimLevel;
+ 63a:	b0 90 dc 00 	lds	r11, 0x00DC
+		uint8_t fProgPwm1Soll 	= pwmOutput.pwm1Soll;
+		uint8_t fProgPwm2Soll 	= pwmOutput.pwm2Soll;
+	#endif
+
+	
+	switch (fState) {
+ 63e:	88 e6       	ldi	r24, 0x68	; 104
+ 640:	28 16       	cp	r2, r24
+ 642:	09 f4       	brne	.+2      	; 0x646 <stateNextState+0x44>
+ 644:	d4 c0       	rjmp	.+424    	; 0x7ee <stateNextState+0x1ec>
+ 646:	82 15       	cp	r24, r2
+ 648:	38 f1       	brcs	.+78     	; 0x698 <stateNextState+0x96>
+ 64a:	9f e1       	ldi	r25, 0x1F	; 31
+ 64c:	29 16       	cp	r2, r25
+ 64e:	09 f4       	brne	.+2      	; 0x652 <stateNextState+0x50>
+ 650:	88 c0       	rjmp	.+272    	; 0x762 <stateNextState+0x160>
+ 652:	92 15       	cp	r25, r2
+ 654:	68 f0       	brcs	.+26     	; 0x670 <stateNextState+0x6e>
+ 656:	e4 e1       	ldi	r30, 0x14	; 20
+ 658:	2e 16       	cp	r2, r30
+ 65a:	09 f4       	brne	.+2      	; 0x65e <stateNextState+0x5c>
+ 65c:	5f c0       	rjmp	.+190    	; 0x71c <stateNextState+0x11a>
+ 65e:	fe e1       	ldi	r31, 0x1E	; 30
+ 660:	2f 16       	cp	r2, r31
+ 662:	09 f4       	brne	.+2      	; 0x666 <stateNextState+0x64>
+ 664:	6a c0       	rjmp	.+212    	; 0x73a <stateNextState+0x138>
+ 666:	8a e0       	ldi	r24, 0x0A	; 10
+ 668:	28 16       	cp	r2, r24
+ 66a:	09 f0       	breq	.+2      	; 0x66e <stateNextState+0x6c>
+ 66c:	bb c1       	rjmp	.+886    	; 0x9e4 <stateNextState+0x3e2>
+ 66e:	37 c0       	rjmp	.+110    	; 0x6de <stateNextState+0xdc>
+ 670:	92 e3       	ldi	r25, 0x32	; 50
+ 672:	29 16       	cp	r2, r25
+ 674:	09 f4       	brne	.+2      	; 0x678 <stateNextState+0x76>
+ 676:	8a c0       	rjmp	.+276    	; 0x78c <stateNextState+0x18a>
+ 678:	92 15       	cp	r25, r2
+ 67a:	28 f0       	brcs	.+10     	; 0x686 <stateNextState+0x84>
+ 67c:	e8 e2       	ldi	r30, 0x28	; 40
+ 67e:	2e 16       	cp	r2, r30
+ 680:	09 f0       	breq	.+2      	; 0x684 <stateNextState+0x82>
+ 682:	b0 c1       	rjmp	.+864    	; 0x9e4 <stateNextState+0x3e2>
+ 684:	80 c0       	rjmp	.+256    	; 0x786 <stateNextState+0x184>
+ 686:	f3 e3       	ldi	r31, 0x33	; 51
+ 688:	2f 16       	cp	r2, r31
+ 68a:	09 f4       	brne	.+2      	; 0x68e <stateNextState+0x8c>
+ 68c:	93 c0       	rjmp	.+294    	; 0x7b4 <stateNextState+0x1b2>
+ 68e:	84 e6       	ldi	r24, 0x64	; 100
+ 690:	28 16       	cp	r2, r24
+ 692:	09 f0       	breq	.+2      	; 0x696 <stateNextState+0x94>
+ 694:	a7 c1       	rjmp	.+846    	; 0x9e4 <stateNextState+0x3e2>
+ 696:	9c c0       	rjmp	.+312    	; 0x7d0 <stateNextState+0x1ce>
+ 698:	98 ec       	ldi	r25, 0xC8	; 200
+ 69a:	29 16       	cp	r2, r25
+ 69c:	09 f4       	brne	.+2      	; 0x6a0 <stateNextState+0x9e>
+ 69e:	52 c1       	rjmp	.+676    	; 0x944 <stateNextState+0x342>
+ 6a0:	92 15       	cp	r25, r2
+ 6a2:	68 f0       	brcs	.+26     	; 0x6be <stateNextState+0xbc>
+ 6a4:	e3 e8       	ldi	r30, 0x83	; 131
+ 6a6:	2e 16       	cp	r2, r30
+ 6a8:	09 f4       	brne	.+2      	; 0x6ac <stateNextState+0xaa>
+ 6aa:	0d c1       	rjmp	.+538    	; 0x8c6 <stateNextState+0x2c4>
+ 6ac:	fc e8       	ldi	r31, 0x8C	; 140
+ 6ae:	2f 16       	cp	r2, r31
+ 6b0:	09 f4       	brne	.+2      	; 0x6b4 <stateNextState+0xb2>
+ 6b2:	7a c1       	rjmp	.+756    	; 0x9a8 <stateNextState+0x3a6>
+ 6b4:	82 e8       	ldi	r24, 0x82	; 130
+ 6b6:	28 16       	cp	r2, r24
+ 6b8:	09 f0       	breq	.+2      	; 0x6bc <stateNextState+0xba>
+ 6ba:	94 c1       	rjmp	.+808    	; 0x9e4 <stateNextState+0x3e2>
+ 6bc:	00 c1       	rjmp	.+512    	; 0x8be <stateNextState+0x2bc>
+ 6be:	9a ec       	ldi	r25, 0xCA	; 202
+ 6c0:	29 16       	cp	r2, r25
+ 6c2:	09 f4       	brne	.+2      	; 0x6c6 <stateNextState+0xc4>
+ 6c4:	5f c1       	rjmp	.+702    	; 0x984 <stateNextState+0x382>
+ 6c6:	29 16       	cp	r2, r25
+ 6c8:	08 f4       	brcc	.+2      	; 0x6cc <stateNextState+0xca>
+ 6ca:	4a c1       	rjmp	.+660    	; 0x960 <stateNextState+0x35e>
+ 6cc:	ee ef       	ldi	r30, 0xFE	; 254
+ 6ce:	2e 16       	cp	r2, r30
+ 6d0:	09 f4       	brne	.+2      	; 0x6d4 <stateNextState+0xd2>
+ 6d2:	77 c1       	rjmp	.+750    	; 0x9c2 <stateNextState+0x3c0>
+ 6d4:	ff ef       	ldi	r31, 0xFF	; 255
+ 6d6:	2f 16       	cp	r2, r31
+ 6d8:	09 f0       	breq	.+2      	; 0x6dc <stateNextState+0xda>
+ 6da:	84 c1       	rjmp	.+776    	; 0x9e4 <stateNextState+0x3e2>
+ 6dc:	7c c1       	rjmp	.+760    	; 0x9d6 <stateNextState+0x3d4>
+
+		//Controller starten
+		case STARTUP: {
+			if (!eepromIsProgrammed()) 
+ 6de:	0a df       	rcall	.-492    	; 0x4f4 <eepromIsProgrammed>
+ 6e0:	88 23       	and	r24, r24
+ 6e2:	09 f4       	brne	.+2      	; 0x6e6 <stateNextState+0xe4>
+ 6e4:	7f c1       	rjmp	.+766    	; 0x9e4 <stateNextState+0x3e2>
+			//Ist beim Start eine Taste gedrückt ist, werden die Daten im EEPROM
+			//mit den Defaultwerten überschrieben
+			//ansonsten werden die Daten aus dem EEPROM geladen
+			
+			#ifdef PROGRAMMING_ENABLED
+				if (bit_is_clear(BUTTON1_PINR, BUTTON1_PIN)) 
+ 6e6:	cc 99       	sbic	0x19, 4	; 25
+ 6e8:	08 c0       	rjmp	.+16     	; 0x6fa <stateNextState+0xf8>
+				{
+					//Warten bis Taster losgelassen wird...
+					loop_until_bit_is_set(BUTTON1_PINR, BUTTON1_PIN);
+ 6ea:	cc 9b       	sbis	0x19, 4	; 25
+ 6ec:	fe cf       	rjmp	.-4      	; 0x6ea <stateNextState+0xe8>
+				
+					//Eventuelle Kalibrierung abbrechen
+					#ifdef CALIBRATION_ENABLED
+						calibResetFlag();
+ 6ee:	45 d3       	rcall	.+1674   	; 0xd7a <calibResetFlag>
+					#endif
+
+					eepromSetActiveFlag(0);
+ 6f0:	80 e0       	ldi	r24, 0x00	; 0
+ 6f2:	09 df       	rcall	.-494    	; 0x506 <eepromSetActiveFlag>
+ 6f4:	a5 e0       	ldi	r26, 0x05	; 5
+ 6f6:	ca 2e       	mov	r12, r26
+ 6f8:	6c c1       	rjmp	.+728    	; 0x9d2 <stateNextState+0x3d0>
+					break;
+				} 
+				else 
+				{ 
+					#ifdef CALIBRATION_ENABLED
+						calibInitialize();
+ 6fa:	67 d3       	rcall	.+1742   	; 0xdca <calibInitialize>
+					#endif
+
+					eepromLoadData();
+ 6fc:	0c df       	rcall	.-488    	; 0x516 <eepromLoadData>
+					pwmEnable();
+ 6fe:	6f d2       	rcall	.+1246   	; 0xbde <pwmEnable>
+				}
+			#endif
+
+			//Check ob die Lampe in aktiven Zustand von der Versorgungsspannung
+			//getrennt wurde
+			fDimLevel = eepromGetActiveFlag();
+ 700:	f5 de       	rcall	.-534    	; 0x4ec <eepromGetActiveFlag>
+ 702:	e8 2e       	mov	r14, r24
+			if (fDimLevel != 0) {
+ 704:	88 23       	and	r24, r24
+ 706:	21 f4       	brne	.+8      	; 0x710 <stateNextState+0x10e>
+ 708:	f2 e0       	ldi	r31, 0x02	; 2
+ 70a:	cf 2e       	mov	r12, r31
+ 70c:	94 e1       	ldi	r25, 0x14	; 20
+ 70e:	75 c1       	rjmp	.+746    	; 0x9fa <stateNextState+0x3f8>
+				fDimLevel = 1;
+				//IDLE wird übersprungen, also müssen einige Variablen gesetzt werden
+				accuDisplayEnabled = 1;	//Akku-Status anzeigen
+ 710:	81 e0       	ldi	r24, 0x01	; 1
+ 712:	80 93 d8 00 	sts	0x00D8, r24
+ 716:	ee 24       	eor	r14, r14
+ 718:	e3 94       	inc	r14
+ 71a:	58 c0       	rjmp	.+176    	; 0x7cc <stateNextState+0x1ca>
+
+		//Beide Leds für 2 Sekunden aktivieren, danach in IDLE
+		//************************************************************************************************************** 
+		case LEDCHECK: {
+			
+			led1Mode = LED_ON; 	led1_white();	
+ 71c:	44 24       	eor	r4, r4
+ 71e:	43 94       	inc	r4
+ 720:	89 de       	rcall	.-750    	; 0x434 <led1_white>
+			led2Mode = LED_ON;  led2_white();
+ 722:	66 24       	eor	r6, r6
+ 724:	63 94       	inc	r6
+ 726:	89 de       	rcall	.-750    	; 0x43a <led2_white>
+
+
+			if (!waitSecs) { nextState = IDLE; };
+ 728:	cc 20       	and	r12, r12
+ 72a:	11 f4       	brne	.+4      	; 0x730 <stateNextState+0x12e>
+ 72c:	9e e1       	ldi	r25, 0x1E	; 30
+ 72e:	01 c0       	rjmp	.+2      	; 0x732 <stateNextState+0x130>
+ 730:	94 e1       	ldi	r25, 0x14	; 20
+			if ( fBtnCode) { nextState = IDLE; };
+ 732:	11 23       	and	r17, r17
+ 734:	09 f0       	breq	.+2      	; 0x738 <stateNextState+0x136>
+ 736:	f3 c0       	rjmp	.+486    	; 0x91e <stateNextState+0x31c>
+ 738:	60 c1       	rjmp	.+704    	; 0x9fa <stateNextState+0x3f8>
+		//************************************************************************************************************** 
+		case IDLE: {
+			#ifdef DEBUG 
+				sendControllerState(); 
+			#endif
+			accuDisplayEnabled = 1;	//Akku-Status anzeigen
+ 73a:	81 e0       	ldi	r24, 0x01	; 1
+ 73c:	80 93 d8 00 	sts	0x00D8, r24
+			accuRefreshDisplay();
+ 740:	02 df       	rcall	.-508    	; 0x546 <accuRefreshDisplay>
+			led1Mode = LED_OFF; 	//Status-LED aus						
+ 742:	44 24       	eor	r4, r4
+			fDimLevel = 0; 
+			eepromSetActiveFlag(0);
+ 744:	80 e0       	ldi	r24, 0x00	; 0
+ 746:	df de       	rcall	.-578    	; 0x506 <eepromSetActiveFlag>
+
+			pwmEnable();				//-> Einstellungen für PWM setzen, wichtig für Invertierung
+ 748:	4a d2       	rcall	.+1172   	; 0xbde <pwmEnable>
+			pwmDisable();				//-> PWM-Ausgänge aus, PWM-Hardware läuft aber weiter...
+ 74a:	60 d2       	rcall	.+1216   	; 0xc0c <pwmDisable>
+			waitMins = WAIT_MINS_TO_SLEEP;//Sleep-Timer setzen
+			
+			//In IDLE_WAIT gehts erst, wenn der Taster losgelassen ist
+			if (0 == fBtnCode) {
+ 74c:	11 23       	and	r17, r17
+ 74e:	29 f4       	brne	.+10     	; 0x75a <stateNextState+0x158>
+ 750:	ee 24       	eor	r14, r14
+ 752:	e5 e0       	ldi	r30, 0x05	; 5
+ 754:	9e 2e       	mov	r9, r30
+ 756:	9f e1       	ldi	r25, 0x1F	; 31
+ 758:	50 c1       	rjmp	.+672    	; 0x9fa <stateNextState+0x3f8>
+ 75a:	ee 24       	eor	r14, r14
+ 75c:	75 e0       	ldi	r23, 0x05	; 5
+ 75e:	97 2e       	mov	r9, r23
+ 760:	de c0       	rjmp	.+444    	; 0x91e <stateNextState+0x31c>
+		
+		//Auf Tasterereignisse warten und reagieren...
+		//Ablauf des Timers abwarten -> Sleep-Mode
+		case IDLE_WAIT: {
+			#ifdef SLEEP_ENABLED
+			if (!waitMins) nextState = SLEEP;
+ 762:	99 20       	and	r9, r9
+ 764:	11 f4       	brne	.+4      	; 0x76a <stateNextState+0x168>
+ 766:	98 e2       	ldi	r25, 0x28	; 40
+ 768:	01 c0       	rjmp	.+2      	; 0x76c <stateNextState+0x16a>
+ 76a:	9f e1       	ldi	r25, 0x1F	; 31
+			#endif
+
+			#ifdef V2_DUO
+			if (fBtnCode & ((1<<BTN1RELEASED) | (1 << BTN2RELEASED)))
+			#else
+			if (bit_is_set(fBtnCode, BTN1RELEASED))
+ 76c:	89 81       	ldd	r24, Y+1	; 0x01
+ 76e:	83 ff       	sbrs	r24, 3
+ 770:	44 c1       	rjmp	.+648    	; 0x9fa <stateNextState+0x3f8>
+			#endif
+			{ 
+				//Wird der Taster lange gedrückt und weiter gehalten, gehts in den Programmiermodus
+//				if (bit_is_set(fBtnCode, BTN1LONGPRESSED) && bit_is_set(fBtnCode, BTN1PRESSING)) {
+				if (fBtnCode & ((1 << BTN1LONGPRESSED) | (1 << BTN1PRESSING))) {
+ 772:	81 2f       	mov	r24, r17
+ 774:	86 70       	andi	r24, 0x06	; 6
+ 776:	11 f0       	breq	.+4      	; 0x77c <stateNextState+0x17a>
+ 778:	94 e6       	ldi	r25, 0x64	; 100
+ 77a:	3f c1       	rjmp	.+638    	; 0x9fa <stateNextState+0x3f8>
+					#ifdef PROGRAMMING_ENABLED
+					nextState = PROG_BEGIN;
+					#endif
+				} else {
+					//Ansonsten wird die Lampe aktiviert
+					fDimLevel = transTableGetNextDimLevel(fDimLevel, fBtnCode);
+ 77c:	8e 2d       	mov	r24, r14
+ 77e:	61 2f       	mov	r22, r17
+ 780:	5b d1       	rcall	.+694    	; 0xa38 <transTableGetNextDimLevel>
+ 782:	e8 2e       	mov	r14, r24
+ 784:	23 c0       	rjmp	.+70     	; 0x7cc <stateNextState+0x1ca>
+		#ifdef SLEEP_ENABLED	
+		//Schlafzustand betreten
+		//Beide Leds langsam pulsieren lassen, dann warten bis was passiert
+		//************************************************************************************************************** 
+		case SLEEP: {
+			leds_off();
+ 786:	1c de       	rcall	.-968    	; 0x3c0 <leds_off>
+
+			doSleep();
+ 788:	68 dc       	rcall	.-1840   	; 0x5a <doSleep>
+ 78a:	c9 c0       	rjmp	.+402    	; 0x91e <stateNextState+0x31c>
+		case ACTIVE: {
+			#ifdef DEBUG
+				sendControllerState();
+			#endif
+			
+			if (!dimLevel) { nextState = IDLE; break; }
+ 78c:	ee 20       	and	r14, r14
+ 78e:	09 f4       	brne	.+2      	; 0x792 <stateNextState+0x190>
+ 790:	c6 c0       	rjmp	.+396    	; 0x91e <stateNextState+0x31c>
+			eepromSetActiveFlag(fDimLevel);
+ 792:	8e 2d       	mov	r24, r14
+ 794:	b8 de       	rcall	.-656    	; 0x506 <eepromSetActiveFlag>
+			
+			led1Mode = LED_ON;
+ 796:	44 24       	eor	r4, r4
+ 798:	43 94       	inc	r4
+			led1ColorIndex = ledDimColors[fDimLevel];
+ 79a:	ee 2d       	mov	r30, r14
+ 79c:	f0 e0       	ldi	r31, 0x00	; 0
+ 79e:	ea 56       	subi	r30, 0x6A	; 106
+ 7a0:	ff 4f       	sbci	r31, 0xFF	; 255
+ 7a2:	50 80       	ld	r5, Z
+			
+			pwmTableSetOutPut(dimLevel);
+ 7a4:	80 91 d9 00 	lds	r24, 0x00D9
+ 7a8:	d3 d1       	rcall	.+934    	; 0xb50 <pwmTableSetOutPut>
+			
+			//PWM an
+			pwmEnable();
+ 7aa:	19 d2       	rcall	.+1074   	; 0xbde <pwmEnable>
+ 7ac:	66 e0       	ldi	r22, 0x06	; 6
+ 7ae:	c6 2e       	mov	r12, r22
+ 7b0:	93 e3       	ldi	r25, 0x33	; 51
+ 7b2:	23 c1       	rjmp	.+582    	; 0x9fa <stateNextState+0x3f8>
+		} //ACTIVE
+		
+		
+		//Auf Tastendruck warten und reagieren
+		case ACTIVE_WAIT: {
+			if (1 == waitSecs) { ledsDimDown = 1; }
+ 7b4:	81 e0       	ldi	r24, 0x01	; 1
+ 7b6:	c8 16       	cp	r12, r24
+ 7b8:	11 f4       	brne	.+4      	; 0x7be <stateNextState+0x1bc>
+ 7ba:	88 24       	eor	r8, r8
+ 7bc:	83 94       	inc	r8
+
+			#ifdef V2_DUO
+			if (fBtnCode & ((1<<BTN1RELEASED) | (1 << BTN2RELEASED)))
+			#else
+			if (fBtnCode & (1<<BTN1RELEASED))
+ 7be:	13 ff       	sbrs	r17, 3
+ 7c0:	19 c1       	rjmp	.+562    	; 0x9f4 <stateNextState+0x3f2>
+			#endif
+			{ 
+				fDimLevel = transTableGetNextDimLevel(fDimLevel, fBtnCode);
+ 7c2:	8e 2d       	mov	r24, r14
+ 7c4:	61 2f       	mov	r22, r17
+ 7c6:	38 d1       	rcall	.+624    	; 0xa38 <transTableGetNextDimLevel>
+ 7c8:	e8 2e       	mov	r14, r24
+				ledsDimDown = 0;
+ 7ca:	88 24       	eor	r8, r8
+ 7cc:	92 e3       	ldi	r25, 0x32	; 50
+ 7ce:	15 c1       	rjmp	.+554    	; 0x9fa <stateNextState+0x3f8>
+				Im Anschluss startet die Auswahl des Programmiermodus
+				Wird der Taster innerhalb der 5 Sekunden losgelassen, wird zu IDLE zurückgegangen
+		*/
+		case PROG_BEGIN: {
+			//Akku-Status-Anzeige Aus
+			accuDisplayEnabled = 0;
+ 7d0:	10 92 d8 00 	sts	0x00D8, r1
+			ledsDimDown = 0; 
+ 7d4:	88 24       	eor	r8, r8
+
+			//Beide LEDs Blau
+			led1Mode = LED_BLINK;	led1_blue();
+ 7d6:	52 e0       	ldi	r21, 0x02	; 2
+ 7d8:	45 2e       	mov	r4, r21
+ 7da:	0e de       	rcall	.-996    	; 0x3f8 <led1_blue>
+			led2Mode = LED_BLINK;	led2_blue();
+ 7dc:	42 e0       	ldi	r20, 0x02	; 2
+ 7de:	64 2e       	mov	r6, r20
+ 7e0:	0e de       	rcall	.-996    	; 0x3fe <led2_blue>
+
+			//PWM an - Aber Ausgänge auf 0
+			pwmDisable();
+ 7e2:	14 d2       	rcall	.+1064   	; 0xc0c <pwmDisable>
+ 7e4:	3a e0       	ldi	r19, 0x0A	; 10
+ 7e6:	c3 2e       	mov	r12, r19
+ 7e8:	98 e6       	ldi	r25, 0x68	; 104
+ 7ea:	dd 24       	eor	r13, r13
+ 7ec:	06 c1       	rjmp	.+524    	; 0x9fa <stateNextState+0x3f8>
+ 7ee:	8e 01       	movw	r16, r28
+ 7f0:	0f 5f       	subi	r16, 0xFF	; 255
+ 7f2:	1f 4f       	sbci	r17, 0xFF	; 255
+		
+		/************************************************************************************************************** 
+			Auswahl der Einstellung, die verändert werden soll
+		*/
+		case PROG_SELECT : {
+			if (waitSecs) {
+ 7f4:	cc 20       	and	r12, r12
+ 7f6:	39 f0       	breq	.+14     	; 0x806 <stateNextState+0x204>
+				if ((bit_is_clear(fBtnCode, BTN1PRESSING)) && (fProgSelect == 0))
+ 7f8:	89 81       	ldd	r24, Y+1	; 0x01
+ 7fa:	82 fd       	sbrc	r24, 2
+ 7fc:	f5 c0       	rjmp	.+490    	; 0x9e8 <stateNextState+0x3e6>
+ 7fe:	dd 20       	and	r13, r13
+ 800:	09 f4       	brne	.+2      	; 0x804 <stateNextState+0x202>
+ 802:	fa c0       	rjmp	.+500    	; 0x9f8 <stateNextState+0x3f6>
+ 804:	f1 c0       	rjmp	.+482    	; 0x9e8 <stateNextState+0x3e6>
+					nextState = STARTUP;
+				break;
+			}
+
+			//Taster wird weiter gehalten...
+			if (bit_is_set(fBtnCode, BTN1RELEASED)) {
+ 806:	89 81       	ldd	r24, Y+1	; 0x01
+ 808:	83 ff       	sbrs	r24, 3
+ 80a:	1a c0       	rjmp	.+52     	; 0x840 <stateNextState+0x23e>
+					#ifdef PROG_PWM_CS_ENABLED
+						// Maximum ProgSelect11 = PWM-Frequenz-Einstellung (wenn aktiv)
+						if (fProgSelect++ == 11) { fProgSelect = 1; }
+					#else
+						// Maximum ProgSelect10 = Einstellungen zurücksetzen
+						if (fProgSelect++ == 10) { fProgSelect = 1; }
+ 80c:	9a e0       	ldi	r25, 0x0A	; 10
+ 80e:	d9 16       	cp	r13, r25
+ 810:	79 f0       	breq	.+30     	; 0x830 <stateNextState+0x22e>
+ 812:	d3 94       	inc	r13
+					#endif
+					
+				
+					//Ist der 2. Lampenausgang deaktiviert, werden die Einstellungen dafür übersprungen
+					// ProgSelect5 = ModeSelect Ausgang 2
+					if ((fProgSelect == 5) && (!pwm2Enabled)) {
+ 814:	e5 e0       	ldi	r30, 0x05	; 5
+ 816:	de 16       	cp	r13, r30
+ 818:	41 f4       	brne	.+16     	; 0x82a <stateNextState+0x228>
+ 81a:	80 91 dd 00 	lds	r24, 0x00DD
+ 81e:	88 23       	and	r24, r24
+ 820:	09 f0       	breq	.+2      	; 0x824 <stateNextState+0x222>
+ 822:	07 c1       	rjmp	.+526    	; 0xa32 <stateNextState+0x430>
+ 824:	29 e0       	ldi	r18, 0x09	; 9
+ 826:	d2 2e       	mov	r13, r18
+ 828:	05 c0       	rjmp	.+10     	; 0x834 <stateNextState+0x232>
+					}
+
+					// Optionen für die Modus-Einstellung deaktivieren
+					#ifndef PROG_OUTPUT_MODE_SELECT_ENABLED
+						// ProgSelect1 = ModeSelect Ausgang 1 - überspringen
+						if (fProgSelect == 1) { fProgSelect++; }	
+ 82a:	f1 e0       	ldi	r31, 0x01	; 1
+ 82c:	df 16       	cp	r13, r31
+ 82e:	11 f4       	brne	.+4      	; 0x834 <stateNextState+0x232>
+ 830:	92 e0       	ldi	r25, 0x02	; 2
+ 832:	d9 2e       	mov	r13, r25
+						// ProgSelect5 = ModeSelect Ausgang 2 - überspringen
+						if (fProgSelect == 5) { fProgSelect++; }	
+					#endif
+					
+					// 2 Sekunden Interval für Inkrementierung von ProgSelect
+					if (bit_is_set(fBtnCode, BTN1PRESSING))
+ 834:	f8 01       	movw	r30, r16
+ 836:	80 81       	ld	r24, Z
+ 838:	82 ff       	sbrs	r24, 2
+ 83a:	02 c0       	rjmp	.+4      	; 0x840 <stateNextState+0x23e>
+ 83c:	82 e0       	ldi	r24, 0x02	; 2
+ 83e:	c8 2e       	mov	r12, r24
+			}
+
+
+
+			//Index für den zu programmierenden Ausgang
+			if (fProgSelect > 0) {
+ 840:	dd 20       	and	r13, r13
+ 842:	01 f1       	breq	.+64     	; 0x884 <stateNextState+0x282>
+				leds_off();
+ 844:	bd dd       	rcall	.-1158   	; 0x3c0 <leds_off>
+				led1Mode = LED_BLINK;
+ 846:	b2 e0       	ldi	r27, 0x02	; 2
+ 848:	4b 2e       	mov	r4, r27
+				led2Mode = LED_BLINK;
+ 84a:	a2 e0       	ldi	r26, 0x02	; 2
+ 84c:	6a 2e       	mov	r6, r26
+
+				if ((fProgSelect >= 1) && (fProgSelect <= 4)) {
+ 84e:	8d 2d       	mov	r24, r13
+ 850:	81 50       	subi	r24, 0x01	; 1
+ 852:	84 30       	cpi	r24, 0x04	; 4
+ 854:	10 f0       	brcs	.+4      	; 0x85a <stateNextState+0x258>
+ 856:	8b 2d       	mov	r24, r11
+ 858:	01 c0       	rjmp	.+2      	; 0x85c <stateNextState+0x25a>
+ 85a:	aa 24       	eor	r10, r10
+					fProgOutputDimLevel = fProgSelect - 1;
+					fProgOutputIndex = 0;
+				}
+
+				if ((fProgSelect >= 5) && (fProgSelect <= 8)) {
+ 85c:	fb ef       	ldi	r31, 0xFB	; 251
+ 85e:	bf 2e       	mov	r11, r31
+ 860:	bd 0c       	add	r11, r13
+ 862:	f3 e0       	ldi	r31, 0x03	; 3
+ 864:	fb 15       	cp	r31, r11
+ 866:	10 f4       	brcc	.+4      	; 0x86c <stateNextState+0x26a>
+ 868:	b8 2e       	mov	r11, r24
+ 86a:	02 c0       	rjmp	.+4      	; 0x870 <stateNextState+0x26e>
+ 86c:	aa 24       	eor	r10, r10
+ 86e:	a3 94       	inc	r10
+					fProgOutputDimLevel = fProgSelect - 5;
+					fProgOutputIndex = 1;
+				}
+
+				led1ColorIndex = ledProgColors1[fProgSelect-1];
+ 870:	ed 2d       	mov	r30, r13
+ 872:	f0 e0       	ldi	r31, 0x00	; 0
+ 874:	31 97       	sbiw	r30, 0x01	; 1
+ 876:	df 01       	movw	r26, r30
+ 878:	a6 56       	subi	r26, 0x66	; 102
+ 87a:	bf 4f       	sbci	r27, 0xFF	; 255
+ 87c:	5c 90       	ld	r5, X
+				led2ColorIndex = ledProgColors2[fProgSelect-1];
+ 87e:	eb 55       	subi	r30, 0x5B	; 91
+ 880:	ff 4f       	sbci	r31, 0xFF	; 255
+ 882:	70 80       	ld	r7, Z
+			}
+		
+
+			//Taster losgelassen
+			if (bit_is_clear(fBtnCode, BTN1PRESSING)) 
+ 884:	f8 01       	movw	r30, r16
+ 886:	80 81       	ld	r24, Z
+ 888:	82 fd       	sbrc	r24, 2
+ 88a:	b4 c0       	rjmp	.+360    	; 0x9f4 <stateNextState+0x3f2>
+			{
+				if (9 == fProgSelect) {
+ 88c:	f9 e0       	ldi	r31, 0x09	; 9
+ 88e:	df 16       	cp	r13, r31
+ 890:	11 f4       	brne	.+4      	; 0x896 <stateNextState+0x294>
+ 892:	98 ec       	ldi	r25, 0xC8	; 200
+ 894:	b2 c0       	rjmp	.+356    	; 0x9fa <stateNextState+0x3f8>
+						nextState = IDLE;
+					#endif
+					break; 
+				}
+
+				if (10 == fProgSelect) {
+ 896:	8a e0       	ldi	r24, 0x0A	; 10
+ 898:	d8 16       	cp	r13, r24
+ 89a:	09 f4       	brne	.+2      	; 0x89e <stateNextState+0x29c>
+ 89c:	a7 c0       	rjmp	.+334    	; 0x9ec <stateNextState+0x3ea>
+				
+				#ifdef PROG_OUTPUT_MODE_SELECT_ENABLED
+					if (0 == fProgOutputDimLevel) { nextState = PROG_DIMABLE_SET; 		break; };
+				#else
+					// Dieser Fall sollte nie eintreten
+					if (0 == fProgOutputDimLevel) { nextState = ERROR; 					break; };
+ 89e:	bb 20       	and	r11, r11
+ 8a0:	09 f4       	brne	.+2      	; 0x8a4 <stateNextState+0x2a2>
+ 8a2:	a0 c0       	rjmp	.+320    	; 0x9e4 <stateNextState+0x3e2>
+				#endif
+				if (1 == fProgOutputDimLevel) { nextState = PROG_BRIGHTNESS_SET; 	break; };
+ 8a4:	91 e0       	ldi	r25, 0x01	; 1
+ 8a6:	b9 16       	cp	r11, r25
+ 8a8:	09 f4       	brne	.+2      	; 0x8ac <stateNextState+0x2aa>
+ 8aa:	a2 c0       	rjmp	.+324    	; 0x9f0 <stateNextState+0x3ee>
+				if (2 == fProgOutputDimLevel) { nextState = PROG_BRIGHTNESS_SET; 	break; };
+ 8ac:	e2 e0       	ldi	r30, 0x02	; 2
+ 8ae:	be 16       	cp	r11, r30
+ 8b0:	09 f4       	brne	.+2      	; 0x8b4 <stateNextState+0x2b2>
+ 8b2:	9e c0       	rjmp	.+316    	; 0x9f0 <stateNextState+0x3ee>
+				if (3 == fProgOutputDimLevel) { nextState = PROG_BRIGHTNESS_SET;	break; };
+ 8b4:	f3 e0       	ldi	r31, 0x03	; 3
+ 8b6:	bf 16       	cp	r11, r31
+ 8b8:	09 f0       	breq	.+2      	; 0x8bc <stateNextState+0x2ba>
+ 8ba:	9c c0       	rjmp	.+312    	; 0x9f4 <stateNextState+0x3f2>
+ 8bc:	99 c0       	rjmp	.+306    	; 0x9f0 <stateNextState+0x3ee>
+		//Taste2: Helligkeit Lampe2
+		//Beide Tasten: Weiter... 
+		//************************************************************************************************************** 
+		case PROG_BRIGHTNESS_SET : {
+			//Bisherige PWM-Werte holen und anlegen
+			pwmTableSetOutPut(fProgOutputDimLevel);
+ 8be:	8b 2d       	mov	r24, r11
+ 8c0:	47 d1       	rcall	.+654    	; 0xb50 <pwmTableSetOutPut>
+			pwmEnable();
+ 8c2:	8d d1       	rcall	.+794    	; 0xbde <pwmEnable>
+ 8c4:	3d c0       	rjmp	.+122    	; 0x940 <stateNextState+0x33e>
+		
+		
+		case PROG_BRIGHTNESS_WAIT : {
+			//Statusled für die Helligkeitstufe ist bereits gesetzt
+			//Anzeige für Aus, Max auf der jeweils nicht aktiven Led
+			led1Mode = LED_ON;
+ 8c6:	44 24       	eor	r4, r4
+ 8c8:	43 94       	inc	r4
+			led2Mode = LED_ON;
+ 8ca:	66 24       	eor	r6, r6
+ 8cc:	63 94       	inc	r6
+
+			fProgPwm1Soll = pwmOutput.pwm1Soll;
+ 8ce:	00 91 ee 00 	lds	r16, 0x00EE
+			fProgPwm2Soll = pwmOutput.pwm2Soll;
+ 8d2:	10 91 f0 00 	lds	r17, 0x00F0
+
+
+			if (0 == fProgOutputIndex) {
+ 8d6:	aa 20       	and	r10, r10
+ 8d8:	71 f4       	brne	.+28     	; 0x8f6 <stateNextState+0x2f4>
+				if (fProgPwm1Soll > (0xff-8)) 	{ led2_white();  	} else
+ 8da:	08 3f       	cpi	r16, 0xF8	; 248
+ 8dc:	10 f0       	brcs	.+4      	; 0x8e2 <stateNextState+0x2e0>
+ 8de:	ad dd       	rcall	.-1190   	; 0x43a <led2_white>
+ 8e0:	17 c0       	rjmp	.+46     	; 0x910 <stateNextState+0x30e>
+				if (fProgPwm1Soll > 100) 	 	{ led2_green(); 	} else
+ 8e2:	05 36       	cpi	r16, 0x65	; 101
+ 8e4:	10 f0       	brcs	.+4      	; 0x8ea <stateNextState+0x2e8>
+ 8e6:	7f dd       	rcall	.-1282   	; 0x3e6 <led2_green>
+ 8e8:	13 c0       	rjmp	.+38     	; 0x910 <stateNextState+0x30e>
+				if (fProgPwm1Soll > 0)        	{ led2_yellow();    } else
+ 8ea:	00 23       	and	r16, r16
+ 8ec:	11 f0       	breq	.+4      	; 0x8f2 <stateNextState+0x2f0>
+ 8ee:	93 dd       	rcall	.-1242   	; 0x416 <led2_yellow>
+ 8f0:	0f c0       	rjmp	.+30     	; 0x910 <stateNextState+0x30e>
+										 		{ led2_red();    	};
+ 8f2:	6d dd       	rcall	.-1318   	; 0x3ce <led2_red>
+ 8f4:	0d c0       	rjmp	.+26     	; 0x910 <stateNextState+0x30e>
+			} else {
+				if (fProgPwm2Soll > (0xff-8)) 	{ led1_white();  	} else
+ 8f6:	18 3f       	cpi	r17, 0xF8	; 248
+ 8f8:	10 f0       	brcs	.+4      	; 0x8fe <stateNextState+0x2fc>
+ 8fa:	9c dd       	rcall	.-1224   	; 0x434 <led1_white>
+ 8fc:	09 c0       	rjmp	.+18     	; 0x910 <stateNextState+0x30e>
+				if (fProgPwm2Soll > 100) 	 	{ led1_green(); 	} else
+ 8fe:	15 36       	cpi	r17, 0x65	; 101
+ 900:	10 f0       	brcs	.+4      	; 0x906 <stateNextState+0x304>
+ 902:	6e dd       	rcall	.-1316   	; 0x3e0 <led1_green>
+ 904:	05 c0       	rjmp	.+10     	; 0x910 <stateNextState+0x30e>
+				if (fProgPwm2Soll > 0)        	{ led1_yellow();    } else
+ 906:	11 23       	and	r17, r17
+ 908:	11 f0       	breq	.+4      	; 0x90e <stateNextState+0x30c>
+ 90a:	82 dd       	rcall	.-1276   	; 0x410 <led1_yellow>
+ 90c:	01 c0       	rjmp	.+2      	; 0x910 <stateNextState+0x30e>
+										 		{ led1_red();    	};
+ 90e:	5c dd       	rcall	.-1352   	; 0x3c8 <led1_red>
+			}
+
+			if (bit_is_set(fBtnCode, BTN1RELEASED)) {
+ 910:	89 81       	ldd	r24, Y+1	; 0x01
+ 912:	83 ff       	sbrs	r24, 3
+ 914:	6f c0       	rjmp	.+222    	; 0x9f4 <stateNextState+0x3f2>
+			
+				//Taster lange gedrückt -> STARTUP
+				if (bit_is_set(fBtnCode, BTN1LONGPRESSED)) {
+ 916:	89 81       	ldd	r24, Y+1	; 0x01
+ 918:	81 ff       	sbrs	r24, 1
+ 91a:	03 c0       	rjmp	.+6      	; 0x922 <stateNextState+0x320>
+					pwmTableStoreToEEPROM();
+ 91c:	44 d1       	rcall	.+648    	; 0xba6 <pwmTableStoreToEEPROM>
+ 91e:	9e e1       	ldi	r25, 0x1E	; 30
+ 920:	6c c0       	rjmp	.+216    	; 0x9fa <stateNextState+0x3f8>
+					nextState = IDLE;
+					break;
+				}
+
+				//Taster kurz gedrückt -> Helligkeit erhöhen...
+				if (0 == fProgOutputIndex) {
+ 922:	aa 20       	and	r10, r10
+ 924:	39 f4       	brne	.+14     	; 0x934 <stateNextState+0x332>
+					fProgPwm1Soll = fProgPwm1Soll & 0xF8; //Letzte 3 bits löschen
+ 926:	08 7f       	andi	r16, 0xF8	; 248
+					fProgPwm1Soll += 8;//Helligkeit erhöhen, 32 Stufen sollten reichen...
+
+					pwmOutput.pwm1Soll = fProgPwm1Soll;
+ 928:	08 5f       	subi	r16, 0xF8	; 248
+ 92a:	00 93 ee 00 	sts	0x00EE, r16
+
+					pwmTableSaveCurrentValuesForPWM1(fProgOutputDimLevel);
+ 92e:	8b 2d       	mov	r24, r11
+ 930:	d3 d0       	rcall	.+422    	; 0xad8 <pwmTableSaveCurrentValuesForPWM1>
+ 932:	06 c0       	rjmp	.+12     	; 0x940 <stateNextState+0x33e>
+
+				} else {
+					fProgPwm2Soll = fProgPwm2Soll & 0xF8;
+ 934:	18 7f       	andi	r17, 0xF8	; 248
+					fProgPwm2Soll += 8;
+
+					pwmOutput.pwm2Soll = fProgPwm2Soll;
+ 936:	18 5f       	subi	r17, 0xF8	; 248
+ 938:	10 93 f0 00 	sts	0x00F0, r17
+
+					pwmTableSaveCurrentValuesForPWM2(fProgOutputDimLevel);
+ 93c:	8b 2d       	mov	r24, r11
+ 93e:	f3 d0       	rcall	.+486    	; 0xb26 <pwmTableSaveCurrentValuesForPWM2>
+ 940:	93 e8       	ldi	r25, 0x83	; 131
+ 942:	5b c0       	rjmp	.+182    	; 0x9fa <stateNextState+0x3f8>
+		
+		#ifdef CALIBRATION_ENABLED
+		//************************************************************************************************************** 
+		
+		case CALIB_START : {
+			led1Mode = LED_ON; led1_lightyellow();
+ 944:	44 24       	eor	r4, r4
+ 946:	43 94       	inc	r4
+ 948:	69 dd       	rcall	.-1326   	; 0x41c <led1_lightyellow>
+			led2Mode = LED_ON; led2_lightyellow();
+ 94a:	66 24       	eor	r6, r6
+ 94c:	63 94       	inc	r6
+ 94e:	69 dd       	rcall	.-1326   	; 0x422 <led2_lightyellow>
+			
+			//Ausgänge auf Dimmstufe 3
+			fDimLevel = 3;
+			pwmTableSetOutPut(fDimLevel);
+ 950:	83 e0       	ldi	r24, 0x03	; 3
+ 952:	fe d0       	rcall	.+508    	; 0xb50 <pwmTableSetOutPut>
+			pwmEnable();
+ 954:	44 d1       	rcall	.+648    	; 0xbde <pwmEnable>
+ 956:	e3 e0       	ldi	r30, 0x03	; 3
+ 958:	ee 2e       	mov	r14, r30
+ 95a:	7a e0       	ldi	r23, 0x0A	; 10
+ 95c:	c7 2e       	mov	r12, r23
+ 95e:	02 c0       	rjmp	.+4      	; 0x964 <stateNextState+0x362>
+		} //CALIB_START
+
+		//Wartezeit zum Lampe aufheizen
+		case CALIB_WAIT_DIMUP : {
+			//Wenn noch gewartet werden soll, raus hier...
+			if (waitSecs) { break; }
+ 960:	cc 20       	and	r12, r12
+ 962:	11 f0       	breq	.+4      	; 0x968 <stateNextState+0x366>
+ 964:	99 ec       	ldi	r25, 0xC9	; 201
+ 966:	49 c0       	rjmp	.+146    	; 0x9fa <stateNextState+0x3f8>
+			
+			//Zur Sicherheit word diese Funktion eingeführt:
+			//Taster muss gedrückt gehalten werden, sonst gehts raus hier
+			if (!bit_is_set(fBtnCode, BTN1PRESSING)) { 
+ 968:	89 81       	ldd	r24, Y+1	; 0x01
+ 96a:	82 ff       	sbrs	r24, 2
+ 96c:	d8 cf       	rjmp	.-80     	; 0x91e <stateNextState+0x31c>
+				nextState = IDLE; 
+				break;
+			};
+	
+			//leds kurz aus, CalibStart dauert etwas und die Ledanzeige würde komisches Zeug anzeigen
+			leds_off(); rgbRefreshOutputs();
+ 96e:	28 dd       	rcall	.-1456   	; 0x3c0 <leds_off>
+ 970:	a0 dc       	rcall	.-1728   	; 0x2b2 <rgbRefreshOutputs>
+
+			//Kalibrierung vorbereiten
+			calibStart();
+ 972:	ef d1       	rcall	.+990    	; 0xd52 <calibStart>
+			
+			//leds wieder an
+			led1Mode = LED_ON; led1_white();
+ 974:	44 24       	eor	r4, r4
+ 976:	43 94       	inc	r4
+ 978:	5d dd       	rcall	.-1350   	; 0x434 <led1_white>
+			led2Mode = LED_ON; led2_white();
+ 97a:	66 24       	eor	r6, r6
+ 97c:	63 94       	inc	r6
+ 97e:	5d dd       	rcall	.-1350   	; 0x43a <led2_white>
+ 980:	9a ec       	ldi	r25, 0xCA	; 202
+ 982:	3b c0       	rjmp	.+118    	; 0x9fa <stateNextState+0x3f8>
+		
+		//Messzyklus - alle 2,5 Min eine Messung, bis Akku leer ist.
+		case CALIB_MESSURE_CYCLE : {
+			
+
+			if (fBtnCode & (1<<BTN1RELEASED))
+ 984:	13 ff       	sbrs	r17, 3
+ 986:	09 c0       	rjmp	.+18     	; 0x99a <stateNextState+0x398>
+			{ 
+				if (fDimLevel++ == 3) fDimLevel = 1;
+ 988:	83 e0       	ldi	r24, 0x03	; 3
+ 98a:	e8 16       	cp	r14, r24
+ 98c:	19 f4       	brne	.+6      	; 0x994 <stateNextState+0x392>
+ 98e:	ee 24       	eor	r14, r14
+ 990:	e3 94       	inc	r14
+ 992:	01 c0       	rjmp	.+2      	; 0x996 <stateNextState+0x394>
+ 994:	e3 94       	inc	r14
+				pwmTableSetOutPut(fDimLevel);
+ 996:	8e 2d       	mov	r24, r14
+ 998:	db d0       	rcall	.+438    	; 0xb50 <pwmTableSetOutPut>
+			}
+
+			//Wenn noch gewartet werden soll, raus hier...
+			if (waitSecs) { break; }
+ 99a:	cc 20       	and	r12, r12
+ 99c:	59 f5       	brne	.+86     	; 0x9f4 <stateNextState+0x3f2>
+
+			//Messung vornehmen
+			calibAddAdcValue();
+ 99e:	ba d1       	rcall	.+884    	; 0xd14 <calibAddAdcValue>
+ 9a0:	9a ec       	ldi	r25, 0xCA	; 202
+ 9a2:	66 e9       	ldi	r22, 0x96	; 150
+ 9a4:	c6 2e       	mov	r12, r22
+ 9a6:	29 c0       	rjmp	.+82     	; 0x9fa <stateNextState+0x3f8>
+		}
+			
+		#endif
+
+		case RESET : {
+			if (bit_is_set(fBtnCode, BTN1RELEASED)) {
+ 9a8:	89 81       	ldd	r24, Y+1	; 0x01
+ 9aa:	83 ff       	sbrs	r24, 3
+ 9ac:	1f c0       	rjmp	.+62     	; 0x9ec <stateNextState+0x3ea>
+			
+				//Taster lange gedrückt -> IDLE
+				if (bit_is_set(fBtnCode, BTN1LONGPRESSED)) {
+ 9ae:	89 81       	ldd	r24, Y+1	; 0x01
+ 9b0:	81 ff       	sbrs	r24, 1
+ 9b2:	1c c0       	rjmp	.+56     	; 0x9ec <stateNextState+0x3ea>
+					leds_off();
+ 9b4:	05 dd       	rcall	.-1526   	; 0x3c0 <leds_off>
+
+					//Warten bis Taster losgelassen wird
+					loop_until_bit_is_set(BUTTON1_PINR, BUTTON1_PIN);
+ 9b6:	cc 9b       	sbis	0x19, 4	; 25
+ 9b8:	fe cf       	rjmp	.-4      	; 0x9b6 <stateNextState+0x3b4>
+
+					pwmLoadDefaults();
+ 9ba:	6c d0       	rcall	.+216    	; 0xa94 <pwmLoadDefaults>
+					accuSetDefaultVoltageLevels();
+ 9bc:	e0 dd       	rcall	.-1088   	; 0x57e <accuSetDefaultVoltageLevels>
+  					eepromStoreData(); 
+ 9be:	a8 dd       	rcall	.-1200   	; 0x510 <eepromStoreData>
+ 9c0:	1b c0       	rjmp	.+54     	; 0x9f8 <stateNextState+0x3f6>
+				led2Mode = LED_BLINK; led2_red();
+			#elif 15 == VERSION
+				led1Mode = LED_BLINK; led1_blue();
+				led2Mode = LED_BLINK; led2_white();
+			#elif 16 == VERSION
+				led1Mode = LED_BLINK; led1_blue();
+ 9c2:	52 e0       	ldi	r21, 0x02	; 2
+ 9c4:	45 2e       	mov	r4, r21
+ 9c6:	18 dd       	rcall	.-1488   	; 0x3f8 <led1_blue>
+				led2Mode = LED_BLINK; led2_rose();
+ 9c8:	42 e0       	ldi	r20, 0x02	; 2
+ 9ca:	64 2e       	mov	r6, r20
+ 9cc:	30 dd       	rcall	.-1440   	; 0x42e <led2_rose>
+			#else
+				#error Konfig nachtragen!
+			#endif
+
+			if (waitSecs) break;
+ 9ce:	cc 20       	and	r12, r12
+ 9d0:	99 f0       	breq	.+38     	; 0x9f8 <stateNextState+0x3f6>
+ 9d2:	9e ef       	ldi	r25, 0xFE	; 254
+ 9d4:	12 c0       	rjmp	.+36     	; 0x9fa <stateNextState+0x3f8>
+
+		//************************************************************************************************************** 
+		//Fehler beim Programmablauf
+		case ERROR: {
+			//PWM-Aus
+			pwmDisable();
+ 9d6:	1a d1       	rcall	.+564    	; 0xc0c <pwmDisable>
+			//Beide LEDs blinken rot -> Zustand nicht mehr verlassen
+			led1Mode = LED_BLINK; led1_red();
+ 9d8:	32 e0       	ldi	r19, 0x02	; 2
+ 9da:	43 2e       	mov	r4, r19
+ 9dc:	f5 dc       	rcall	.-1558   	; 0x3c8 <led1_red>
+			led2Mode = LED_BLINK; led2_red();
+ 9de:	22 e0       	ldi	r18, 0x02	; 2
+ 9e0:	62 2e       	mov	r6, r18
+ 9e2:	f5 dc       	rcall	.-1558   	; 0x3ce <led2_red>
+			break;
+ 9e4:	9f ef       	ldi	r25, 0xFF	; 255
+ 9e6:	09 c0       	rjmp	.+18     	; 0x9fa <stateNextState+0x3f8>
+ 9e8:	98 e6       	ldi	r25, 0x68	; 104
+ 9ea:	07 c0       	rjmp	.+14     	; 0x9fa <stateNextState+0x3f8>
+ 9ec:	9c e8       	ldi	r25, 0x8C	; 140
+ 9ee:	05 c0       	rjmp	.+10     	; 0x9fa <stateNextState+0x3f8>
+ 9f0:	92 e8       	ldi	r25, 0x82	; 130
+ 9f2:	03 c0       	rjmp	.+6      	; 0x9fa <stateNextState+0x3f8>
+ 9f4:	9f 2d       	mov	r25, r15
+ 9f6:	01 c0       	rjmp	.+2      	; 0x9fa <stateNextState+0x3f8>
+ 9f8:	9a e0       	ldi	r25, 0x0A	; 10
+
+	} //end of case
+
+
+	//ButtonCode auf 0 setzen -> Code wurde bearbeitet
+	btnCode = 0;
+ 9fa:	10 92 d6 00 	sts	0x00D6, r1
+
+	//globalen Werte übernehmen
+	time.waitSecs = waitSecs;
+ 9fe:	c0 92 f7 00 	sts	0x00F7, r12
+	time.waitMins = waitMins;
+ a02:	90 92 f8 00 	sts	0x00F8, r9
+
+	dimLevel = fDimLevel;
+ a06:	e0 92 d9 00 	sts	0x00D9, r14
+
+	#ifdef PROGRAMMING_ENABLED
+		progSelect 	= fProgSelect;
+ a0a:	d0 92 da 00 	sts	0x00DA, r13
+		progOutputIndex = fProgOutputIndex;
+ a0e:	a0 92 db 00 	sts	0x00DB, r10
+		progOutputDimLevel = fProgOutputDimLevel;
+ a12:	b0 92 dc 00 	sts	0x00DC, r11
+		if (state != nextState) {
+			state = nextState;
+			//sendControllerState();
+		}
+	#else
+		state = nextState;
+ a16:	29 2e       	mov	r2, r25
+	#endif
+}
+ a18:	0f 90       	pop	r0
+ a1a:	cf 91       	pop	r28
+ a1c:	df 91       	pop	r29
+ a1e:	1f 91       	pop	r17
+ a20:	0f 91       	pop	r16
+ a22:	ff 90       	pop	r15
+ a24:	ef 90       	pop	r14
+ a26:	df 90       	pop	r13
+ a28:	cf 90       	pop	r12
+ a2a:	bf 90       	pop	r11
+ a2c:	af 90       	pop	r10
+ a2e:	9f 90       	pop	r9
+ a30:	08 95       	ret
+ a32:	96 e0       	ldi	r25, 0x06	; 6
+ a34:	d9 2e       	mov	r13, r25
+ a36:	fe ce       	rjmp	.-516    	; 0x834 <stateNextState+0x232>
+
+00000a38 <transTableGetNextDimLevel>:
+	 /*3*/ 	2, 		1, 		2, 		0,
+	};
+
+//Folgezustand aus der Übergangstabelle holen
+uint8_t transTableGetNextDimLevel(const uint8_t dimLevel, const uint8_t buttonCode)
+{
+ a38:	df 93       	push	r29
+ a3a:	cf 93       	push	r28
+ a3c:	0f 92       	push	r0
+ a3e:	cd b7       	in	r28, 0x3d	; 61
+ a40:	de b7       	in	r29, 0x3e	; 62
+ a42:	69 83       	std	Y+1, r22	; 0x01
+	uint8_t tableIndex = (dimLevel << 2); 
+	uint8_t nextDimLevel = dimLevel;
+
+	if (dimLevel > 3) return 0;
+ a44:	84 30       	cpi	r24, 0x04	; 4
+ a46:	10 f0       	brcs	.+4      	; 0xa4c <transTableGetNextDimLevel+0x14>
+ a48:	e0 e0       	ldi	r30, 0x00	; 0
+ a4a:	1f c0       	rjmp	.+62     	; 0xa8a <transTableGetNextDimLevel+0x52>
+	};
+
+//Folgezustand aus der Übergangstabelle holen
+uint8_t transTableGetNextDimLevel(const uint8_t dimLevel, const uint8_t buttonCode)
+{
+	uint8_t tableIndex = (dimLevel << 2); 
+ a4c:	e8 2f       	mov	r30, r24
+ a4e:	ee 0f       	add	r30, r30
+ a50:	ee 0f       	add	r30, r30
+	uint8_t nextDimLevel = dimLevel;
+
+	if (dimLevel > 3) return 0;
+	
+	//Taster gedrückt
+	if (bit_is_set(buttonCode, BTN1RELEASED))
+ a52:	89 81       	ldd	r24, Y+1	; 0x01
+ a54:	83 ff       	sbrs	r24, 3
+ a56:	03 c0       	rjmp	.+6      	; 0xa5e <transTableGetNextDimLevel+0x26>
+	{
+		if (bit_is_set(buttonCode, BTN1SHORTPRESS)) 
+ a58:	89 81       	ldd	r24, Y+1	; 0x01
+ a5a:	80 ff       	sbrs	r24, 0
+			tableIndex = tableIndex + 0; 	//Kurz
+		else 										
+			tableIndex = tableIndex + 1; 	//Lang
+ a5c:	ef 5f       	subi	r30, 0xFF	; 255
+	#endif
+
+
+
+	
+	nextDimLevel = stateTransitionTable[tableIndex];
+ a5e:	f0 e0       	ldi	r31, 0x00	; 0
+ a60:	eb 54       	subi	r30, 0x4B	; 75
+ a62:	ff 4f       	sbci	r31, 0xFF	; 255
+ a64:	e0 81       	ld	r30, Z
+
+	//Wenn für Dimstufe 1 beide Ausgänge = 0 sind, dann wird diese Stufe weggelassen
+	if (1 == nextDimLevel) {
+ a66:	e1 30       	cpi	r30, 0x01	; 1
+ a68:	81 f4       	brne	.+32     	; 0xa8a <transTableGetNextDimLevel+0x52>
+		if (0 == pwmTable[PWM_1_DIM_1]) {
+ a6a:	80 91 c7 00 	lds	r24, 0x00C7
+ a6e:	88 23       	and	r24, r24
+ a70:	61 f4       	brne	.+24     	; 0xa8a <transTableGetNextDimLevel+0x52>
+			if ((!pwm2Enabled) | (0 == pwmTable[PWM_2_DIM_1])) {
+ a72:	80 91 dd 00 	lds	r24, 0x00DD
+ a76:	88 23       	and	r24, r24
+ a78:	21 f0       	breq	.+8      	; 0xa82 <transTableGetNextDimLevel+0x4a>
+ a7a:	80 91 c9 00 	lds	r24, 0x00C9
+ a7e:	88 23       	and	r24, r24
+ a80:	21 f4       	brne	.+8      	; 0xa8a <transTableGetNextDimLevel+0x52>
+				nextDimLevel = transTableGetNextDimLevel(nextDimLevel, buttonCode);
+ a82:	81 e0       	ldi	r24, 0x01	; 1
+ a84:	69 81       	ldd	r22, Y+1	; 0x01
+ a86:	d8 df       	rcall	.-80     	; 0xa38 <transTableGetNextDimLevel>
+ a88:	e8 2f       	mov	r30, r24
+		}
+	}
+
+
+	return nextDimLevel;
+}
+ a8a:	8e 2f       	mov	r24, r30
+ a8c:	0f 90       	pop	r0
+ a8e:	cf 91       	pop	r28
+ a90:	df 91       	pop	r29
+ a92:	08 95       	ret
+
+00000a94 <pwmLoadDefaults>:
+void pwmLoadDefaults(void)
+{
+	#ifdef PROG_PWM_CS_ENABLED
+		pwmClockSelectIndex = PWM_CS_DEFAULT_INDEX;
+	#endif
+	pwmTable[0]  = PWM_MODE_KONST_VOLT_SOFT; 		pwmTable[1]  = PWM_MODE_KONST_VOLT_SOFT;
+ a94:	82 e0       	ldi	r24, 0x02	; 2
+ a96:	80 93 c5 00 	sts	0x00C5, r24
+ a9a:	80 93 c6 00 	sts	0x00C6, r24
+	pwmTable[2]  =   80;	pwmTable[3]  = 210;		pwmTable[4]  =   80;	pwmTable[5]  = 210;
+ a9e:	90 e5       	ldi	r25, 0x50	; 80
+ aa0:	90 93 c7 00 	sts	0x00C7, r25
+ aa4:	82 ed       	ldi	r24, 0xD2	; 210
+ aa6:	80 93 c8 00 	sts	0x00C8, r24
+ aaa:	90 93 c9 00 	sts	0x00C9, r25
+ aae:	80 93 ca 00 	sts	0x00CA, r24
+	pwmTable[6]  =  120;	pwmTable[7]  = 210;		pwmTable[8]  =  120;	pwmTable[9]  = 210;
+ ab2:	98 e7       	ldi	r25, 0x78	; 120
+ ab4:	90 93 cb 00 	sts	0x00CB, r25
+ ab8:	80 93 cc 00 	sts	0x00CC, r24
+ abc:	90 93 cd 00 	sts	0x00CD, r25
+ ac0:	80 93 ce 00 	sts	0x00CE, r24
+	pwmTable[10] = 0xFF;	pwmTable[11] = 210;		pwmTable[12] = 0xFF;	pwmTable[13] = 210;
+ ac4:	9f ef       	ldi	r25, 0xFF	; 255
+ ac6:	90 93 cf 00 	sts	0x00CF, r25
+ aca:	80 93 d0 00 	sts	0x00D0, r24
+ ace:	90 93 d1 00 	sts	0x00D1, r25
+ ad2:	80 93 d2 00 	sts	0x00D2, r24
+}
+ ad6:	08 95       	ret
+
+00000ad8 <pwmTableSaveCurrentValuesForPWM1>:
+#endif
+
+
+
+void pwmTableSaveCurrentValuesForPWM1(const uint8_t dimLevel)
+{
+ ad8:	0f 93       	push	r16
+ ada:	1f 93       	push	r17
+	#ifdef ADC_LOW_RES
+ 		uint8_t currentVoltage = currentADCValue;	
+	#else
+		uint8_t currentVoltage = currentADCValue >> 2;
+ adc:	00 91 fa 00 	lds	r16, 0x00FA
+ ae0:	10 91 fb 00 	lds	r17, 0x00FB
+ ae4:	16 95       	lsr	r17
+ ae6:	07 95       	ror	r16
+ ae8:	16 95       	lsr	r17
+ aea:	07 95       	ror	r16
+	#endif
+	pwmTable[dimLevel * 4 - 2] = pwmOutput.pwm1Soll;
+ aec:	28 2f       	mov	r18, r24
+ aee:	30 e0       	ldi	r19, 0x00	; 0
+ af0:	c9 01       	movw	r24, r18
+ af2:	6e ef       	ldi	r22, 0xFE	; 254
+ af4:	7f ef       	ldi	r23, 0xFF	; 255
+ af6:	70 d1       	rcall	.+736    	; 0xdd8 <__mulhi3>
+ af8:	fc 01       	movw	r30, r24
+ afa:	e0 95       	com	r30
+ afc:	f0 95       	com	r31
+ afe:	a5 ec       	ldi	r26, 0xC5	; 197
+ b00:	b0 e0       	ldi	r27, 0x00	; 0
+ b02:	ee 0f       	add	r30, r30
+ b04:	ff 1f       	adc	r31, r31
+ b06:	ea 0f       	add	r30, r26
+ b08:	fb 1f       	adc	r31, r27
+ b0a:	80 91 ee 00 	lds	r24, 0x00EE
+ b0e:	80 83       	st	Z, r24
+	pwmTable[dimLevel * 4 - 1] = currentVoltage;
+ b10:	22 0f       	add	r18, r18
+ b12:	33 1f       	adc	r19, r19
+ b14:	22 0f       	add	r18, r18
+ b16:	33 1f       	adc	r19, r19
+ b18:	a2 0f       	add	r26, r18
+ b1a:	b3 1f       	adc	r27, r19
+ b1c:	11 97       	sbiw	r26, 0x01	; 1
+ b1e:	0c 93       	st	X, r16
+
+}
+ b20:	1f 91       	pop	r17
+ b22:	0f 91       	pop	r16
+ b24:	08 95       	ret
+
+00000b26 <pwmTableSaveCurrentValuesForPWM2>:
+void pwmTableSaveCurrentValuesForPWM2(const uint8_t dimLevel)
+{
+	#ifdef ADC_LOW_RES
+ 		uint8_t currentVoltage = currentADCValue;	
+	#else
+		uint8_t currentVoltage = currentADCValue >> 2;
+ b26:	20 91 fa 00 	lds	r18, 0x00FA
+ b2a:	30 91 fb 00 	lds	r19, 0x00FB
+ b2e:	36 95       	lsr	r19
+ b30:	27 95       	ror	r18
+ b32:	36 95       	lsr	r19
+ b34:	27 95       	ror	r18
+	#endif
+	pwmTable[dimLevel * 4 + 0] = pwmOutput.pwm2Soll;
+ b36:	e8 2f       	mov	r30, r24
+ b38:	f0 e0       	ldi	r31, 0x00	; 0
+ b3a:	ee 0f       	add	r30, r30
+ b3c:	ff 1f       	adc	r31, r31
+ b3e:	ee 0f       	add	r30, r30
+ b40:	ff 1f       	adc	r31, r31
+ b42:	eb 53       	subi	r30, 0x3B	; 59
+ b44:	ff 4f       	sbci	r31, 0xFF	; 255
+ b46:	80 91 f0 00 	lds	r24, 0x00F0
+ b4a:	80 83       	st	Z, r24
+	pwmTable[dimLevel * 4 + 1] = currentVoltage;
+ b4c:	21 83       	std	Z+1, r18	; 0x01
+}
+ b4e:	08 95       	ret
+
+00000b50 <pwmTableSetOutPut>:
+
+void pwmTableSetOutPut(const uint8_t dimLevel)
+{
+	//PWM-Wert aus der Tabelle ermitteln
+	if (dimLevel > 4) return;
+ b50:	85 30       	cpi	r24, 0x05	; 5
+ b52:	40 f5       	brcc	.+80     	; 0xba4 <pwmTableSetOutPut+0x54>
+
+	if (dimLevel == 0)
+ b54:	88 23       	and	r24, r24
+ b56:	29 f4       	brne	.+10     	; 0xb62 <pwmTableSetOutPut+0x12>
+	{
+		pwmOutput.pwm1Soll = 0;
+ b58:	10 92 ee 00 	sts	0x00EE, r1
+		pwmOutput.pwm2Soll = 0;
+ b5c:	10 92 f0 00 	sts	0x00F0, r1
+ b60:	08 95       	ret
+		return;
+	}
+
+	pwmOutput.pwm1Soll 			= pwmTable[dimLevel * 4 - 2];
+ b62:	a8 2f       	mov	r26, r24
+ b64:	b0 e0       	ldi	r27, 0x00	; 0
+ b66:	cd 01       	movw	r24, r26
+ b68:	6e ef       	ldi	r22, 0xFE	; 254
+ b6a:	7f ef       	ldi	r23, 0xFF	; 255
+ b6c:	35 d1       	rcall	.+618    	; 0xdd8 <__mulhi3>
+ b6e:	fc 01       	movw	r30, r24
+ b70:	e0 95       	com	r30
+ b72:	f0 95       	com	r31
+ b74:	ee 0f       	add	r30, r30
+ b76:	ff 1f       	adc	r31, r31
+ b78:	eb 53       	subi	r30, 0x3B	; 59
+ b7a:	ff 4f       	sbci	r31, 0xFF	; 255
+ b7c:	80 81       	ld	r24, Z
+ b7e:	80 93 ee 00 	sts	0x00EE, r24
+	pwmOutput.pwm1ProgVoltage 	= pwmTable[dimLevel * 4 - 1];
+ b82:	aa 0f       	add	r26, r26
+ b84:	bb 1f       	adc	r27, r27
+ b86:	aa 0f       	add	r26, r26
+ b88:	bb 1f       	adc	r27, r27
+ b8a:	ab 53       	subi	r26, 0x3B	; 59
+ b8c:	bf 4f       	sbci	r27, 0xFF	; 255
+ b8e:	8e 91       	ld	r24, -X
+ b90:	11 96       	adiw	r26, 0x01	; 1
+ b92:	80 93 ef 00 	sts	0x00EF, r24
+
+	pwmOutput.pwm2Soll 			= pwmTable[dimLevel * 4 - 0];
+ b96:	8c 91       	ld	r24, X
+ b98:	80 93 f0 00 	sts	0x00F0, r24
+	pwmOutput.pwm2ProgVoltage 	= pwmTable[dimLevel * 4 + 1];
+ b9c:	11 96       	adiw	r26, 0x01	; 1
+ b9e:	8c 91       	ld	r24, X
+ ba0:	80 93 f1 00 	sts	0x00F1, r24
+ ba4:	08 95       	ret
+
+00000ba6 <pwmTableStoreToEEPROM>:
+}
+
+//Werte speichern
+void pwmTableStoreToEEPROM(void)
+{
+	eeprom_write_block(pwmTable, eePwmTable, sizeof(eePwmTable));
+ ba6:	85 ec       	ldi	r24, 0xC5	; 197
+ ba8:	90 e0       	ldi	r25, 0x00	; 0
+ baa:	63 e1       	ldi	r22, 0x13	; 19
+ bac:	70 e0       	ldi	r23, 0x00	; 0
+ bae:	4e e0       	ldi	r20, 0x0E	; 14
+ bb0:	50 e0       	ldi	r21, 0x00	; 0
+ bb2:	55 d1       	rcall	.+682    	; 0xe5e <__eewr_block_tn84>
+	#ifdef PROG_PWM_CS_ENABLED
+		eeprom_write_byte(&eePWMClockSelectIndex, pwmClockSelectIndex);
+	#endif
+}
+ bb4:	08 95       	ret
+
+00000bb6 <pwmTableLoadFromEEPROM>:
+	};
+
+//Werte aus dem Speicher lesen
+void pwmTableLoadFromEEPROM(void)
+{
+	eeprom_read_block(pwmTable, eePwmTable, sizeof(eePwmTable));
+ bb6:	85 ec       	ldi	r24, 0xC5	; 197
+ bb8:	90 e0       	ldi	r25, 0x00	; 0
+ bba:	63 e1       	ldi	r22, 0x13	; 19
+ bbc:	70 e0       	ldi	r23, 0x00	; 0
+ bbe:	4e e0       	ldi	r20, 0x0E	; 14
+ bc0:	50 e0       	ldi	r21, 0x00	; 0
+ bc2:	30 d1       	rcall	.+608    	; 0xe24 <__eerd_block_tn84>
+	#ifdef PROG_PWM_CS_ENABLED
+		pwmClockSelectIndex = eeprom_read_byte(&eePWMClockSelectIndex);
+	#endif
+}
+ bc4:	08 95       	ret
+
+00000bc6 <pwmInitialize>:
+
+	//PWM setup
+	//TCCR1A und TCCR1B werden erst bei "pwmEnable" gesetzt
+
+	//Pins als Ausgänge setzen
+	PWM_DDR |= (1<<PWM1_PIN) | (1<<PWM2_PIN);
+ bc6:	8a b3       	in	r24, 0x1a	; 26
+ bc8:	80 66       	ori	r24, 0x60	; 96
+ bca:	8a bb       	out	0x1a, r24	; 26
+
+	//Ausgänge auf 0
+	OCR1A = 0;
+ bcc:	1b bc       	out	0x2b, r1	; 43
+ bce:	1a bc       	out	0x2a, r1	; 42
+	OCR1B = 0;
+ bd0:	19 bc       	out	0x29, r1	; 41
+ bd2:	18 bc       	out	0x28, r1	; 40
+
+	pwmOutput.pwm1Soll = 0;
+ bd4:	10 92 ee 00 	sts	0x00EE, r1
+	pwmOutput.pwm2Soll = 0;
+ bd8:	10 92 f0 00 	sts	0x00F0, r1
+
+	//PWM muss nach der Initialisierung mit pwmEnable() noch aktiviert werden!
+}
+ bdc:	08 95       	ret
+
+00000bde <pwmEnable>:
+void pwmEnable(void)
+{
+	uint8_t tccr1a = 0;
+	//Mögliche Invertierung beachten
+	uint8_t pwm1Inverted = (pwmTable[0] == PWM_MODE_KONST_RATIO_INV);
+	uint8_t pwm2Inverted = (pwmTable[1] == PWM_MODE_KONST_RATIO_INV);
+ bde:	20 91 c6 00 	lds	r18, 0x00C6
+
+	if (pwm1Inverted) {	tccr1a = (1<<COM1A1) | (1<<COM1A0); } else { tccr1a = (1<<COM1A1) | (0<<COM1A0); }
+ be2:	80 91 c5 00 	lds	r24, 0x00C5
+ be6:	84 30       	cpi	r24, 0x04	; 4
+ be8:	11 f0       	breq	.+4      	; 0xbee <pwmEnable+0x10>
+ bea:	90 e8       	ldi	r25, 0x80	; 128
+ bec:	01 c0       	rjmp	.+2      	; 0xbf0 <pwmEnable+0x12>
+ bee:	90 ec       	ldi	r25, 0xC0	; 192
+
+	//2. Ausgang nur bei Bedarf aktivieren
+	if (pwm2Enabled) {
+ bf0:	80 91 dd 00 	lds	r24, 0x00DD
+ bf4:	88 23       	and	r24, r24
+ bf6:	29 f0       	breq	.+10     	; 0xc02 <pwmEnable+0x24>
+		if (pwm2Inverted) {	tccr1a |= (1<<COM1B1) | (1<<COM1B0);} else {	tccr1a |= (1<<COM1B1) | (0<<COM1B0);}
+ bf8:	24 30       	cpi	r18, 0x04	; 4
+ bfa:	11 f4       	brne	.+4      	; 0xc00 <pwmEnable+0x22>
+ bfc:	90 63       	ori	r25, 0x30	; 48
+ bfe:	01 c0       	rjmp	.+2      	; 0xc02 <pwmEnable+0x24>
+ c00:	90 62       	ori	r25, 0x20	; 32
+	}
+
+	TCCR1A = (0<<WGM11) | (1<<WGM10) | tccr1a;
+ c02:	91 60       	ori	r25, 0x01	; 1
+ c04:	9f bd       	out	0x2f, r25	; 47
+	#ifdef PROG_PWM_CS_ENABLED
+		TCCR1B = pwmClockSelectTable[pwmClockSelectIndex];
+	#else
+		TCCR1B = PWM_CLOCKSELECT_DEFAULT;
+ c06:	83 e0       	ldi	r24, 0x03	; 3
+ c08:	8e bd       	out	0x2e, r24	; 46
+	#endif
+}
+ c0a:	08 95       	ret
+
+00000c0c <pwmDisable>:
+/***************************************************************************
+ ***************************************************************************/
+void pwmDisable(void)
+{
+	//TCCR1A &= ~((1<<COM1A1)|(0<<COM1A0) | (1<<COM1B1)|(0<<COM1B0));
+	pwmOutput.pwm1Soll = 0;
+ c0c:	10 92 ee 00 	sts	0x00EE, r1
+	pwmOutput.pwm2Soll = 0;
+ c10:	10 92 f0 00 	sts	0x00F0, r1
+	PWM1_REG = 0x00;
+ c14:	1a bc       	out	0x2a, r1	; 42
+	PWM2_REG = 0x00;
+ c16:	18 bc       	out	0x28, r1	; 40
+}
+ c18:	08 95       	ret
+
+00000c1a <pwmRefreshSingleOutput>:
+ * 
+ * Funktionsaufruf erfolgt jede 1/10 Sekunde über Ereignisschleife in controller.c
+ * 
+ ***************************************************************************/
+void pwmRefreshSingleOutput(volatile uint8_t *pwmRegister, uint8_t sollValue)
+{
+ c1a:	fc 01       	movw	r30, r24
+	uint8_t istValue = *pwmRegister;
+ c1c:	80 81       	ld	r24, Z
+
+	if ((istValue > sollValue) || (istValue > 30)) {
+ c1e:	68 17       	cp	r22, r24
+ c20:	20 f0       	brcs	.+8      	; 0xc2a <pwmRefreshSingleOutput+0x10>
+ c22:	8f 31       	cpi	r24, 0x1F	; 31
+ c24:	10 f4       	brcc	.+4      	; 0xc2a <pwmRefreshSingleOutput+0x10>
+		istValue = sollValue;
+	}
+	else
+	{
+		//Softstart
+		istValue += 1; 
+ c26:	68 2f       	mov	r22, r24
+ c28:	6f 5f       	subi	r22, 0xFF	; 255
+	}
+
+	//Sollwert <= IstwertFalls -> sofort übernehmen
+	*pwmRegister = istValue;
+ c2a:	60 83       	st	Z, r22
+}
+ c2c:	08 95       	ret
+
+00000c2e <pwmGetRegulateOutputValue>:
+/***************************************************************************
+ *	Berechnung des PWM-Soll-Wertes aus dem vorgegebem Soll und der Akkuspannung beim Einstellen des Solls.
+ *  Entsprechend der aktuellen Spannung wird das neue Soll berechnet.
+ ***************************************************************************/
+uint8_t pwmGetRegulateOutputValue(const uint8_t pwmValue, const uint8_t pwmProgVoltage) 
+{
+ c2e:	48 2f       	mov	r20, r24
+	#ifdef ADC_LOW_RES
+		uint8_t currentVoltage = currentADCValue;
+	#else
+		uint8_t currentVoltage = currentADCValue >> 2;
+ c30:	20 91 fa 00 	lds	r18, 0x00FA
+ c34:	30 91 fb 00 	lds	r19, 0x00FB
+ c38:	36 95       	lsr	r19
+ c3a:	27 95       	ror	r18
+ c3c:	36 95       	lsr	r19
+ c3e:	27 95       	ror	r18
+	#endif	
+
+
+	if (currentVoltage 	== 0) { return 0x00; };
+ c40:	22 23       	and	r18, r18
+ c42:	91 f0       	breq	.+36     	; 0xc68 <pwmGetRegulateOutputValue+0x3a>
+	if (pwmValue        == 0) { return 0x00; };
+ c44:	44 23       	and	r20, r20
+ c46:	81 f0       	breq	.+32     	; 0xc68 <pwmGetRegulateOutputValue+0x3a>
+
+
+
+	uint16_t targetPWM = (pwmProgVoltage * pwmValue);
+	
+	targetPWM = (targetPWM + 1)  / currentVoltage;
+ c48:	86 2f       	mov	r24, r22
+ c4a:	90 e0       	ldi	r25, 0x00	; 0
+ c4c:	64 2f       	mov	r22, r20
+ c4e:	70 e0       	ldi	r23, 0x00	; 0
+ c50:	c3 d0       	rcall	.+390    	; 0xdd8 <__mulhi3>
+ c52:	01 96       	adiw	r24, 0x01	; 1
+ c54:	62 2f       	mov	r22, r18
+ c56:	70 e0       	ldi	r23, 0x00	; 0
+ c58:	d1 d0       	rcall	.+418    	; 0xdfc <__udivmodhi4>
+ c5a:	cb 01       	movw	r24, r22
+	
+	//Auf max. 8bit beschränken
+	if (targetPWM > 0x00FF) { 
+ c5c:	6f 3f       	cpi	r22, 0xFF	; 255
+ c5e:	71 05       	cpc	r23, r1
+ c60:	21 f0       	breq	.+8      	; 0xc6a <pwmGetRegulateOutputValue+0x3c>
+ c62:	18 f0       	brcs	.+6      	; 0xc6a <pwmGetRegulateOutputValue+0x3c>
+ c64:	8f ef       	ldi	r24, 0xFF	; 255
+ c66:	08 95       	ret
+		return 0xFF; 
+	} else {
+		return (uint8_t) targetPWM;
+ c68:	80 e0       	ldi	r24, 0x00	; 0
+	}
+}
+ c6a:	08 95       	ret
+
+00000c6c <pwmRefreshOutputs>:
+
+/***************************************************************************
+	Sollwerte an die Ausgänge weitergeben
+ ***************************************************************************/
+void pwmRefreshOutputs(void)
+{
+ c6c:	ff 92       	push	r15
+ c6e:	0f 93       	push	r16
+ c70:	1f 93       	push	r17
+	//Interrupts aus...
+	//Sicherung der Interrupts ist egal, es werden eh nur welche für den Timer genutzt
+	cli();
+ c72:	f8 94       	cli
+	
+	//Lokale Variablen...
+	uint8_t pwm1Soll 			= pwmOutput.pwm1Soll;
+ c74:	80 91 ee 00 	lds	r24, 0x00EE
+	uint8_t pwm2Soll 			= pwmOutput.pwm2Soll;
+ c78:	10 91 f0 00 	lds	r17, 0x00F0
+	uint8_t pwm1ProgVoltage 	= pwmOutput.pwm1ProgVoltage;
+ c7c:	60 91 ef 00 	lds	r22, 0x00EF
+	uint8_t pwm2ProgVoltage 	= pwmOutput.pwm2ProgVoltage;
+ c80:	f0 90 f1 00 	lds	r15, 0x00F1
+	
+	uint8_t pwm1Mode = pwmTable[0];
+ c84:	90 91 c5 00 	lds	r25, 0x00C5
+	uint8_t pwm2Mode = pwmTable[1];
+ c88:	00 91 c6 00 	lds	r16, 0x00C6
+	
+	//Ausgang 1	
+	if (0x00 == pwm1Soll) 						 { PWM1_REG = 0x00; } else
+ c8c:	88 23       	and	r24, r24
+ c8e:	11 f4       	brne	.+4      	; 0xc94 <pwmRefreshOutputs+0x28>
+ c90:	1a bc       	out	0x2a, r1	; 42
+ c92:	15 c0       	rjmp	.+42     	; 0xcbe <pwmRefreshOutputs+0x52>
+	if (PWM_MODE_KONST_RATIO 		== pwm1Mode) { PWM1_REG = pwm1Soll; } else
+ c94:	99 23       	and	r25, r25
+ c96:	91 f0       	breq	.+36     	; 0xcbc <pwmRefreshOutputs+0x50>
+	if (PWM_MODE_KONST_RATIO_INV	== pwm1Mode) { PWM1_REG = pwm1Soll; } else
+ c98:	94 30       	cpi	r25, 0x04	; 4
+ c9a:	81 f0       	breq	.+32     	; 0xcbc <pwmRefreshOutputs+0x50>
+	if (PWM_MODE_KONST_VOLT 		== pwm1Mode) { PWM1_REG = pwmGetRegulateOutputValue(pwm1Soll, pwm1ProgVoltage); } else 
+ c9c:	93 30       	cpi	r25, 0x03	; 3
+ c9e:	11 f4       	brne	.+4      	; 0xca4 <pwmRefreshOutputs+0x38>
+ ca0:	c6 df       	rcall	.-116    	; 0xc2e <pwmGetRegulateOutputValue>
+ ca2:	0c c0       	rjmp	.+24     	; 0xcbc <pwmRefreshOutputs+0x50>
+	if (PWM_MODE_KONST_RATIO_SOFT 	== pwm1Mode) { pwmRefreshSingleOutput(&PWM1_REG, pwm1Soll); } else
+ ca4:	91 30       	cpi	r25, 0x01	; 1
+ ca6:	19 f0       	breq	.+6      	; 0xcae <pwmRefreshOutputs+0x42>
+	if (PWM_MODE_KONST_VOLT_SOFT 	== pwm1Mode) { pwmRefreshSingleOutput(&PWM1_REG, pwmGetRegulateOutputValue(pwm1Soll, pwm1ProgVoltage)); } 
+ ca8:	92 30       	cpi	r25, 0x02	; 2
+ caa:	49 f4       	brne	.+18     	; 0xcbe <pwmRefreshOutputs+0x52>
+ cac:	c0 df       	rcall	.-128    	; 0xc2e <pwmGetRegulateOutputValue>
+ * Funktionsaufruf erfolgt jede 1/10 Sekunde über Ereignisschleife in controller.c
+ * 
+ ***************************************************************************/
+void pwmRefreshSingleOutput(volatile uint8_t *pwmRegister, uint8_t sollValue)
+{
+	uint8_t istValue = *pwmRegister;
+ cae:	9a b5       	in	r25, 0x2a	; 42
+
+	if ((istValue > sollValue) || (istValue > 30)) {
+ cb0:	89 17       	cp	r24, r25
+ cb2:	20 f0       	brcs	.+8      	; 0xcbc <pwmRefreshOutputs+0x50>
+ cb4:	9f 31       	cpi	r25, 0x1F	; 31
+ cb6:	10 f4       	brcc	.+4      	; 0xcbc <pwmRefreshOutputs+0x50>
+		istValue = sollValue;
+	}
+	else
+	{
+		//Softstart
+		istValue += 1; 
+ cb8:	89 2f       	mov	r24, r25
+ cba:	8f 5f       	subi	r24, 0xFF	; 255
+	}
+
+	//Sollwert <= IstwertFalls -> sofort übernehmen
+	*pwmRegister = istValue;
+ cbc:	8a bd       	out	0x2a, r24	; 42
+	if (PWM_MODE_KONST_VOLT 		== pwm1Mode) { PWM1_REG = pwmGetRegulateOutputValue(pwm1Soll, pwm1ProgVoltage); } else 
+	if (PWM_MODE_KONST_RATIO_SOFT 	== pwm1Mode) { pwmRefreshSingleOutput(&PWM1_REG, pwm1Soll); } else
+	if (PWM_MODE_KONST_VOLT_SOFT 	== pwm1Mode) { pwmRefreshSingleOutput(&PWM1_REG, pwmGetRegulateOutputValue(pwm1Soll, pwm1ProgVoltage)); } 
+	
+	//Ausgang2
+	if (0x00 == pwm2Soll) 						 { PWM2_REG = 0x00; } else
+ cbe:	11 23       	and	r17, r17
+ cc0:	11 f4       	brne	.+4      	; 0xcc6 <pwmRefreshOutputs+0x5a>
+ cc2:	18 bc       	out	0x28, r1	; 40
+ cc4:	22 c0       	rjmp	.+68     	; 0xd0a <pwmRefreshOutputs+0x9e>
+	if (PWM_MODE_KONST_RATIO 		== pwm2Mode) { PWM2_REG = pwm2Soll; } else
+ cc6:	00 23       	and	r16, r16
+ cc8:	89 f0       	breq	.+34     	; 0xcec <pwmRefreshOutputs+0x80>
+	if (PWM_MODE_KONST_RATIO_INV	== pwm2Mode) { PWM2_REG = pwm2Soll; } else
+ cca:	04 30       	cpi	r16, 0x04	; 4
+ ccc:	79 f0       	breq	.+30     	; 0xcec <pwmRefreshOutputs+0x80>
+	if (PWM_MODE_KONST_VOLT 		== pwm2Mode) { PWM2_REG = pwmGetRegulateOutputValue(pwm2Soll, pwm2ProgVoltage); } else
+ cce:	03 30       	cpi	r16, 0x03	; 3
+ cd0:	21 f4       	brne	.+8      	; 0xcda <pwmRefreshOutputs+0x6e>
+ cd2:	81 2f       	mov	r24, r17
+ cd4:	6f 2d       	mov	r22, r15
+ cd6:	ab df       	rcall	.-170    	; 0xc2e <pwmGetRegulateOutputValue>
+ cd8:	17 c0       	rjmp	.+46     	; 0xd08 <pwmRefreshOutputs+0x9c>
+	if (PWM_MODE_KONST_RATIO_SOFT 	== pwm2Mode) { pwmRefreshSingleOutput(&PWM2_REG, pwm2Soll); } else
+ cda:	01 30       	cpi	r16, 0x01	; 1
+ cdc:	49 f4       	brne	.+18     	; 0xcf0 <pwmRefreshOutputs+0x84>
+ * Funktionsaufruf erfolgt jede 1/10 Sekunde über Ereignisschleife in controller.c
+ * 
+ ***************************************************************************/
+void pwmRefreshSingleOutput(volatile uint8_t *pwmRegister, uint8_t sollValue)
+{
+	uint8_t istValue = *pwmRegister;
+ cde:	88 b5       	in	r24, 0x28	; 40
+
+	if ((istValue > sollValue) || (istValue > 30)) {
+ ce0:	18 17       	cp	r17, r24
+ ce2:	20 f0       	brcs	.+8      	; 0xcec <pwmRefreshOutputs+0x80>
+ ce4:	8f 31       	cpi	r24, 0x1F	; 31
+ ce6:	10 f4       	brcc	.+4      	; 0xcec <pwmRefreshOutputs+0x80>
+		istValue = sollValue;
+	}
+	else
+	{
+		//Softstart
+		istValue += 1; 
+ ce8:	18 2f       	mov	r17, r24
+ cea:	1f 5f       	subi	r17, 0xFF	; 255
+	}
+
+	//Sollwert <= IstwertFalls -> sofort übernehmen
+	*pwmRegister = istValue;
+ cec:	18 bd       	out	0x28, r17	; 40
+ cee:	0d c0       	rjmp	.+26     	; 0xd0a <pwmRefreshOutputs+0x9e>
+	if (0x00 == pwm2Soll) 						 { PWM2_REG = 0x00; } else
+	if (PWM_MODE_KONST_RATIO 		== pwm2Mode) { PWM2_REG = pwm2Soll; } else
+	if (PWM_MODE_KONST_RATIO_INV	== pwm2Mode) { PWM2_REG = pwm2Soll; } else
+	if (PWM_MODE_KONST_VOLT 		== pwm2Mode) { PWM2_REG = pwmGetRegulateOutputValue(pwm2Soll, pwm2ProgVoltage); } else
+	if (PWM_MODE_KONST_RATIO_SOFT 	== pwm2Mode) { pwmRefreshSingleOutput(&PWM2_REG, pwm2Soll); } else
+	if (PWM_MODE_KONST_VOLT_SOFT 	== pwm2Mode) { pwmRefreshSingleOutput(&PWM2_REG, pwmGetRegulateOutputValue(pwm2Soll, pwm2ProgVoltage)); } 
+ cf0:	02 30       	cpi	r16, 0x02	; 2
+ cf2:	59 f4       	brne	.+22     	; 0xd0a <pwmRefreshOutputs+0x9e>
+ cf4:	81 2f       	mov	r24, r17
+ cf6:	6f 2d       	mov	r22, r15
+ cf8:	9a df       	rcall	.-204    	; 0xc2e <pwmGetRegulateOutputValue>
+ * Funktionsaufruf erfolgt jede 1/10 Sekunde über Ereignisschleife in controller.c
+ * 
+ ***************************************************************************/
+void pwmRefreshSingleOutput(volatile uint8_t *pwmRegister, uint8_t sollValue)
+{
+	uint8_t istValue = *pwmRegister;
+ cfa:	98 b5       	in	r25, 0x28	; 40
+
+	if ((istValue > sollValue) || (istValue > 30)) {
+ cfc:	89 17       	cp	r24, r25
+ cfe:	20 f0       	brcs	.+8      	; 0xd08 <pwmRefreshOutputs+0x9c>
+ d00:	9f 31       	cpi	r25, 0x1F	; 31
+ d02:	10 f4       	brcc	.+4      	; 0xd08 <pwmRefreshOutputs+0x9c>
+		istValue = sollValue;
+	}
+	else
+	{
+		//Softstart
+		istValue += 1; 
+ d04:	89 2f       	mov	r24, r25
+ d06:	8f 5f       	subi	r24, 0xFF	; 255
+	}
+
+	//Sollwert <= IstwertFalls -> sofort übernehmen
+	*pwmRegister = istValue;
+ d08:	88 bd       	out	0x28, r24	; 40
+	if (PWM_MODE_KONST_VOLT 		== pwm2Mode) { PWM2_REG = pwmGetRegulateOutputValue(pwm2Soll, pwm2ProgVoltage); } else
+	if (PWM_MODE_KONST_RATIO_SOFT 	== pwm2Mode) { pwmRefreshSingleOutput(&PWM2_REG, pwm2Soll); } else
+	if (PWM_MODE_KONST_VOLT_SOFT 	== pwm2Mode) { pwmRefreshSingleOutput(&PWM2_REG, pwmGetRegulateOutputValue(pwm2Soll, pwm2ProgVoltage)); } 
+
+	//Interrupts wieder an
+	sei();
+ d0a:	78 94       	sei
+}
+ d0c:	1f 91       	pop	r17
+ d0e:	0f 91       	pop	r16
+ d10:	ff 90       	pop	r15
+ d12:	08 95       	ret
+
+00000d14 <calibAddAdcValue>:
+		sendCalibTable();
+	#endif
+}
+
+void calibAddAdcValue()
+{
+ d14:	1f 93       	push	r17
+ d16:	cf 93       	push	r28
+ d18:	df 93       	push	r29
+	uint8_t i;
+	uint_adc b;
+	
+	uint8_t sreg=SREG; 
+ d1a:	1f b7       	in	r17, 0x3f	; 63
+	cli();  
+ d1c:	f8 94       	cli
+ d1e:	c9 ef       	ldi	r28, 0xF9	; 249
+ d20:	d0 e0       	ldi	r29, 0x00	; 0
+	{
+		#ifdef ADC_LOW_RES
+			b = eeprom_read_byte(&eeCalibAdcValues[i - 1]);
+			eeprom_write_byte(&eeCalibAdcValues[i], b);
+		#else
+			b = eeprom_read_word(&eeCalibAdcValues[i - 1]);
+ d22:	ce 01       	movw	r24, r28
+ d24:	97 d0       	rcall	.+302    	; 0xe54 <__eerd_word_tn84>
+ d26:	bc 01       	movw	r22, r24
+			eeprom_write_word(&eeCalibAdcValues[i], b);
+ d28:	ce 01       	movw	r24, r28
+ d2a:	02 96       	adiw	r24, 0x02	; 2
+ d2c:	af d0       	rcall	.+350    	; 0xe8c <__eewr_word_tn84>
+ d2e:	22 97       	sbiw	r28, 0x02	; 2
+	cli();  
+
+	//Adcvalue wird jede Sekunde gemessen, currentADCValue hält Wert als Schnitt der letzten 8 Sekunden
+		
+	//Alle Elemente in der Liste um eine Position nach hinten verschieben
+	for (i = CALIB_CNT - 1; i > 0 ; i--)
+ d30:	80 e0       	ldi	r24, 0x00	; 0
+ d32:	cf 31       	cpi	r28, 0x1F	; 31
+ d34:	d8 07       	cpc	r29, r24
+ d36:	a9 f7       	brne	.-22     	; 0xd22 <calibAddAdcValue+0xe>
+
+	//Messwert vorne anfügen
+	#ifdef ADC_LOW_RES
+		eeprom_write_byte(&eeCalibAdcValues[0], currentADCValue);
+	#else
+		eeprom_write_word(&eeCalibAdcValues[0], currentADCValue);
+ d38:	60 91 fa 00 	lds	r22, 0x00FA
+ d3c:	70 91 fb 00 	lds	r23, 0x00FB
+ d40:	ce 01       	movw	r24, r28
+ d42:	02 96       	adiw	r24, 0x02	; 2
+ d44:	a3 d0       	rcall	.+326    	; 0xe8c <__eewr_word_tn84>
+		sendControllerState();
+		sendCalibTable();
+	#endif
+
+
+	SREG=sreg;
+ d46:	1f bf       	out	0x3f, r17	; 63
+	sei();
+ d48:	78 94       	sei
+}
+ d4a:	df 91       	pop	r29
+ d4c:	cf 91       	pop	r28
+ d4e:	1f 91       	pop	r17
+ d50:	08 95       	ret
+
+00000d52 <calibStart>:
+		calibFinalize();
+	}
+}
+
+void calibStart(void)
+{
+ d52:	cf 93       	push	r28
+ d54:	df 93       	push	r29
+	uint8_t cFlag = 0xE8;
+	eeprom_write_byte(&eeCalibFlag, cFlag); 
+ d56:	8d ef       	ldi	r24, 0xFD	; 253
+ d58:	90 e0       	ldi	r25, 0x00	; 0
+ d5a:	68 ee       	ldi	r22, 0xE8	; 232
+ d5c:	89 d0       	rcall	.+274    	; 0xe70 <__eewr_byte_tn84>
+ d5e:	c1 e2       	ldi	r28, 0x21	; 33
+ d60:	d0 e0       	ldi	r29, 0x00	; 0
+	for (i = 0; i < CALIB_CNT; i++)
+	{
+		#ifdef ADC_LOW_RES
+			eeprom_write_byte(&eeCalibAdcValues[i], 0xFF);
+		#else
+			eeprom_write_word(&eeCalibAdcValues[i], 0xFFFF);
+ d62:	ce 01       	movw	r24, r28
+ d64:	6f ef       	ldi	r22, 0xFF	; 255
+ d66:	7f ef       	ldi	r23, 0xFF	; 255
+ d68:	91 d0       	rcall	.+290    	; 0xe8c <__eewr_word_tn84>
+ d6a:	22 96       	adiw	r28, 0x02	; 2
+	uint8_t cFlag = 0xE8;
+	eeprom_write_byte(&eeCalibFlag, cFlag); 
+
+	//Alle Werte mit 0xFFFF initialisieren
+	uint8_t i;
+	for (i = 0; i < CALIB_CNT; i++)
+ d6c:	80 e0       	ldi	r24, 0x00	; 0
+ d6e:	cd 3f       	cpi	r28, 0xFD	; 253
+ d70:	d8 07       	cpc	r29, r24
+ d72:	b9 f7       	brne	.-18     	; 0xd62 <calibStart+0x10>
+	}
+
+	#ifdef DEBUG
+		sendCalibTable();
+	#endif
+}
+ d74:	df 91       	pop	r29
+ d76:	cf 91       	pop	r28
+ d78:	08 95       	ret
+
+00000d7a <calibResetFlag>:
+
+uint8_t eeCalibFlag EEMEM = 0xE8;
+
+void calibResetFlag(void) {
+	//Flag löschen und sichern => Kalibrierung beendet
+	eeprom_write_byte(&eeCalibFlag, 0x00);
+ d7a:	8d ef       	ldi	r24, 0xFD	; 253
+ d7c:	90 e0       	ldi	r25, 0x00	; 0
+ d7e:	60 e0       	ldi	r22, 0x00	; 0
+ d80:	77 d0       	rcall	.+238    	; 0xe70 <__eewr_byte_tn84>
+}
+ d82:	08 95       	ret
+
+00000d84 <calibFinalize>:
+	SREG=sreg;
+	sei();
+}
+
+void calibFinalize(void)
+{
+ d84:	ff 92       	push	r15
+ d86:	0f 93       	push	r16
+ d88:	1f 93       	push	r17
+ d8a:	cf 93       	push	r28
+ d8c:	df 93       	push	r29
+	uint8_t i;
+	uint8_t sreg=SREG; 
+ d8e:	ff b6       	in	r15, 0x3f	; 63
+	#ifdef DEBUG
+		sendCalibTable();
+	#endif
+	cli(); 
+ d90:	f8 94       	cli
+ d92:	c9 e3       	ldi	r28, 0x39	; 57
+ d94:	d0 e0       	ldi	r29, 0x00	; 0
+ d96:	0e ed       	ldi	r16, 0xDE	; 222
+ d98:	10 e0       	ldi	r17, 0x00	; 0
+		for (i = 0; i < 8; i++){
+			accuVoltageLevels[i] = eeprom_read_byte(&eeCalibAdcValues[(i+1)*12]);
+		}
+	#else
+		for (i = 0; i < 8; i++){
+			accuVoltageLevels[i] = eeprom_read_word(&eeCalibAdcValues[(i+1)*12]);
+ d9a:	ce 01       	movw	r24, r28
+ d9c:	5b d0       	rcall	.+182    	; 0xe54 <__eerd_word_tn84>
+ d9e:	f8 01       	movw	r30, r16
+ da0:	81 93       	st	Z+, r24
+ da2:	91 93       	st	Z+, r25
+ da4:	8f 01       	movw	r16, r30
+ da6:	68 96       	adiw	r28, 0x18	; 24
+	#ifdef ADC_LOW_RES
+		for (i = 0; i < 8; i++){
+			accuVoltageLevels[i] = eeprom_read_byte(&eeCalibAdcValues[(i+1)*12]);
+		}
+	#else
+		for (i = 0; i < 8; i++){
+ da8:	f0 e0       	ldi	r31, 0x00	; 0
+ daa:	c9 3f       	cpi	r28, 0xF9	; 249
+ dac:	df 07       	cpc	r29, r31
+ dae:	a9 f7       	brne	.-22     	; 0xd9a <calibFinalize+0x16>
+			accuVoltageLevels[i] = eeprom_read_word(&eeCalibAdcValues[(i+1)*12]);
+		}
+	#endif
+	//Werte sichern
+	accuStoreVoltageLevelsToEEPROM();
+ db0:	15 dc       	rcall	.-2006   	; 0x5dc <accuStoreVoltageLevelsToEEPROM>
+
+uint8_t eeCalibFlag EEMEM = 0xE8;
+
+void calibResetFlag(void) {
+	//Flag löschen und sichern => Kalibrierung beendet
+	eeprom_write_byte(&eeCalibFlag, 0x00);
+ db2:	8d ef       	ldi	r24, 0xFD	; 253
+ db4:	90 e0       	ldi	r25, 0x00	; 0
+ db6:	60 e0       	ldi	r22, 0x00	; 0
+ db8:	5b d0       	rcall	.+182    	; 0xe70 <__eewr_byte_tn84>
+	//Werte sichern
+	accuStoreVoltageLevelsToEEPROM();
+
+	calibResetFlag();	
+
+	SREG=sreg;
+ dba:	ff be       	out	0x3f, r15	; 63
+	sei();
+ dbc:	78 94       	sei
+}
+ dbe:	df 91       	pop	r29
+ dc0:	cf 91       	pop	r28
+ dc2:	1f 91       	pop	r17
+ dc4:	0f 91       	pop	r16
+ dc6:	ff 90       	pop	r15
+ dc8:	08 95       	ret
+
+00000dca <calibInitialize>:
+	eeprom_write_byte(&eeCalibFlag, 0x00);
+}
+
+void calibInitialize(void)
+{
+ 	uint8_t cFlag = eeprom_read_byte(&eeCalibFlag);
+ dca:	8d ef       	ldi	r24, 0xFD	; 253
+ dcc:	90 e0       	ldi	r25, 0x00	; 0
+ dce:	3a d0       	rcall	.+116    	; 0xe44 <__eerd_byte_tn84>
+
+	#ifdef DEBUG
+		sendCalibTable();
+	#endif
+
+	if (cFlag == 0xE8)
+ dd0:	88 3e       	cpi	r24, 0xE8	; 232
+ dd2:	09 f4       	brne	.+2      	; 0xdd6 <calibInitialize+0xc>
+	{
+		//Finalize
+		calibFinalize();
+ dd4:	d7 df       	rcall	.-82     	; 0xd84 <calibFinalize>
+ dd6:	08 95       	ret
+
+00000dd8 <__mulhi3>:
+ dd8:	55 27       	eor	r21, r21
+ dda:	00 24       	eor	r0, r0
+
+00000ddc <__mulhi3_loop>:
+ ddc:	80 ff       	sbrs	r24, 0
+ dde:	02 c0       	rjmp	.+4      	; 0xde4 <__mulhi3_skip1>
+ de0:	06 0e       	add	r0, r22
+ de2:	57 1f       	adc	r21, r23
+
+00000de4 <__mulhi3_skip1>:
+ de4:	66 0f       	add	r22, r22
+ de6:	77 1f       	adc	r23, r23
+ de8:	61 15       	cp	r22, r1
+ dea:	71 05       	cpc	r23, r1
+ dec:	21 f0       	breq	.+8      	; 0xdf6 <__mulhi3_exit>
+ dee:	96 95       	lsr	r25
+ df0:	87 95       	ror	r24
+ df2:	00 97       	sbiw	r24, 0x00	; 0
+ df4:	99 f7       	brne	.-26     	; 0xddc <__mulhi3_loop>
+
+00000df6 <__mulhi3_exit>:
+ df6:	95 2f       	mov	r25, r21
+ df8:	80 2d       	mov	r24, r0
+ dfa:	08 95       	ret
+
+00000dfc <__udivmodhi4>:
+ dfc:	aa 1b       	sub	r26, r26
+ dfe:	bb 1b       	sub	r27, r27
+ e00:	51 e1       	ldi	r21, 0x11	; 17
+ e02:	07 c0       	rjmp	.+14     	; 0xe12 <__udivmodhi4_ep>
+
+00000e04 <__udivmodhi4_loop>:
+ e04:	aa 1f       	adc	r26, r26
+ e06:	bb 1f       	adc	r27, r27
+ e08:	a6 17       	cp	r26, r22
+ e0a:	b7 07       	cpc	r27, r23
+ e0c:	10 f0       	brcs	.+4      	; 0xe12 <__udivmodhi4_ep>
+ e0e:	a6 1b       	sub	r26, r22
+ e10:	b7 0b       	sbc	r27, r23
+
+00000e12 <__udivmodhi4_ep>:
+ e12:	88 1f       	adc	r24, r24
+ e14:	99 1f       	adc	r25, r25
+ e16:	5a 95       	dec	r21
+ e18:	a9 f7       	brne	.-22     	; 0xe04 <__udivmodhi4_loop>
+ e1a:	80 95       	com	r24
+ e1c:	90 95       	com	r25
+ e1e:	bc 01       	movw	r22, r24
+ e20:	cd 01       	movw	r24, r26
+ e22:	08 95       	ret
+
+00000e24 <__eerd_block_tn84>:
+ e24:	dc 01       	movw	r26, r24
+ e26:	cb 01       	movw	r24, r22
+
+00000e28 <__eerd_blraw_tn84>:
+ e28:	fc 01       	movw	r30, r24
+ e2a:	e1 99       	sbic	0x1c, 1	; 28
+ e2c:	fe cf       	rjmp	.-4      	; 0xe2a <__eerd_blraw_tn84+0x2>
+ e2e:	06 c0       	rjmp	.+12     	; 0xe3c <__eerd_blraw_tn84+0x14>
+ e30:	ff bb       	out	0x1f, r31	; 31
+ e32:	ee bb       	out	0x1e, r30	; 30
+ e34:	e0 9a       	sbi	0x1c, 0	; 28
+ e36:	31 96       	adiw	r30, 0x01	; 1
+ e38:	0d b2       	in	r0, 0x1d	; 29
+ e3a:	0d 92       	st	X+, r0
+ e3c:	41 50       	subi	r20, 0x01	; 1
+ e3e:	50 40       	sbci	r21, 0x00	; 0
+ e40:	b8 f7       	brcc	.-18     	; 0xe30 <__eerd_blraw_tn84+0x8>
+ e42:	08 95       	ret
+
+00000e44 <__eerd_byte_tn84>:
+ e44:	e1 99       	sbic	0x1c, 1	; 28
+ e46:	fe cf       	rjmp	.-4      	; 0xe44 <__eerd_byte_tn84>
+ e48:	9f bb       	out	0x1f, r25	; 31
+ e4a:	8e bb       	out	0x1e, r24	; 30
+ e4c:	e0 9a       	sbi	0x1c, 0	; 28
+ e4e:	99 27       	eor	r25, r25
+ e50:	8d b3       	in	r24, 0x1d	; 29
+ e52:	08 95       	ret
+
+00000e54 <__eerd_word_tn84>:
+ e54:	a8 e1       	ldi	r26, 0x18	; 24
+ e56:	b0 e0       	ldi	r27, 0x00	; 0
+ e58:	42 e0       	ldi	r20, 0x02	; 2
+ e5a:	50 e0       	ldi	r21, 0x00	; 0
+ e5c:	e5 cf       	rjmp	.-54     	; 0xe28 <__eerd_blraw_tn84>
+
+00000e5e <__eewr_block_tn84>:
+ e5e:	dc 01       	movw	r26, r24
+ e60:	cb 01       	movw	r24, r22
+ e62:	02 c0       	rjmp	.+4      	; 0xe68 <__eewr_block_tn84+0xa>
+ e64:	2d 91       	ld	r18, X+
+ e66:	05 d0       	rcall	.+10     	; 0xe72 <__eewr_r18_tn84>
+ e68:	41 50       	subi	r20, 0x01	; 1
+ e6a:	50 40       	sbci	r21, 0x00	; 0
+ e6c:	d8 f7       	brcc	.-10     	; 0xe64 <__eewr_block_tn84+0x6>
+ e6e:	08 95       	ret
+
+00000e70 <__eewr_byte_tn84>:
+ e70:	26 2f       	mov	r18, r22
+
+00000e72 <__eewr_r18_tn84>:
+ e72:	e1 99       	sbic	0x1c, 1	; 28
+ e74:	fe cf       	rjmp	.-4      	; 0xe72 <__eewr_r18_tn84>
+ e76:	1c ba       	out	0x1c, r1	; 28
+ e78:	9f bb       	out	0x1f, r25	; 31
+ e7a:	8e bb       	out	0x1e, r24	; 30
+ e7c:	2d bb       	out	0x1d, r18	; 29
+ e7e:	0f b6       	in	r0, 0x3f	; 63
+ e80:	f8 94       	cli
+ e82:	e2 9a       	sbi	0x1c, 2	; 28
+ e84:	e1 9a       	sbi	0x1c, 1	; 28
+ e86:	0f be       	out	0x3f, r0	; 63
+ e88:	01 96       	adiw	r24, 0x01	; 1
+ e8a:	08 95       	ret
+
+00000e8c <__eewr_word_tn84>:
+ e8c:	f1 df       	rcall	.-30     	; 0xe70 <__eewr_byte_tn84>
+ e8e:	27 2f       	mov	r18, r23
+ e90:	f0 cf       	rjmp	.-32     	; 0xe72 <__eewr_r18_tn84>
+
+00000e92 <_exit>:
+ e92:	f8 94       	cli
+
+00000e94 <__stop_program>:
+ e94:	ff cf       	rjmp	.-2      	; 0xe94 <__stop_program>

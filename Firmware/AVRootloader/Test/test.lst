@@ -1,0 +1,341 @@
+   1               		.file	"test.c"
+   2               		.arch atmega162
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.text
+  11               	.global	__vector_5
+  13               	__vector_5:
+  14               	/* prologue: frame size=0 */
+  15 0000 1F92      		push __zero_reg__
+  16 0002 0F92      		push __tmp_reg__
+  17 0004 0FB6      		in __tmp_reg__,__SREG__
+  18 0006 0F92      		push __tmp_reg__
+  19 0008 1124      		clr __zero_reg__
+  20 000a 8F93      		push r24
+  21 000c 9F93      		push r25
+  22               	/* prologue end (size=7) */
+  23 000e 922D      		mov r25,r2
+  24 0010 990F      		lsl r25
+  25 0012 80B3      		in r24,48-0x20
+  26 0014 8170      		andi r24,lo8(1)
+  27 0016 982B      		or r25,r24
+  28 0018 292E      		mov r2,r25
+  29 001a 9A3A      		cpi r25,lo8(-86)
+  30 001c 31F4      		brne .L1
+  31               	/* #APP */
+  32 001e A895      		wdr
+  33               	/* #NOAPP */
+  34 0020 88E1      		ldi r24,lo8(24)
+  35 0022 81BD      		out 65-0x20,r24
+  36 0024 88E0      		ldi r24,lo8(8)
+  37 0026 81BD      		out 65-0x20,r24
+  38               	.L3:
+  39 0028 FFCF      		rjmp .L3
+  40               	.L1:
+  41               	/* epilogue: frame size=0 */
+  42 002a 9F91      		pop r25
+  43 002c 8F91      		pop r24
+  44 002e 0F90      		pop __tmp_reg__
+  45 0030 0FBE      		out __SREG__,__tmp_reg__
+  46 0032 0F90      		pop __tmp_reg__
+  47 0034 1F90      		pop __zero_reg__
+  48 0036 1895      		reti
+  49               	/* epilogue end (size=7) */
+  50               	/* function __vector_5 size 29 (15) */
+  52               		.section	.init3,"ax",@progbits
+  53               	.global	init_WDT
+  55               	init_WDT:
+  56               	/* prologue: frame size=0 */
+  57               	/* prologue: naked */
+  58               	/* prologue end (size=0) */
+  59 0000 88E1      		ldi r24,lo8(24)
+  60 0002 81BD      		out 65-0x20,r24
+  61 0004 11BC      		out 65-0x20,__zero_reg__
+  62               	/* epilogue: frame size=0 */
+  63               	/* epilogue: naked */
+  64               	/* epilogue end (size=0) */
+  65               	/* function init_WDT size 3 (3) */
+  67               		.section	.init5,"ax",@progbits
+  68               	.global	init_ports
+  70               	init_ports:
+  71               	/* prologue: frame size=0 */
+  72               	/* prologue: naked */
+  73               	/* prologue end (size=0) */
+  74 0000 8091 FF04 		lds r24,1279
+  75 0004 8093 0000 		sts _MCUCSR,r24
+  76 0008 1ABA      		out 58-0x20,__zero_reg__
+  77 000a 17BA      		out 55-0x20,__zero_reg__
+  78 000c 14BA      		out 52-0x20,__zero_reg__
+  79 000e 11BA      		out 49-0x20,__zero_reg__
+  80 0010 21E0      		ldi r18,lo8(1)
+  81 0012 26B9      		out 38-0x20,r18
+  82 0014 9FEF      		ldi r25,lo8(-1)
+  83 0016 9BBB      		out 59-0x20,r25
+  84 0018 98BB      		out 56-0x20,r25
+  85 001a 8EEF      		ldi r24,lo8(-2)
+  86 001c 85BB      		out 53-0x20,r24
+  87 001e 92BB      		out 50-0x20,r25
+  88 0020 97B9      		out 39-0x20,r25
+  89 0022 2093 6C00 		sts 108,r18
+  90 0026 80E1      		ldi r24,lo8(16)
+  91 0028 8BBF      		out 91-0x20,r24
+  92 002a 80E3      		ldi r24,lo8(48)
+  93 002c 85BF      		out 85-0x20,r24
+  94 002e 14BE      		out 84-0x20,__zero_reg__
+  95 0030 16BE      		out 86-0x20,__zero_reg__
+  96 0032 2224      		clr r2
+  97               	/* epilogue: frame size=0 */
+  98               	/* epilogue: naked */
+  99               	/* epilogue end (size=0) */
+ 100               	/* function init_ports size 26 (26) */
+ 102               		.text
+ 103               	.global	main
+ 105               	main:
+ 106               	/* prologue: frame size=19 */
+ 107 0038 C0E0      		ldi r28,lo8(__stack - 19)
+ 108 003a D0E0      		ldi r29,hi8(__stack - 19)
+ 109 003c DEBF      		out __SP_H__,r29
+ 110 003e CDBF      		out __SP_L__,r28
+ 111               	/* prologue end (size=4) */
+ 112               	/* #APP */
+ 113 0040 7894      		sei
+ 114               	/* #NOAPP */
+ 115 0042 2DB7      		in r18,__SP_L__
+ 116 0044 3EB7      		in r19,__SP_H__
+ 117 0046 3B8B      		std Y+19,r19
+ 118 0048 2A8B      		std Y+18,r18
+ 119 004a 0E94 FB1F 		call 16374
+ 120 004e C92E      		mov r12,r25
+ 121 0050 DD24      		clr r13
+ 122 0052 34E0      		ldi r19,lo8(4)
+ 123 0054 A32E      		mov r10,r19
+ 124 0056 B12C      		mov r11,__zero_reg__
+ 125 0058 AC0C      		add r10,r12
+ 126 005a BD1C      		adc r11,r13
+ 127 005c 0E94 FB1F 		call 16374
+ 128 0060 DC01      		movw r26,r24
+ 129 0062 CB01      		movw r24,r22
+ 130 0064 9C01      		movw r18,r24
+ 131 0066 AD01      		movw r20,r26
+ 132               	/* #APP */
+ 133 0068 5527      		clr r21
+ 134               	/* #NOAPP */
+ 135 006a 2901      		movw r4,r18
+ 136 006c 4DB7      		in r20,__SP_L__
+ 137 006e 5EB7      		in r21,__SP_H__
+ 138 0070 4A19      		sub r20,r10
+ 139 0072 5B09      		sbc r21,r11
+ 140 0074 0FB6      		in __tmp_reg__,__SREG__
+ 141 0076 F894      		cli
+ 142 0078 5EBF      		out __SP_H__,r21
+ 143 007a 0FBE      		out __SREG__,__tmp_reg__
+ 144 007c 4DBF      		out __SP_L__,r20
+ 145 007e 0DB7      		in r16,__SP_L__
+ 146 0080 1EB7      		in r17,__SP_H__
+ 147 0082 0F5F      		subi r16,lo8(-(1))
+ 148 0084 1F4F      		sbci r17,hi8(-(1))
+ 149 0086 C201      		movw r24,r4
+ 150 0088 AA27      		clr r26
+ 151 008a BB27      		clr r27
+ 152 008c 9801      		movw r18,r16
+ 153 008e A501      		movw r20,r10
+ 154 0090 BC01      		movw r22,r24
+ 155 0092 CD01      		movw r24,r26
+ 156 0094 0E94 FC1F 		call 16376
+ 157 0098 A0E0      		ldi r26,lo8(0)
+ 158 009a B0E0      		ldi r27,hi8(0)
+ 159 009c C501      		movw r24,r10
+ 160 009e F801      		movw r30,r16
+ 161               	/* #APP */
+ 162               		.92_start:
+ 163 00a0 0197      		sbiw r24,1
+ 164 00a2 24F0      		brlt .92_finished
+ 165 00a4 0190      		ld __tmp_reg__,z+
+ 166 00a6 0E94 0000 		call __eeprom_write_byte_1C1D1E
+ 167 00aa FACF      		rjmp .92_start
+ 168               		.92_finished:
+ 169               	/* #NOAPP */
+ 170 00ac 0E94 FB1F 		call 16374
+ 171 00b0 9B01      		movw r18,r22
+ 172 00b2 AC01      		movw r20,r24
+ 173               	/* #APP */
+ 174 00b4 5527      		clr r21
+ 175               	/* #NOAPP */
+ 176 00b6 7901      		movw r14,r18
+ 177 00b8 8A01      		movw r16,r20
+ 178 00ba 0E94 FB1F 		call 16374
+ 179 00be 892F      		mov r24,r25
+ 180 00c0 9927      		clr r25
+ 181 00c2 AA27      		clr r26
+ 182 00c4 BB27      		clr r27
+ 183 00c6 E80E      		add r14,r24
+ 184 00c8 F91E      		adc r15,r25
+ 185 00ca 0A1F      		adc r16,r26
+ 186 00cc 1B1F      		adc r17,r27
+ 187 00ce 83E0      		ldi r24,lo8(3)
+ 188 00d0 90E0      		ldi r25,hi8(3)
+ 189 00d2 A0E0      		ldi r26,hlo8(3)
+ 190 00d4 B0E0      		ldi r27,hhi8(3)
+ 191 00d6 E80E      		add r14,r24
+ 192 00d8 F91E      		adc r15,r25
+ 193 00da 0A1F      		adc r16,r26
+ 194 00dc 1B1F      		adc r17,r27
+ 195 00de 9E01      		movw r18,r28
+ 196 00e0 2F5E      		subi r18,lo8(-(17))
+ 197 00e2 3F4F      		sbci r19,hi8(-(17))
+ 198 00e4 41E0      		ldi r20,lo8(1)
+ 199 00e6 50E0      		ldi r21,hi8(1)
+ 200 00e8 C801      		movw r24,r16
+ 201 00ea B701      		movw r22,r14
+ 202 00ec 0E94 FC1F 		call 16376
+ 203 00f0 8989      		ldd r24,Y+17
+ 204 00f2 9927      		clr r25
+ 205 00f4 9695      		lsr r25
+ 206 00f6 982F      		mov r25,r24
+ 207 00f8 8827      		clr r24
+ 208 00fa 9795      		ror r25
+ 209 00fc 8795      		ror r24
+ 210 00fe ECEF      		ldi r30,lo8(16380)
+ 211 0100 FFE3      		ldi r31,hi8(16380)
+ 212 0102 E81B      		sub r30,r24
+ 213 0104 F90B      		sbc r31,r25
+ 214               	/* #APP */
+ 215 0106 4591      		lpm r20, Z+
+ 216 0108 5591      		lpm r21, Z+
+ 217 010a 6591      		lpm r22, Z+
+ 218 010c 7491      		lpm r23, Z
+ 219               		
+ 220               	/* #NOAPP */
+ 221 010e A5E0      		ldi r26,lo8(5)
+ 222 0110 B0E0      		ldi r27,hi8(5)
+ 223 0112 CA0E      		add r12,r26
+ 224 0114 DB1E      		adc r13,r27
+ 225 0116 D501      		movw r26,r10
+ 226               	/* #APP */
+ 227 0118 072E      		mov __tmp_reg__,r23
+ 228 011a 0E94 0000 		call __eeprom_write_byte_1C1D1E
+ 229               	/* #NOAPP */
+ 230 011e 9601      		movw r18,r12
+ 231 0120 0894      		sec
+ 232 0122 C11C      		adc r12,__zero_reg__
+ 233 0124 D11C      		adc r13,__zero_reg__
+ 234 0126 D901      		movw r26,r18
+ 235               	/* #APP */
+ 236 0128 062E      		mov __tmp_reg__,r22
+ 237 012a 0E94 0000 		call __eeprom_write_byte_1C1D1E
+ 238               	/* #NOAPP */
+ 239 012e 9601      		movw r18,r12
+ 240 0130 0894      		sec
+ 241 0132 C11C      		adc r12,__zero_reg__
+ 242 0134 D11C      		adc r13,__zero_reg__
+ 243 0136 D901      		movw r26,r18
+ 244               	/* #APP */
+ 245 0138 052E      		mov __tmp_reg__,r21
+ 246 013a 0E94 0000 		call __eeprom_write_byte_1C1D1E
+ 247               	/* #NOAPP */
+ 248 013e 3601      		movw r6,r12
+ 249 0140 0894      		sec
+ 250 0142 611C      		adc r6,__zero_reg__
+ 251 0144 711C      		adc r7,__zero_reg__
+ 252 0146 D601      		movw r26,r12
+ 253               	/* #APP */
+ 254 0148 042E      		mov __tmp_reg__,r20
+ 255 014a 0E94 0000 		call __eeprom_write_byte_1C1D1E
+ 256               	/* #NOAPP */
+ 257 014e 80E0      		ldi r24,lo8(0)
+ 258 0150 4E01      		movw r8,r28
+ 259 0152 0894      		sec
+ 260 0154 811C      		adc r8,__zero_reg__
+ 261 0156 911C      		adc r9,__zero_reg__
+ 262 0158 F401      		movw r30,r8
+ 263               	.L30:
+ 264 015a 8193      		st Z+,r24
+ 265 015c 8F5F      		subi r24,lo8(-(1))
+ 266 015e 8031      		cpi r24,lo8(16)
+ 267 0160 E0F3      		brlo .L30
+ 268 0162 4A0C      		add r4,r10
+ 269 0164 5B1C      		adc r5,r11
+ 270 0166 7201      		movw r14,r4
+ 271 0168 0027      		clr r16
+ 272 016a 1127      		clr r17
+ 273 016c D801      		movw r26,r16
+ 274 016e C701      		movw r24,r14
+ 275               	/* #APP */
+ 276 0170 BCEA      		ldi r27, 0xAC
+ 277               	/* #NOAPP */
+ 278 0172 9401      		movw r18,r8
+ 279 0174 40E1      		ldi r20,lo8(16)
+ 280 0176 50E0      		ldi r21,hi8(16)
+ 281 0178 BC01      		movw r22,r24
+ 282 017a CD01      		movw r24,r26
+ 283 017c 0E94 FD1F 		call 16378
+ 284 0180 F401      		movw r30,r8
+ 285 0182 8FEF      		ldi r24,lo8(-1)
+ 286 0184 9FE0      		ldi r25,lo8(15)
+ 287 0186 C92E      		mov r12,r25
+ 288               	.L35:
+ 289 0188 8193      		st Z+,r24
+ 290 018a CA94      		dec r12
+ 291 018c 8150      		subi r24,lo8(-(-1))
+ 292 018e C7FE      		sbrs r12,7
+ 293 0190 FBCF      		rjmp .L35
+ 294 0192 80E1      		ldi r24,lo8(16)
+ 295 0194 C82E      		mov r12,r24
+ 296 0196 9401      		movw r18,r8
+ 297 0198 40E1      		ldi r20,lo8(16)
+ 298 019a 50E0      		ldi r21,hi8(16)
+ 299 019c C801      		movw r24,r16
+ 300 019e B701      		movw r22,r14
+ 301 01a0 0E94 FC1F 		call 16376
+ 302 01a4 D301      		movw r26,r6
+ 303 01a6 F401      		movw r30,r8
+ 304               	/* #APP */
+ 305 01a8 1C2C      		mov __zero_reg__,r12
+ 306 01aa 0E94 0000 		call __eeprom_write_block_1C1D1E
+ 307               	/* #NOAPP */
+ 308 01ae 2A89      		ldd r18,Y+18
+ 309 01b0 3B89      		ldd r19,Y+19
+ 310 01b2 0FB6      		in __tmp_reg__,__SREG__
+ 311 01b4 F894      		cli
+ 312 01b6 3EBF      		out __SP_H__,r19
+ 313 01b8 0FBE      		out __SREG__,__tmp_reg__
+ 314 01ba 2DBF      		out __SP_L__,r18
+ 315 01bc 3898      		cbi 39-0x20,0
+ 316               	.L45:
+ 317               	/* #APP */
+ 318 01be 8895      		sleep
+ 319               		
+ 320               	/* #NOAPP */
+ 321 01c0 FECF      		rjmp .L45
+ 322               	/* epilogue: frame size=19 */
+ 323               	/* epilogue: noreturn */
+ 324               	/* epilogue end (size=0) */
+ 325               	/* function main size 223 (219) */
+ 327               		.comm _MCUCSR,1,1
+ 328               	/* File "test.c": code  281 = 0x0119 ( 263), prologues  11, epilogues   7 */
+DEFINED SYMBOLS
+                            *ABS*:00000000 test.c
+C:\DOKUME~1\Hagen\LOKALE~1\Temp/ccUtaaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOKUME~1\Hagen\LOKALE~1\Temp/ccUtaaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOKUME~1\Hagen\LOKALE~1\Temp/ccUtaaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOKUME~1\Hagen\LOKALE~1\Temp/ccUtaaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOKUME~1\Hagen\LOKALE~1\Temp/ccUtaaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOKUME~1\Hagen\LOKALE~1\Temp/ccUtaaaa.s:13     .text:00000000 __vector_5
+C:\DOKUME~1\Hagen\LOKALE~1\Temp/ccUtaaaa.s:55     .init3:00000000 init_WDT
+C:\DOKUME~1\Hagen\LOKALE~1\Temp/ccUtaaaa.s:70     .init5:00000000 init_ports
+                            *COM*:00000001 _MCUCSR
+C:\DOKUME~1\Hagen\LOKALE~1\Temp/ccUtaaaa.s:105    .text:00000038 main
+C:\DOKUME~1\Hagen\LOKALE~1\Temp/ccUtaaaa.s:162    .text:000000a0 .92_start
+C:\DOKUME~1\Hagen\LOKALE~1\Temp/ccUtaaaa.s:168    .text:000000ac .92_finished
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__stack
+__eeprom_write_byte_1C1D1E
+__eeprom_write_block_1C1D1E

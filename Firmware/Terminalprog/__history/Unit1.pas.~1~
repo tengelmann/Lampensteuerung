@@ -1,0 +1,72 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, SerialNG;
+
+type
+  TForm1 = class(TForm)
+    SerialPortNG1: TSerialPortNG;
+    Memo1: TMemo;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    procedure SerialPortNG1CommEvent(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+  private
+    { Private-Deklarationen }
+  public
+    { Public-Deklarationen }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.SerialPortNG1CommEvent(Sender: TObject);
+var
+  s1, ReceivedText: String;
+  p , ad1, ad2, ad3: Integer;
+
+begin
+  ReceivedText := SerialPortNG1. ReadNextClusterAsString;
+  if Length(ReceivedText) = 0 then Exit;
+
+  p := Pos(#$D#$A, ReceivedText);
+  while (p > 0) do
+  begin
+        s1 := Copy(ReceivedText, 0, p-1);
+        Memo1.Lines.Add(Format('%s, %s, %s', [DateToStr(Now), TimeToStr(Now), s1]));
+        ReceivedText := Copy(ReceivedText, p+2, Length(ReceivedText)-p-2);
+
+        p := Pos(#$D#$A, ReceivedText);
+
+  end;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  SerialPortNG1.Active := True;
+  Memo1.Clear;
+  Memo1.Lines.Add('Protokoll started...');
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+  SerialPortNG1.Active := False;
+
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+  memo1.Clear;
+end;
+
+end.

@@ -1,0 +1,93 @@
+unit fmMainForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, CPort, CPortTypes, CPortCtl, ActnList, ImgList, Buttons, ComCtrls;
+
+type
+  TMainForm = class(TForm)
+    mMessages: TMemo;
+    cmprtComPort: TComPort;
+    ilImages: TImageList;
+    actlst1: TActionList;
+    actComConnect: TAction;
+    actComDisconnect: TAction;
+    grpTop: TGroupBox;
+    statStatusBar: TStatusBar;
+    cbbBaudRate: TComComboBox;
+    cbbPortSelect: TComComboBox;
+    btnComConnect: TBitBtn;
+    procedure cmprtComPortAfterClose(Sender: TObject);
+    procedure cmprtComPortAfterOpen(Sender: TObject);
+    procedure cmprtComPortBeforeOpen(Sender: TObject);
+    procedure actComConnectExecute(Sender: TObject);
+    procedure actComDisconnectExecute(Sender: TObject);
+    procedure cmprtComPortRxBuf(Sender: TObject; const Buffer: PAnsiChar;
+      Count: Integer);
+    procedure cmprtComPortError(Sender: TObject; Errors: TComErrors);
+    procedure cmprtComPortRxChar(Sender: TObject; Count: Integer);
+  private
+    { Private-Deklarationen }
+  public
+    { Public-Deklarationen }
+  end;
+
+var
+  MainForm: TMainForm;
+
+implementation
+
+{$R *.dfm}
+
+procedure TMainForm.actComConnectExecute(Sender: TObject);
+begin
+        if cbbPortSelect.ItemIndex >= 0 then
+        begin
+                cmprtComPort.Port := cbbPortSelect.Text;
+                cmprtComPort.Open;
+        end;
+end;
+
+procedure TMainForm.actComDisconnectExecute(Sender: TObject);
+begin
+        if cmprtComPort.Connected then
+                cmprtComPort.Close;
+end;
+
+procedure TMainForm.cmprtComPortAfterClose(Sender: TObject);
+begin
+        btnComConnect.Action := actComConnect;
+     mMessages.Lines.Add(Format('Serial Port <%s> closed.', [Trim(cmprtComPort.Port)]));
+end;
+
+procedure TMainForm.cmprtComPortAfterOpen(Sender: TObject);
+begin
+     btnComConnect.Action := actComDisconnect;
+     mMessages.Lines.Add(Format('Serial Port <%s> opened.', [Trim(cmprtComPort.Port)]));
+
+end;
+
+procedure TMainForm.cmprtComPortBeforeOpen(Sender: TObject);
+begin
+        mMessages.Lines.Add(Format('Opening <%s> ...', [Trim(cmprtComPort.Port)]));
+end;
+
+procedure TMainForm.cmprtComPortError(Sender: TObject; Errors: TComErrors);
+begin
+     mMessages.Lines.Add('cmprtComPortError');
+end;
+
+procedure TMainForm.cmprtComPortRxBuf(Sender: TObject; const Buffer: PAnsiChar;
+  Count: Integer);
+begin
+     mMessages.Lines.Add(Format('Received: %d Bytes.', [Count]));
+end;
+
+procedure TMainForm.cmprtComPortRxChar(Sender: TObject; Count: Integer);
+begin
+     mMessages.Lines.Add('cmprtComPortRxChar');
+end;
+
+end.

@@ -1,0 +1,107 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, CPort, CPortCtl, ActnList, ImgList, Buttons;
+
+type
+  TForm1 = class(TForm)
+    mMessages: TMemo;
+    cmprt1: TComPort;
+    cbbBaudRate: TComComboBox;
+    cbbPort: TComComboBox;
+    btnComConnect: TBitBtn;
+    ilImages: TImageList;
+    lblSerialPort: TLabel;
+    actlst1: TActionList;
+    actComPortSettings: TAction;
+    actComConnect: TAction;
+    actComDisconnect: TAction;
+    actRacerAdd: TAction;
+    actRacerRemove: TAction;
+    actActiveRacerAdd: TAction;
+    actActiveRacerRemove: TAction;
+    actFolder: TAction;
+    actShowRaceWindow: TAction;
+    actShowAbout: TAction;
+    actRacersLoad: TAction;
+    actRacersSave: TAction;
+    actRaceStart: TAction;
+    actRaceStop: TAction;
+    procedure SerialPortNG1CommEvent(Sender: TObject);
+    procedure btnConnectClick(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure cmprt1AfterClose(Sender: TObject);
+    procedure cmprt1AfterOpen(Sender: TObject);
+    procedure cmprt1BeforeOpen(Sender: TObject);
+  private
+    { Private-Deklarationen }
+  public
+    { Public-Deklarationen }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.SerialPortNG1CommEvent(Sender: TObject);
+var
+  s1, ReceivedText: String;
+  p , ad1, ad2, ad3: Integer;
+
+begin
+  ReceivedText := SerialPortNG1. ReadNextClusterAsString;
+  if Length(ReceivedText) = 0 then Exit;
+
+  p := Pos(#$D#$A, ReceivedText);
+  while (p > 0) do
+  begin
+        s1 := Copy(ReceivedText, 0, p-1);
+        Memo1.Lines.Add(Format('%s, %s, %s', [DateToStr(Now), TimeToStr(Now), s1]));
+        ReceivedText := Copy(ReceivedText, p+2, Length(ReceivedText)-p-2);
+
+        p := Pos(#$D#$A, ReceivedText);
+
+  end;
+end;
+
+procedure TForm1.btnConnectClick(Sender: TObject);
+begin
+  SerialPortNG1.Active := True;
+  Memo1.Clear;
+  Memo1.Lines.Add('Protokoll started...');
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+  SerialPortNG1.Active := False;
+
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+  memo1.Clear;
+end;
+
+procedure TForm1.cmprt1AfterClose(Sender: TObject);
+begin
+        btnComConnect.Action := aComConnect;
+end;
+
+procedure TForm1.cmprt1AfterOpen(Sender: TObject);
+begin
+        btnComConnect.Action := aComDisconnect;
+end;
+
+procedure TForm1.cmprt1BeforeOpen(Sender: TObject);
+begin
+        mMessages.Lines.Add(Format('Opening <%s> ...', [Trim(ComPort1.Port)]));
+end;
+
+end.
