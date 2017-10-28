@@ -1,0 +1,78 @@
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+img {
+	border: 1px solid #000000;
+}
+a {
+	font-weight: normal;
+	color: #0033CC;
+	text-decoration: none;
+}
+h1 {
+	font-size: 16px;
+	font-weight: bold;
+	width: 100%;
+	background-color: #DFDFFF;
+	padding: 2px 2px 2px 5px;
+	border-top: 1px dashed #000066;
+	border-right: 1px #000066;
+	border-bottom: 1px dashed #000066;
+	border-left: 1px #000066;
+	margin: 0px;
+}
+h2 {
+	font-size: 12px;
+	font-weight: bold;
+	width: 100%;
+	background-color: #DFDFFF;
+	padding: 2px 2px 2px 5px;
+	border-top: 1px dashed #000066;
+	border-right: 1px #000066;
+	border-bottom: 1px dashed #000066;
+	border-left: 1px #000066;
+}
+
+a:hover {
+	text-decoration:underline overline;
+}
+.textblock {
+	width: 100%;
+	padding-left: 30px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	margin: 0px;
+}
+.textblock p {
+	line-height: normal;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+table {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	text-align: left;
+	vertical-align: top;
+}
+table  th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+table img {
+	text-align: center;
+}
+ul {
+	width: 70%;
+}
+.cell1 {
+	background-color: #F4F4FF;
+}
